@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" fill="#0a0a0a">
+  <!-- Geometric mark - angular parallel strokes forming stylized B -->
+  <g>
+    <!-- First stroke pair: upper-left to center -->
+    <polygon points="5,0 17,0 50,65 38,65"/>
+    <polygon points="22,0 34,0 67,65 55,65"/>
+    <!-- Second stroke pair: center to lower-left -->
+    <polygon points="38,65 50,65 17,120 5,120"/>
+    <polygon points="55,65 67,65 34,120 22,120"/>
+  </g>
+  <!-- Text: Bessemer Venture Partners -->
+  <text x="90" y="40" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="36" letter-spacing="0.5">Bessemer</text>
+  <text x="90" y="76" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="36" letter-spacing="0.5">Venture</text>
+  <text x="90" y="112" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="36" letter-spacing="0.5">Partners</text>
+</svg>
