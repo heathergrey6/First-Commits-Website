@@ -33,9 +33,14 @@ export default function Home() {
       <nav className={styles.nav}>
         <div className={styles.navInner}>
           <span className={styles.logo}>First Commits</span>
-          <Link href="/apply" className={styles.navLink}>
-            Request Invitation
-          </Link>
+          <div className={styles.navLinks}>
+            <Link href="/partners" className={styles.navLink}>
+              Partners
+            </Link>
+            <Link href="/apply" className={styles.navLink}>
+              Request Invitation
+            </Link>
+          </div>
         </div>
       </nav>
 

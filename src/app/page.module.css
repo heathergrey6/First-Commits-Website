@@ -30,6 +30,12 @@
   letter-spacing: 0.15em;
 }
 
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .navLink {
   font-family: var(--font-mono);
   font-size: 0.75rem;
