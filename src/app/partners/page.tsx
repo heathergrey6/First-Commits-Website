@@ -101,36 +101,17 @@ export default function Partners() {
       {/* Partners Banner */}
       <section className={styles.bannerSection}>
         <div className={styles.bannerContainer}>
-          <header className={styles.bannerHeader}>
-            <span className={styles.sectionLabel}>Our Partners</span>
-            <div className={styles.dividerShort}></div>
-            <h1 className={styles.bannerTitle}>
-              Backed by those who<br />
-              believe in the early.
-            </h1>
-            <p className={styles.bannerIntro}>
-              First Commits is supported by partners who understand that the
-              earliest contributions are often the most consequential. They
-              share our conviction that early hires deserve recognition,
-              community, and opportunity.
-            </p>
-          </header>
+          <span className={styles.sectionLabel}>Our Partners</span>
+          <div className={styles.dividerShort}></div>
 
           <div className={styles.partnersGrid}>
             <div className={styles.partnerCard}>
-              <div className={styles.partnerLogo}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/bessemer-logo.svg"
-                  alt="Bessemer Venture Partners"
-                  className={styles.partnerLogoImage}
-                />
-              </div>
-              <p className={styles.partnerDescription}>
-                Bessemer Venture Partners is one of the oldest and most
-                established venture capital firms, backing founders and early
-                teams building category-defining companies.
-              </p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/bessemer-logo.svg"
+                alt="Bessemer Venture Partners"
+                className={styles.partnerLogoImage}
+              />
             </div>
           </div>
         </div>

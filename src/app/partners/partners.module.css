@@ -41,10 +41,6 @@
   max-width: 640px;
 }
 
-.bannerHeader {
-  margin-bottom: var(--spacing-lg);
-}
-
 .sectionLabel {
   font-family: var(--font-mono);
   font-size: 0.625rem;
@@ -62,18 +58,6 @@
   margin-bottom: var(--spacing-md);
 }
 
-.bannerTitle {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  margin-bottom: var(--spacing-md);
-  line-height: 1.3;
-}
-
-.bannerIntro {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: var(--color-gray-600);
-}
-
 /* Partners Grid */
 .partnersGrid {
   display: grid;
@@ -83,28 +67,15 @@
 
 .partnerCard {
   padding: var(--spacing-md);
-  border: 1px solid var(--color-gray-200);
-  transition: border-color 0.2s ease;
-}
-
-.partnerCard:hover {
-  border-color: var(--color-gray-400);
-}
-
-.partnerLogo {
-  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .partnerLogoImage {
   display: block;
   max-width: 280px;
   height: auto;
-}
-
-.partnerDescription {
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: var(--color-gray-500);
 }
 
 /* Section Divider */
