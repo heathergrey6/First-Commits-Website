@@ -489,16 +489,19 @@
   margin-bottom: var(--spacing-md);
 }
 
-.sectionFinal .btn-primary {
+.sectionFinal :global(.btn-primary) {
   background-color: var(--color-accent);
   color: #fff;
   border-color: var(--color-accent);
+  box-shadow: 0 2px 12px rgba(184, 134, 11, 0.25);
 }
 
-.sectionFinal .btn-primary:hover {
-  background-color: transparent;
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+.sectionFinal :global(.btn-primary):hover {
+  background-color: #9a7209;
+  color: #fff;
+  border-color: #9a7209;
+  opacity: 1;
+  box-shadow: 0 4px 20px rgba(184, 134, 11, 0.35);
 }
 
 /* Footer */
@@ -520,6 +523,14 @@
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.25em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footerLogoIcon {
+  width: 20px;
+  height: 20px;
 }
 
 .footerCopy {
