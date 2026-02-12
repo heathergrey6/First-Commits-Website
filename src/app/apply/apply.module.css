@@ -13,8 +13,33 @@
 }
 
 .navInner {
-  max-width: var(--max-width);
+  max-width: var(--max-width-wide);
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navLink {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-bottom: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  transition: border-color var(--duration-normal) var(--ease-out-quart);
+}
+
+.navLink:hover {
+  border-color: var(--color-black);
+  opacity: 1;
 }
 
 .logo {
@@ -23,6 +48,14 @@
   text-transform: uppercase;
   letter-spacing: 0.15em;
   border-bottom: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logoIcon {
+  width: 24px;
+  height: 24px;
 }
 
 .logo:hover {
@@ -59,8 +92,8 @@
 
 .dividerShort {
   width: 40px;
-  height: 1px;
-  background-color: var(--color-black);
+  height: 2px;
+  background-color: var(--color-accent);
   margin-bottom: var(--spacing-md);
 }
 
@@ -98,6 +131,13 @@
   letter-spacing: 0.1em;
   color: var(--color-gray-600);
   margin-bottom: var(--spacing-xs);
+  transition: transform var(--duration-normal) var(--ease-out-quart),
+              color var(--duration-normal) var(--ease-out-quart);
+}
+
+.formGroup:focus-within .label {
+  transform: translateY(-2px);
+  color: var(--color-black);
 }
 
 .optional {
@@ -121,7 +161,9 @@
   border-bottom: 1px solid var(--color-gray-300);
   background-color: transparent;
   color: var(--color-black);
-  transition: border-color 0.2s ease;
+  transition: border-color var(--duration-normal) var(--ease-out-quart),
+              border-bottom-width var(--duration-normal) var(--ease-out-quart),
+              padding-bottom var(--duration-normal) var(--ease-out-quart);
   outline: none;
   border-radius: 0;
   -webkit-appearance: none;
@@ -139,6 +181,8 @@
 .select:focus,
 .textarea:focus {
   border-bottom-color: var(--color-black);
+  border-bottom-width: 2px;
+  padding-bottom: calc(1rem - 1px);
 }
 
 .input::placeholder,
@@ -188,7 +232,13 @@
   color: var(--color-white);
   border: 1px solid var(--color-black);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color var(--duration-normal) var(--ease-out-expo),
+              color var(--duration-normal) var(--ease-out-expo),
+              transform var(--duration-fast) var(--ease-out-quart);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: scale(0.97);
 }
 
 .submitBtn:hover:not(:disabled) {

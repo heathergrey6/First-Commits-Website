@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import Link from 'next/link'
+import Nav from '@/components/Nav'
 import styles from './partners.module.css'
 
 export default function Partners() {
@@ -58,13 +59,9 @@ export default function Partners() {
   if (isSubmitted) {
     return (
       <main className={styles.main}>
-        <nav className={styles.nav}>
-          <div className={styles.navInner}>
-            <Link href="/" className={styles.logo}>
-              First Commits
-            </Link>
-          </div>
-        </nav>
+        <a href="#main-content" className="skip-to-content">Skip to content</a>
+        <Nav />
+        <div id="main-content"></div>
 
         <section className={styles.confirmation}>
           <div className={styles.confirmationContent}>
@@ -89,52 +86,56 @@ export default function Partners() {
 
   return (
     <main className={styles.main}>
-      {/* Navigation */}
-      <nav className={styles.nav}>
-        <div className={styles.navInner}>
-          <Link href="/" className={styles.logo}>
-            First Commits
-          </Link>
-        </div>
-      </nav>
+      <a href="#main-content" className="skip-to-content">Skip to content</a>
+      <Nav />
+      <div id="main-content"></div>
 
-      {/* Partners Banner */}
-      <section className={styles.bannerSection}>
-        <div className={styles.bannerContainer}>
-          <header className={styles.bannerHeader}>
-            <span className={styles.sectionLabel}>Our Partners</span>
-            <div className={styles.dividerShort}></div>
-            <h1 className={styles.bannerTitle}>
-              Backed by those who<br />
-              believe in the early.
-            </h1>
-            <p className={styles.bannerIntro}>
-              First Commits is supported by partners who understand that the
-              earliest contributions are often the most consequential. They
-              share our conviction that early hires deserve recognition,
-              community, and opportunity.
-            </p>
-          </header>
+      {/* Split Layout */}
+      <div className={styles.splitLayout}>
+        {/* Left Column — Content */}
+        <div className={styles.splitContent}>
+          {/* Partners Banner */}
+          <section className={styles.bannerSection}>
+            <div className={styles.bannerContainer}>
+              <header className={styles.bannerHeader}>
+                <span className={styles.sectionLabel}>Our Partners</span>
+                <div className={styles.dividerShort}></div>
+                <h1 className={styles.bannerTitle}>
+                  Backed by those who<br />
+                  believe in the early.
+                </h1>
+                <p className={styles.bannerIntro}>
+                  First Commits is supported by partners who understand that the
+                  earliest contributions are often the most consequential. They
+                  share our conviction that early hires deserve recognition,
+                  community, and opportunity.
+                </p>
+              </header>
 
-          <div className={styles.partnersGrid}>
-            <div className={styles.partnerCard}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/bessemer-logo.svg"
-                alt="Bessemer Venture Partners"
-                className={styles.partnerLogoImage}
-              />
+              <div className={styles.partnersGrid}>
+                <div className={styles.partnerCard}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/bessemer-logo.svg"
+                    alt="Bessemer Venture Partners"
+                    className={styles.partnerLogoImage}
+                  />
+                </div>
+                <div className={styles.partnerCard}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/forerunner-logo.jpeg"
+                    alt="Forerunner"
+                    className={styles.partnerLogoImage}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Divider */}
-      <div className={styles.sectionDivider}></div>
-
-      {/* Partnership Inquiry Form */}
-      <section className={styles.formSection}>
-        <div className={styles.formContainer}>
+          {/* Partnership Inquiry Form */}
+          <section className={styles.formSection}>
+            <div className={styles.formContainer}>
           <header className={styles.formHeader}>
             <span className={styles.sectionLabel}>Partnership Inquiry</span>
             <div className={styles.dividerShort}></div>
@@ -225,8 +226,20 @@ export default function Partners() {
               </button>
             </div>
           </form>
+            </div>
+          </section>
         </div>
-      </section>
+
+        {/* Right Column — Photo */}
+        <div className={styles.splitPhoto}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/partner-dinner.jpeg"
+            alt="First Commits x Bessemer partner dinner"
+            className={styles.splitPhotoImage}
+          />
+        </div>
+      </div>
 
       {/* Footer */}
       <footer className={styles.footer}>

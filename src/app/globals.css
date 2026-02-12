@@ -1,10 +1,10 @@
 /* First Commits - Editorial Monochrome Aesthetic */
 
 :root {
-  --color-black: #0a0a0a;
-  --color-white: #fafafa;
-  --color-gray-50: #f5f5f5;
-  --color-gray-100: #e5e5e5;
+  --color-black: #1a1a1a;
+  --color-white: #f5f0eb;
+  --color-gray-50: #f4f3f1;
+  --color-gray-100: #e5e4e2;
   --color-gray-200: #d4d4d4;
   --color-gray-300: #a3a3a3;
   --color-gray-400: #737373;
@@ -12,10 +12,10 @@
   --color-gray-600: #404040;
   --color-gray-700: #262626;
   --color-gray-800: #171717;
-  --color-gray-900: #0a0a0a;
+  --color-gray-900: #1a1a1a;
+  --color-accent: #b8860b;
 
-  --font-serif: 'Times New Roman', Times, Georgia, serif;
-  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace;
+  /* --font-serif and --font-mono are injected by next/font/google via layout.tsx */
 
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -26,12 +26,52 @@
 
   --max-width: 720px;
   --max-width-wide: 1200px;
+
+  /* Custom easing curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Timing variables */
+  --duration-fast: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.6s;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+  opacity: 1;
+}
+
+/* Focus visible styles */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 html {
@@ -45,8 +85,26 @@ body {
   color: var(--color-black);
   line-height: 1.7;
   font-size: 1.125rem;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Subtle paper grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }
 
 /* Typography */
@@ -80,7 +138,7 @@ a {
   color: inherit;
   text-decoration: none;
   border-bottom: 1px solid currentColor;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--duration-normal) var(--ease-out-quart);
 }
 
 a:hover {
@@ -95,8 +153,8 @@ code, .mono {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-gray-200);
+  color: var(--color-black);
 }
 
 /* Scrollbar */
@@ -170,7 +228,9 @@ code, .mono {
   background-color: transparent;
   color: var(--color-black);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color var(--duration-normal) var(--ease-out-expo),
+              color var(--duration-normal) var(--ease-out-expo),
+              transform var(--duration-fast) var(--ease-out-quart);
   text-decoration: none;
   border-bottom: 1px solid var(--color-black);
 }
@@ -181,6 +241,10 @@ code, .mono {
   opacity: 1;
 }
 
+.btn:active {
+  transform: scale(0.97);
+}
+
 .btn-primary {
   background-color: var(--color-black);
   color: var(--color-white);
@@ -189,6 +253,10 @@ code, .mono {
 .btn-primary:hover {
   background-color: transparent;
   color: var(--color-black);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
 }
 
 /* Form styles */
@@ -216,7 +284,7 @@ code, .mono {
   border-bottom: 1px solid var(--color-gray-300);
   background-color: transparent;
   color: var(--color-black);
-  transition: border-color 0.2s ease;
+  transition: border-color var(--duration-normal) var(--ease-out-quart);
   outline: none;
 }
 
@@ -271,7 +339,7 @@ code, .mono {
 }
 
 .fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp 0.8s var(--ease-out-expo) forwards;
 }
 
 .fade-in-up-delay-1 {
@@ -290,12 +358,30 @@ code, .mono {
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity var(--duration-slow) var(--ease-out-expo),
+              transform var(--duration-slow) var(--ease-out-expo);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Responsive */

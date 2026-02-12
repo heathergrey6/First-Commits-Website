@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
+import Nav from '@/components/Nav'
 import styles from './page.module.css'
 
 export default function Home() {
@@ -29,20 +30,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      {/* Navigation */}
-      <nav className={styles.nav}>
-        <div className={styles.navInner}>
-          <span className={styles.logo}>First Commits</span>
-          <div className={styles.navLinks}>
-            <Link href="/partners" className={styles.navLink}>
-              Partners
-            </Link>
-            <Link href="/apply" className={styles.navLink}>
-              Request Invitation
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <a href="#main-content" className="skip-to-content">Skip to content</a>
+      <Nav />
+      <div id="main-content"></div>
 
       {/* Hero Section */}
       <section className={styles.hero}>
@@ -52,11 +42,14 @@ export default function Home() {
             it was built.
           </h1>
           <p className={styles.heroSubtitle}>
-            An invite-only community for startup early hires.
+            An invite-only community for founding engineers.
           </p>
-          <Link href="/apply" className="btn btn-primary">
-            Request an Invite
-          </Link>
+          <div className={styles.heroDivider}></div>
+          <div className={styles.heroCta}>
+            <Link href="/apply" className={styles.heroBtn}>
+              Request an Invite
+            </Link>
+          </div>
         </div>
         <div className={styles.heroScroll}>
           <span className={styles.scrollIndicator}>Scroll</span>
@@ -67,27 +60,49 @@ export default function Home() {
       <section className={styles.section}>
         <div className={`container ${styles.ethosContent}`}>
           <div className="reveal">
-            <span className={styles.sectionLabel}>The Ethos</span>
+            <h2 className={styles.sectionLabel}>The Ethos</h2>
             <div className={styles.dividerShort}></div>
           </div>
           <div className={styles.manifesto}>
             <p className="reveal">
-              You joined when the product was a prototype. When the equity was theoretical.
-              When "company culture" meant whatever the four of you decided it was.
+              You joined when the codebase was a single repo. When the architecture
+              was whatever you decided it was. When "the engineering team" meant you
+              and maybe one other person.
             </p>
             <p className="reveal">
-              You weren't the founder. You weren't employee #47. You were somewhere
-              in between — the kind of person who sees potential in chaos and finds
-              clarity where others see risk.
+              You weren't the founder. You weren't engineer #47. You were the one
+              they called first — the one who turned a pitch deck into a working
+              product, who shipped v1 when nothing was certain.
             </p>
             <p className="reveal">
-              First Commits is for those people. The early hires. The ones who
-              shipped the first version, closed the first deals, designed the first
-              interface that customers actually saw.
+              First Commits is for those engineers. The first technical hires. The
+              ones who wrote the code that everything else was built on.
             </p>
             <p className="reveal">
-              Not founders. Not employees. Something else entirely.
+              Not founders. Not late hires. Founding engineers.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Strip */}
+      <section className={styles.photoStrip}>
+        <div className={styles.photoGrid}>
+          <div className={styles.photoItem}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/event-dinner.jpeg"
+              alt="First Commits dinner gathering"
+              className={styles.photoImage}
+            />
+          </div>
+          <div className={styles.photoItem}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/event-lounge.jpeg"
+              alt="First Commits lounge conversation"
+              className={styles.photoImage}
+            />
           </div>
         </div>
       </section>
@@ -96,22 +111,22 @@ export default function Home() {
       <section className={styles.sectionDark}>
         <div className="container">
           <div className="reveal">
-            <span className={styles.sectionLabelLight}>What "First Commits" Means</span>
+            <h2 className={styles.sectionLabelLight}>What &ldquo;First Commits&rdquo; Means</h2>
             <div className={styles.dividerShortLight}></div>
           </div>
           <div className={styles.twoColumn}>
             <div className={styles.columnLeft}>
               <p className="reveal text-muted" style={{ color: 'var(--color-gray-400)' }}>
                 In software, the first commit is the initial contribution to a codebase.
-                It's the moment something becomes real. Before product-market fit.
+                It's the moment an idea becomes code. Before product-market fit.
                 Before the Series A deck. Before anyone knew if it would work.
               </p>
             </div>
             <div className={styles.columnRight}>
               <p className="reveal" style={{ color: 'var(--color-gray-200)' }}>
-                We believe early hires deserve recognition distinct from founders
-                and later employees. You took founder-level risk without founder-level
-                equity. You built the foundation others now stand on.
+                We believe founding engineers deserve recognition distinct from founders
+                and later engineers. You took founder-level risk without founder-level
+                equity. You wrote the code that everything else was built on.
               </p>
             </div>
           </div>
@@ -122,7 +137,7 @@ export default function Home() {
       <section className={styles.section}>
         <div className="container">
           <div className="reveal">
-            <span className={styles.sectionLabel}>What You Get</span>
+            <h2 className={styles.sectionLabel}>What You Get</h2>
             <div className={styles.dividerShort}></div>
           </div>
           <div className={styles.valueGrid}>
@@ -130,7 +145,7 @@ export default function Home() {
               <span className={styles.valueNumber}>01</span>
               <h3 className={styles.valueTitle}>Access</h3>
               <p className={styles.valueDesc}>
-                Direct lines to operators who've been where you are. No cold intros.
+                Direct lines to engineers who've been where you are. No cold intros.
                 No performative networking.
               </p>
             </div>
@@ -138,7 +153,7 @@ export default function Home() {
               <span className={styles.valueNumber}>02</span>
               <h3 className={styles.valueTitle}>Signal</h3>
               <p className={styles.valueDesc}>
-                Membership indicates you've done the work. A quiet credential
+                Membership indicates you've shipped the code. A quiet credential
                 recognized by those who matter.
               </p>
             </div>
@@ -147,15 +162,15 @@ export default function Home() {
               <h3 className={styles.valueTitle}>Craft</h3>
               <p className={styles.valueDesc}>
                 Intimate dinners, small gatherings, and candid conversations with
-                people who've built what you're building. No panels. No pitches.
+                engineers who've built what you're building. No panels. No pitches.
               </p>
             </div>
             <div className={`${styles.valueItem} reveal`}>
               <span className={styles.valueNumber}>04</span>
               <h3 className={styles.valueTitle}>Network</h3>
               <p className={styles.valueDesc}>
-                A curated group of early hires from companies you'd recognize.
-                Future co-founders, advisors, references.
+                A curated group of founding engineers from companies you'd recognize.
+                Future co-founders, technical advisors, references.
               </p>
             </div>
           </div>
@@ -193,7 +208,7 @@ export default function Home() {
       <section className={styles.section}>
         <div className={`container ${styles.exclusivityContent}`}>
           <div className="reveal">
-            <span className={styles.sectionLabel}>How It Works</span>
+            <h2 className={styles.sectionLabel}>How It Works</h2>
             <div className={styles.dividerShort}></div>
           </div>
           <div className={styles.exclusivityText}>
@@ -204,8 +219,8 @@ export default function Home() {
             </p>
             <p className="reveal">
               Applications are reviewed by current members. We look for evidence of
-              early-stage contribution: founding team experience, pre-Series A
-              involvement, demonstrable impact when things were still uncertain.
+              early-stage engineering: founding team experience, pre-Series A
+              technical contribution, demonstrable impact when the codebase was still taking shape.
             </p>
             <p className="reveal text-muted">
               We accept applications on a rolling basis. If you're not accepted immediately,
@@ -236,7 +251,15 @@ export default function Home() {
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
           <span className={styles.footerLogo}>First Commits</span>
-          <span className={styles.footerCopy}>For early hires, by early hires.</span>
+          <span className={styles.footerCopy}>For founding engineers, by founding engineers.</span>
+          <a
+            href="https://www.linkedin.com/company/first-commits"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footerLink}
+          >
+            LinkedIn
+          </a>
         </div>
       </footer>
     </main>

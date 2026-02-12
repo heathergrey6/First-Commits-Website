@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import Link from 'next/link'
+import Nav from '@/components/Nav'
 import styles from './apply.module.css'
 
 export default function Apply() {
@@ -64,13 +65,9 @@ export default function Apply() {
   if (isSubmitted) {
     return (
       <main className={styles.main}>
-        <nav className={styles.nav}>
-          <div className={styles.navInner}>
-            <Link href="/" className={styles.logo}>
-              First Commits
-            </Link>
-          </div>
-        </nav>
+        <a href="#main-content" className="skip-to-content">Skip to content</a>
+        <Nav />
+        <div id="main-content"></div>
 
         <section className={styles.confirmation}>
           <div className={styles.confirmationContent}>
@@ -97,14 +94,9 @@ export default function Apply() {
 
   return (
     <main className={styles.main}>
-      {/* Navigation */}
-      <nav className={styles.nav}>
-        <div className={styles.navInner}>
-          <Link href="/" className={styles.logo}>
-            First Commits
-          </Link>
-        </div>
-      </nav>
+      <a href="#main-content" className="skip-to-content">Skip to content</a>
+      <Nav />
+      <div id="main-content"></div>
 
       {/* Application Form */}
       <section className={styles.formSection}>
@@ -114,14 +106,14 @@ export default function Apply() {
             <div className={styles.dividerShort}></div>
             <h1 className={styles.formTitle}>Request Membership</h1>
             <p className={styles.formIntro}>
-              First Commits is for early hires at startups — founding engineers,
-              first designers, early operators. People who joined before the
-              outcome was certain.
+              First Commits is for founding engineers — the first technical hires
+              at startups. The ones who shipped v1, architected the stack, and
+              wrote the code before anyone else believed.
             </p>
             <p className={styles.formNote}>
               All applications are reviewed by current members. We're looking for
-              evidence of early-stage contribution and genuine impact during the
-              uncertain phase.
+              evidence of early-stage engineering and genuine technical impact
+              during the uncertain phase.
             </p>
           </header>
 
@@ -170,13 +162,12 @@ export default function Apply() {
                 required
                 className={styles.select}
               >
-                <option value="">Select your role type</option>
-                <option value="early-engineer">Early Engineer (1-10)</option>
-                <option value="early-designer">Early Designer (1-10)</option>
-                <option value="early-product">Early Product (1-10)</option>
-                <option value="early-ops">Early Operations (1-10)</option>
-                <option value="early-gtm">Early GTM / Sales (1-10)</option>
-                <option value="other">Other Early Hire</option>
+                <option value="">Select your role</option>
+                <option value="founding-engineer-1-5">Founding Engineer (#1-5)</option>
+                <option value="founding-engineer-6-10">Early Engineer (#6-10)</option>
+                <option value="first-eng-hire">First Engineering Hire</option>
+                <option value="eng-lead-early">Early Engineering Lead / CTO Hire</option>
+                <option value="other-technical">Other Technical Role (First 10)</option>
               </select>
             </div>
 
@@ -193,8 +184,9 @@ export default function Apply() {
                 required
                 className={styles.input}
                 placeholder="Where you made your first commits"
+                aria-describedby="company-hint"
               />
-              <span className={styles.hint}>
+              <span id="company-hint" className={styles.hint}>
                 Include the company name and your employee number if known (e.g., "Stripe, #12")
               </span>
             </div>
@@ -225,10 +217,11 @@ export default function Apply() {
                 onChange={handleChange}
                 required
                 className={styles.textarea}
-                placeholder="Tell us about your early-stage experience. What did you build? What was uncertain? What did you learn?"
+                placeholder="Tell us about your early-stage engineering experience. What did you build? What was the stack? What technical decisions were yours?"
                 rows={6}
+                aria-describedby="why-hint"
               />
-              <span className={styles.hint}>
+              <span id="why-hint" className={styles.hint}>
                 Be specific. We're looking for evidence, not claims.
               </span>
             </div>
@@ -246,8 +239,9 @@ export default function Apply() {
                 onChange={handleChange}
                 className={styles.input}
                 placeholder="Name of the member who referred you"
+                aria-describedby="referral-hint"
               />
-              <span className={styles.hint}>
+              <span id="referral-hint" className={styles.hint}>
                 Referred applicants are prioritized but not guaranteed acceptance.
               </span>
             </div>
