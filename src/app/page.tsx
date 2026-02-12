@@ -250,7 +250,11 @@ export default function Home() {
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
-          <span className={styles.footerLogo}>First Commits</span>
+          <span className={styles.footerLogo}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/fc-logo.svg" alt="" className={styles.footerLogoIcon} />
+            First Commits
+          </span>
           <span className={styles.footerCopy}>For founding engineers, by founding engineers.</span>
           <a
             href="https://www.linkedin.com/company/first-commits"
