@@ -1,0 +1,126 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to bottom, rgba(245, 240, 235, 0.95) 0%, rgba(245, 240, 235, 0) 100%);
+}
+
+.navInner {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: none;
+}
+
+.logo:hover {
+  opacity: 0.6;
+}
+
+.logoIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navLink {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-bottom: none;
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  transition: border-color var(--duration-normal) var(--ease-out-quart);
+}
+
+.navLink:hover {
+  border-color: var(--color-black);
+  opacity: 1;
+}
+
+/* Hamburger toggle — hidden on desktop */
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menuBar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-black);
+  transition: transform var(--duration-normal) var(--ease-out-expo),
+              opacity var(--duration-normal) var(--ease-out-expo);
+}
+
+.menuBarOpen1 {
+  transform: translateY(3.5px) rotate(45deg);
+}
+
+.menuBarOpen2 {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .menuToggle {
+    display: flex;
+  }
+
+  .navLinks {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-200);
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: 0;
+  }
+
+  .navLinksOpen {
+    display: flex;
+  }
+
+  .navLink {
+    padding: 1rem;
+    text-align: center;
+    border: none;
+  }
+
+  .navLink:hover {
+    border: none;
+    background-color: var(--color-gray-50);
+  }
+}

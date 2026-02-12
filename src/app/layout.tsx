@@ -1,13 +1,39 @@
 import type { Metadata } from 'next'
+import { Cormorant_Garamond, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'First Commits — For Those Who Build Before It\'s Obvious',
-  description: 'An invite-only community for startup early hires. Founding engineers, first designers, early operators. You joined before the logo was final.',
+  title: 'First Commits — For the Engineers Who Built It First',
+  description: 'An invite-only community for founding engineers. The first technical hires at startups — the ones who shipped v1 before anyone else believed.',
+  metadataBase: new URL('https://firstcommits.com'),
   openGraph: {
-    title: 'First Commits',
-    description: 'An invite-only community for startup early hires.',
+    title: 'First Commits — For the Engineers Who Built It First',
+    description: 'An invite-only community for founding engineers. The first technical hires at startups.',
     type: 'website',
+    url: 'https://firstcommits.com',
+    siteName: 'First Commits',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://firstcommits.com',
   },
 }
 
@@ -17,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${cormorant.variable} ${jetbrainsMono.variable}`}>
       <body>{children}</body>
     </html>
   )
