@@ -124,8 +124,24 @@ export default function Partners() {
                 <div className={styles.partnerCard}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/forerunner-logo.jpeg"
+                    src="/forerunner-logo.png"
                     alt="Forerunner"
+                    className={styles.partnerLogoImage}
+                  />
+                </div>
+                <div className={styles.partnerCard}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/accel-logo.png"
+                    alt="Accel"
+                    className={styles.partnerLogoImage}
+                  />
+                </div>
+                <div className={styles.partnerCard}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/bullpen-logo.jpeg"
+                    alt="Bullpen"
                     className={styles.partnerLogoImage}
                   />
                 </div>
