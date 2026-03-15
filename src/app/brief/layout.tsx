@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Overview — First Commits',
+  title: 'Brief — First Commits',
   description: 'First Commits is a community of founding engineers.',
   robots: {
     index: false,
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function OverviewLayout({
+export default function BriefLayout({
   children,
 }: {
   children: React.ReactNode

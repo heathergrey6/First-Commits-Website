@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react'
 import Nav from '@/components/Nav'
-import styles from './overview.module.css'
+import styles from './brief.module.css'
 
-export default function Overview() {
+export default function Brief() {
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal')
 
@@ -72,6 +72,28 @@ export default function Overview() {
         </div>
       </section>
 
+      {/* Photo Strip */}
+      <section className={styles.photoStrip}>
+        <div className={styles.photoGrid}>
+          <div className={styles.photoItem}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/event-dinner.jpeg"
+              alt="First Commits dinner gathering"
+              className={styles.photoImage}
+            />
+          </div>
+          <div className={styles.photoItem}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/event-lounge.jpeg"
+              alt="First Commits lounge conversation"
+              className={styles.photoImage}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* The Events */}
       <section className={styles.sectionDark}>
         <div className="container">
@@ -124,8 +146,46 @@ export default function Overview() {
         </div>
       </section>
 
+      {/* Partner Logos */}
+      <section className={styles.logoSection}>
+        <div className={styles.logoGrid}>
+          <div className={styles.logoCard}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/bessemer-logo.svg"
+              alt="Bessemer Venture Partners"
+              className={styles.logoImage}
+            />
+          </div>
+          <div className={styles.logoCard}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/forerunner-logo.png"
+              alt="Forerunner"
+              className={styles.logoImage}
+            />
+          </div>
+          <div className={styles.logoCard}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/accel-logo.png"
+              alt="Accel"
+              className={styles.logoImage}
+            />
+          </div>
+          <div className={styles.logoCard}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/bullpen-logo.jpeg"
+              alt="Bullpen"
+              className={styles.logoImage}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* How It Works */}
-      <section className={styles.section} style={{ paddingTop: 0 }}>
+      <section className={styles.section}>
         <div className={`container ${styles.narrowContent}`}>
           <div className="reveal">
             <span className={styles.sectionLabel}>How It Works</span>
