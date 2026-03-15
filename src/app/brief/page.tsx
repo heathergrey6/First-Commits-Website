@@ -18,7 +18,7 @@ export default function Brief() {
           <div className={styles.logoGrid}>
             <div className={styles.logoCard}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/bessemer_logo.png" alt="Bessemer Venture Partners" className={styles.logoImage} />
+              <img src="/bessemer_logo.png" alt="Bessemer Venture Partners" className={styles.logoImageBessemer} />
             </div>
             <div className={styles.logoCard}>
               {/* eslint-disable-next-line @next/next/no-img-element */}

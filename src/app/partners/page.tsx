@@ -118,7 +118,7 @@ export default function Partners() {
                   <img
                     src="/bessemer_logo.png"
                     alt="Bessemer Venture Partners"
-                    className={styles.partnerLogoImage}
+                    className={styles.partnerLogoImageBessemer}
                   />
                 </div>
                 <div className={styles.partnerCard}>
