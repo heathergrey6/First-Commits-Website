@@ -116,9 +116,9 @@ export default function Partners() {
                 <div className={styles.partnerCard}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/bessemer-logo.svg"
+                    src="/bessemer_logo.png"
                     alt="Bessemer Venture Partners"
-                    className={styles.partnerLogoImage}
+                    className={styles.partnerLogoImageBessemer}
                   />
                 </div>
                 <div className={styles.partnerCard}>
