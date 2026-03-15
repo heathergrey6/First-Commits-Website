@@ -113,13 +113,6 @@
 
 /* Content containers */
 .content {
-  max-width: 640px;
-  position: relative;
-  z-index: 1;
-}
-
-.contentWide {
-  max-width: 100%;
   position: relative;
   z-index: 1;
 }
@@ -182,20 +175,6 @@
 .section p:last-child,
 .sectionDark p:last-child {
   margin-bottom: 0;
-}
-
-/* Two Column */
-.twoColumn {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-md);
-}
-
-@media (max-width: 768px) {
-  .twoColumn {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-sm);
-  }
 }
 
 /* Goal text */

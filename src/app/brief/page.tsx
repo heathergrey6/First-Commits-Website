@@ -84,24 +84,19 @@ export default function Brief() {
 
       {/* The Events */}
       <section className={styles.sectionDark}>
-        <div className={styles.contentWide}>
+        <div className={styles.content}>
           <span className={styles.labelLight}>The Events</span>
           <div className={styles.divider}></div>
-          <div className={styles.twoColumn}>
-            <p style={{ color: 'var(--color-gray-400)' }}>
-              We host small, private gatherings designed to create the kinds of
-              conversations that only founding engineers tend to have with one
-              another.
-            </p>
-            <p style={{ color: 'var(--color-gray-200)' }}>
-              Most events are intimate dinners with around 15&ndash;25 engineers
-              in the room. Rather than traditional networking, the focus is on
-              thoughtful discussions about the real work of building early
-              systems &mdash; topics like scaling the first architecture, hiring the
-              first engineers, rebuilding v1 systems, and navigating the
-              founder&ndash;engineering relationship.
-            </p>
-          </div>
+          <p style={{ color: 'var(--color-gray-200)' }}>
+            We host small, private gatherings designed to create the kinds of
+            conversations that only founding engineers tend to have with one
+            another. Most events are intimate dinners with around 15&ndash;25
+            engineers in the room. Rather than traditional networking, the focus
+            is on thoughtful discussions about the real work of building early
+            systems &mdash; topics like scaling the first architecture, hiring the
+            first engineers, rebuilding v1 systems, and navigating the
+            founder&ndash;engineering relationship.
+          </p>
         </div>
       </section>
 
