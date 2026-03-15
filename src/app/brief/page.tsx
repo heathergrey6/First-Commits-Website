@@ -8,19 +8,17 @@ export default function Brief() {
       {/* Header */}
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/fc-logo.svg" alt="" className={styles.headerLogoIcon} />
           <h1 className={styles.headerTitle}>First Commits</h1>
           <div className={styles.headerDivider}></div>
           <p className={styles.headerSubtitle}>
-            A community of founding engineers
+            The community of founding engineers
           </p>
 
           {/* Partner Logos */}
           <div className={styles.logoGrid}>
             <div className={styles.logoCard}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/bessemer-logo.svg" alt="Bessemer Venture Partners" className={styles.logoImage} />
+              <img src="/bessemer-logo.svg" alt="Bessemer Venture Partners" className={styles.logoImageBessemer} />
             </div>
             <div className={styles.logoCard}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
