@@ -54,8 +54,9 @@ export default function Brief() {
           <p>
             Members come from a range of early-stage and high-growth startups
             across the ecosystem, including companies like Baseten, Decagon,
-            Delphi, Pylon, Gem, Doss, Convex, Vapi, Exa, Kaizen, Orb,
-            Coefficient, Britton AI, Town, Tightrope, Column, and Forge.
+            Delphi, Pylon, Gem, Doss, Convex, Vapi, Exa, Kaizen, Orb, 
+            Hyperscale, Resolve AI, Reevo, Coefficient, Britton AI, Town,
+            Tightrope, Column, Forge, and many more.
           </p>
         </div>
       </section>
