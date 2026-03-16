@@ -83,11 +83,11 @@ export default function Brief() {
       </section>
 
       {/* The Events */}
-      <section className={styles.sectionDark}>
+      <section className={styles.section}>
         <div className={styles.content}>
-          <span className={styles.labelLight}>The Events</span>
+          <span className={styles.label}>The Events</span>
           <div className={styles.divider}></div>
-          <p style={{ color: 'var(--color-gray-200)' }}>
+          <p>
             We host small, private gatherings designed to create the kinds of
             conversations that only founding engineers tend to have with one
             another. Most events are intimate dinners with around 15&ndash;25
@@ -101,17 +101,17 @@ export default function Brief() {
       </section>
 
       {/* Partnerships */}
-      <section className={styles.section}>
+      <section className={styles.sectionDark}>
         <div className={styles.content}>
-          <span className={styles.label}>Partnerships</span>
+          <span className={styles.labelLight}>Partnerships</span>
           <div className={styles.divider}></div>
-          <p>
+          <p style={{ color: 'var(--color-gray-200)' }}>
             We partner with venture firms, startups, and infrastructure
             companies that want to support the founding engineer community.
             Partners typically host or sponsor the dinner and may invite a few
             partners and engineers from their network to join the room.
           </p>
-          <p>
+          <p style={{ color: 'var(--color-gray-200)' }}>
             We keep partner participation intentionally lightweight so the
             event remains peer-driven and conversational rather than
             promotional.
