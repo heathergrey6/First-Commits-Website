@@ -138,9 +138,9 @@ export default function Brief() {
 
       {/* The Goal */}
       <section className={styles.sectionDark}>
-        <div className={styles.contentCentered}>
+        <div className={styles.content}>
           <span className={styles.labelLight}>The Goal</span>
-          <div className={styles.dividerCentered}></div>
+          <div className={styles.divider}></div>
           <p className={styles.goalText}>
             To create a space for the engineers who helped build companies from
             their earliest days to connect with peers, share lessons, and have

@@ -71,7 +71,7 @@
 .logoImageBessemer {
   display: block;
   max-width: 140px;
-  max-height: 55px;
+  max-height: 40px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -184,7 +184,6 @@
   font-size: clamp(1.125rem, 2.5vw, 1.25rem);
   line-height: 1.8;
   color: var(--color-gray-200);
-  font-style: italic;
 }
 
 /* Photo Strip */
