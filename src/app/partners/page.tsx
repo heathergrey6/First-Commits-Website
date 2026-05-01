@@ -20,7 +20,7 @@ export default function Partners() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/firstcommits@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/community@firstcommits.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -261,7 +261,7 @@ export default function Partners() {
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
           <span className={styles.footerText}>
-            Questions? Reach out to firstcommits@gmail.com
+            Questions? Reach out to community@firstcommits.com
           </span>
         </div>
       </footer>
