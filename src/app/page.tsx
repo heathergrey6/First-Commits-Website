@@ -51,8 +51,23 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className={styles.heroScroll}>
-          <span className={styles.scrollIndicator}>Scroll</span>
+        <div className={styles.heroPartnerBar}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/bessemer_logo.png" alt="Bessemer Venture Partners" className={styles.partnerBarLogo} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/forerunner-logo.png" alt="Forerunner" className={styles.partnerBarLogo} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/accel-logo.png" alt="Accel" className={styles.partnerBarLogo} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/bullpen-logo.jpeg" alt="Bullpen" className={styles.partnerBarLogo} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/crosslink.svg" alt="Crosslink Capital" className={styles.partnerBarLogo} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/langchain.png" alt="LangChain" className={styles.partnerBarLogo} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/alpha.png" alt="Alpha" className={styles.partnerBarLogo} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/greycroft.png" alt="Greycroft" className={styles.partnerBarLogo} />
         </div>
       </section>
 
@@ -176,33 +191,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Social Proof Section - Coming Soon
-      <section className={styles.sectionProof}>
-        <div className="container">
-          <div className="reveal">
-            <p className={styles.proofLabel}>
-              Members have made their first commits at
-            </p>
-          </div>
-          <div className={`${styles.proofGrid} reveal`}>
-            <span className={styles.proofItem}>Stripe</span>
-            <span className={styles.proofItem}>Figma</span>
-            <span className={styles.proofItem}>Notion</span>
-            <span className={styles.proofItem}>Linear</span>
-            <span className={styles.proofItem}>Vercel</span>
-            <span className={styles.proofItem}>Ramp</span>
-            <span className={styles.proofItem}>Plaid</span>
-            <span className={styles.proofItem}>Scale</span>
-          </div>
-          <div className="reveal">
-            <p className={styles.proofNote}>
-              And others we can't mention yet.
-            </p>
-          </div>
-        </div>
-      </section>
-      */}
 
       {/* Exclusivity Section */}
       <section className={styles.section}>

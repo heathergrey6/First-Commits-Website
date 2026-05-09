@@ -145,6 +145,38 @@ export default function Partners() {
                     className={styles.partnerLogoImage}
                   />
                 </div>
+                <div className={styles.partnerCard}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/crosslink.svg"
+                    alt="Crosslink Capital"
+                    className={styles.partnerLogoImage}
+                  />
+                </div>
+                <div className={styles.partnerCard}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/langchain.png"
+                    alt="LangChain"
+                    className={styles.partnerLogoImage}
+                  />
+                </div>
+                <div className={styles.partnerCard}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/alpha.png"
+                    alt="Alpha"
+                    className={styles.partnerLogoImage}
+                  />
+                </div>
+                <div className={styles.partnerCard}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/greycroft.png"
+                    alt="Greycroft"
+                    className={styles.partnerLogoImage}
+                  />
+                </div>
               </div>
             </div>
           </section>
