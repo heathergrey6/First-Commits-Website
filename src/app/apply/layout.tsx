@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Apply — First Commits',
-  description: 'Request membership to First Commits, an invite-only community for founding engineers. The first technical hires at startups.',
+  description: 'An invite-only community for founding engineers.',
   openGraph: {
     title: 'Apply — First Commits',
-    description: 'Request membership to First Commits, an invite-only community for founding engineers.',
+    description: 'An invite-only community for founding engineers.',
     type: 'website',
     url: 'https://firstcommits.com/apply',
     images: [
@@ -13,14 +13,14 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'First Commits — An invite-only community for founding engineers',
+        alt: 'First Commits — For those before it was built',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Apply — First Commits',
-    description: 'Request membership to First Commits, an invite-only community for founding engineers.',
+    description: 'An invite-only community for founding engineers.',
     images: ['/og-image.jpg'],
   },
 }

@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Partners — First Commits',
-  description: 'First Commits is supported by venture firms and organizations that back founding engineers, including Bessemer, Forerunner, Accel, Bullpen, Crosslink, Greycroft, LangChain, and Alpha.',
+  description: 'An invite-only community for founding engineers.',
   openGraph: {
     title: 'Partners — First Commits',
-    description: 'First Commits is supported by venture firms and organizations that back founding engineers.',
+    description: 'An invite-only community for founding engineers.',
     type: 'website',
     url: 'https://firstcommits.com/partners',
     images: [
@@ -13,14 +13,14 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'First Commits — An invite-only community for founding engineers',
+        alt: 'First Commits — For those before it was built',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Partners — First Commits',
-    description: 'First Commits is supported by venture firms and organizations that back founding engineers.',
+    description: 'An invite-only community for founding engineers.',
     images: ['/og-image.jpg'],
   },
 }
