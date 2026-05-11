@@ -27,6 +27,21 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://firstcommits.com',
     siteName: 'First Commits',
+    locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'First Commits — An invite-only community for founding engineers',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'First Commits — For the Engineers Who Built It First',
+    description: 'An invite-only community for founding engineers. The first technical hires at startups.',
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
