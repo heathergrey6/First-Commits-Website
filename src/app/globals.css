@@ -67,20 +67,6 @@ body {
   position: relative;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.045;
-  background-image:
-    linear-gradient(rgba(8, 12, 22, 0.15) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(8, 12, 22, 0.12) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
-}
-
 .skip-to-content {
   position: absolute;
   top: -100%;

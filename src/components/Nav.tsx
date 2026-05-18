@@ -28,6 +28,13 @@ export default function Nav() {
 
         <div className={`${styles.navLinks} ${isOpen ? styles.navLinksOpen : ''}`}>
           <Link
+            href="/about"
+            className={styles.navLink}
+            onClick={() => setIsOpen(false)}
+          >
+            About
+          </Link>
+          <Link
             href="/partners"
             className={styles.navLink}
             onClick={() => setIsOpen(false)}
@@ -41,6 +48,15 @@ export default function Nav() {
           >
             Request Invitation
           </Link>
+          <a
+            href="https://www.linkedin.com/company/first-commits/"
+            className={styles.navLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
     </nav>

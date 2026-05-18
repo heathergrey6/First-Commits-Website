@@ -16,17 +16,13 @@
   gap: 2rem;
 }
 
-.heroMedia {
-  display: none;
-}
-
 .heroGrid {
   width: min(100%, var(--max-width-wide));
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.72fr);
   gap: var(--spacing-lg);
-  align-items: end;
+  align-items: flex-end;
 }
 
 .heroCopy {
@@ -113,108 +109,160 @@
 }
 
 .heroPanel {
-  min-height: 31rem;
-  padding: 1rem;
+  min-height: 34rem;
+  padding: 0.75rem;
   border: 1px solid rgba(8, 12, 22, 0.16);
   background:
     linear-gradient(180deg, rgba(8, 12, 22, 0.04), rgba(8, 12, 22, 0)),
     var(--color-bone);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
+  display: grid;
+  grid-template-rows: minmax(13rem, 1fr) auto;
+  gap: 0.75rem;
   overflow: hidden;
 }
 
-.heroPanel::before {
-  content: '';
-  position: absolute;
-  inset: 1rem 1rem auto;
-  height: 17rem;
-  background: url('/event-dinner.jpeg') center / cover;
+.heroPhoto {
+  overflow: hidden;
+  border: 1px solid rgba(8, 12, 22, 0.14);
+  background: var(--color-porcelain);
+}
+
+.heroPhoto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 14rem;
+  object-fit: cover;
   filter: saturate(0.72) contrast(1.04);
 }
 
-.panelKicker {
-  position: relative;
-  color: var(--color-rust);
-  margin-bottom: 0.75rem;
-}
-
-.commitCard {
-  position: relative;
-  display: grid;
-  gap: 0.55rem;
-  padding: 1rem;
+.commitBrowser {
   background: var(--color-porcelain);
   border: 1px solid rgba(8, 12, 22, 0.14);
 }
 
+.commitBrowserTop,
+.commitRow,
+.diffStat {
+  font-family: var(--font-mono);
+}
+
+.commitBrowserTop {
+  min-height: 2.6rem;
+  padding: 0.65rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(8, 12, 22, 0.12);
+  color: var(--color-smoke);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.commitRows {
+  display: grid;
+}
+
+.commitRow {
+  display: grid;
+  grid-template-columns: 4.4rem minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 0.78rem 0.75rem;
+  border-bottom: 1px solid rgba(8, 12, 22, 0.1);
+}
+
+.commitHash,
+.commitMeta {
+  color: var(--color-smoke);
+}
+
 .commitHash {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-smoke);
+  font-size: 0.64rem;
+  padding-top: 0.08rem;
 }
 
 .commitMessage {
-  font-size: 1.65rem;
-  line-height: 1.05;
+  display: block;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  word-break: break-word;
 }
 
-.signalList {
-  position: relative;
+.commitMeta {
+  display: block;
+  margin-top: 0.28rem;
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.diffStat {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin-top: 0.9rem;
+  padding: 0.75rem;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.signalList span {
-  padding: 0.4rem 0.52rem;
+.diffStat span {
+  padding: 0.34rem 0.48rem;
   border: 1px solid rgba(8, 12, 22, 0.14);
   border-radius: 999px;
   color: var(--color-smoke);
-  background: rgba(245, 240, 230, 0.78);
+  background: rgba(235, 225, 210, 0.7);
+}
+
+.diffStat span:first-child {
+  color: var(--color-ink);
+  background: var(--color-citrine);
+  border-color: rgba(8, 12, 22, 0.18);
+}
+
+.partnerBlock {
+  width: min(100%, var(--max-width-wide));
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  padding-top: 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(8, 12, 22, 0.16);
+}
+
+.partnerLabel {
+  color: var(--color-smoke);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
 
 .partnerRail {
-  width: min(100%, var(--max-width-wide));
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 0.75rem;
   align-items: center;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(8, 12, 22, 0.16);
+  justify-items: center;
 }
 
 .partnerLogo {
   width: 100%;
+  max-width: 8.5rem;
   max-height: 1.9rem;
   object-fit: contain;
   filter: grayscale(1);
   opacity: 0.72;
 }
 
-.positioning,
 .manifestoSection,
 .principlesSection,
 .membershipSection {
   padding: var(--spacing-xl) 0;
-}
-
-.positioning {
-  background: var(--color-ink);
-  color: var(--color-porcelain);
-}
-
-.positioningGrid {
-  display: grid;
-  grid-template-columns: 12rem minmax(0, 1fr);
-  gap: var(--spacing-lg);
-  align-items: start;
 }
 
 .sectionLabel {
@@ -222,16 +270,10 @@
   margin-bottom: 1rem;
 }
 
-.positioning .sectionLabel,
 .membershipSection .sectionLabel {
   color: var(--color-citrine);
 }
 
-.positioningCopy {
-  max-width: 58rem;
-}
-
-.positioningCopy h2,
 .manifestoCopy h2,
 .sectionHeader h2,
 .membershipGrid h2,
@@ -242,7 +284,6 @@
   letter-spacing: 0;
 }
 
-.positioningCopy p,
 .manifestoCopy p,
 .membershipCopy p {
   margin-top: 1.35rem;
@@ -251,7 +292,6 @@
   line-height: 1.65;
 }
 
-.positioningCopy p,
 .membershipCopy p {
   color: rgba(245, 240, 230, 0.76);
 }
@@ -261,34 +301,8 @@
 }
 
 .manifestoGrid {
-  display: grid;
-  grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1fr);
-  gap: var(--spacing-lg);
-  align-items: center;
-}
-
-.photoStack {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.photoFrame {
-  overflow: hidden;
-  border: 1px solid rgba(8, 12, 22, 0.14);
-  background: var(--color-porcelain);
-}
-
-.photoFrameOffset {
-  margin-top: 4rem;
-}
-
-.photoFrame img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  filter: saturate(0.72) contrast(1.05);
+  max-width: 58rem;
+  margin: 0 auto;
 }
 
 .sectionHeader {
@@ -298,15 +312,35 @@
 
 .principleGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
 .principleCard {
-  min-height: 20rem;
-  padding: 1.2rem;
+  min-height: 30rem;
   border: 1px solid rgba(8, 12, 22, 0.16);
   background: rgba(255, 255, 255, 0.28);
+  display: grid;
+  grid-template-rows: 13.5rem 1fr;
+  overflow: hidden;
+}
+
+.principleImage {
+  overflow: hidden;
+  background: var(--color-bone);
+  border-bottom: 1px solid rgba(8, 12, 22, 0.14);
+}
+
+.principleImage img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.72) contrast(1.05);
+}
+
+.principleBody {
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
 }
@@ -403,18 +437,31 @@
 }
 
 @media (max-width: 1100px) {
+  .hero {
+    min-height: auto;
+    padding-top: 6rem;
+    justify-content: flex-start;
+  }
+
   .heroTitle {
     font-size: 4.2rem;
   }
 
   .heroGrid,
-  .manifestoGrid,
   .membershipGrid {
     grid-template-columns: 1fr;
   }
 
   .heroPanel {
-    max-width: 36rem;
+    width: 100%;
+    min-height: auto;
+    grid-template-rows: auto auto;
+  }
+
+  .heroPhoto img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
   }
 
   .partnerRail {
@@ -443,54 +490,105 @@
   .heroPanel {
     min-height: 25rem;
   }
+}
 
-  .heroPanel::before {
-    height: 12rem;
+@media (max-width: 900px) {
+  .heroTitle {
+    font-size: 3.55rem;
+  }
+
+  .heroText {
+    font-size: 1.1rem;
+  }
+
+  .heroPanel {
+    width: 100%;
+  }
+
+  .heroPhoto img {
+    aspect-ratio: 16 / 6;
+  }
+
+  .commitMeta {
+    display: none;
+  }
+
+  .commitRow:nth-child(3) {
+    display: none;
   }
 }
 
 @media (max-width: 760px) {
   .hero {
-    padding: 5.5rem var(--spacing-sm) 1.5rem;
+    padding: 5.5rem var(--spacing-sm) 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .heroGrid {
+    gap: 1.6rem;
   }
 
   .heroTitle {
     font-size: 3.1rem;
   }
 
+  .heroText {
+    max-width: 34rem;
+  }
+
+  .heroActions {
+    margin-top: 1.35rem;
+  }
+
+  .heroPanel {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+
+  .heroPhoto img {
+    aspect-ratio: 16 / 7;
+  }
+
+  .commitBrowserTop {
+    min-height: 2.35rem;
+  }
+
+  .commitRow {
+    grid-template-columns: 3.8rem minmax(0, 1fr);
+    gap: 0.6rem;
+    padding: 0.65rem;
+  }
+
+  .commitMeta {
+    display: none;
+  }
+
+  .diffStat {
+    padding: 0.65rem;
+  }
+
+  .partnerBlock {
+    gap: 0.8rem;
+    padding-top: 1rem;
+  }
+
   .heroText,
-  .positioningCopy p,
   .manifestoCopy p,
   .membershipCopy p {
     font-size: 1.05rem;
   }
 
-  .positioning,
   .manifestoSection,
   .principlesSection,
   .membershipSection {
     padding: var(--spacing-lg) 0;
   }
 
-  .positioningGrid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .positioningCopy h2,
   .manifestoCopy h2,
   .sectionHeader h2,
   .membershipGrid h2,
   .finalInner h2 {
     font-size: 2.25rem;
-  }
-
-  .photoStack {
-    grid-template-columns: 1fr;
-  }
-
-  .photoFrameOffset {
-    margin-top: 0;
   }
 
   .principleGrid {
@@ -499,6 +597,12 @@
 
   .principleCard {
     min-height: 14rem;
+    grid-template-rows: auto auto;
+  }
+
+  .principleImage img {
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 
   .footerInner {
@@ -509,7 +613,18 @@
 
 @media (max-width: 520px) {
   .heroTitle {
-    font-size: 2.7rem;
+    font-size: 2.55rem;
+  }
+
+  .eyebrow,
+  .sectionLabel,
+  .partnerLabel {
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+  }
+
+  .heroText {
+    font-size: 1rem;
   }
 
   .heroActions {
@@ -523,5 +638,20 @@
 
   .partnerRail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.35rem;
+  }
+
+  .partnerLogo {
+    max-width: 7.4rem;
+    max-height: 1.6rem;
+  }
+
+  .commitBrowserTop,
+  .diffStat {
+    font-size: 0.6rem;
+  }
+
+  .commitMessage {
+    font-size: 0.68rem;
   }
 }

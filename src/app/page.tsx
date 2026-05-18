@@ -16,20 +16,43 @@ const partnerLogos = [
   { src: '/greycroft.png', alt: 'Greycroft' },
 ]
 
-const principles = [
-  ['01', 'Proof over pedigree', 'We care less about where you went and more about what you shipped when the company was still fragile.'],
-  ['02', 'Small rooms, real context', 'Dinners, salons, and working sessions built for candor instead of performance.'],
-  ['03', 'The early operator graph', 'Founding engineers, first technical hires, and the investors who know how much that work matters.'],
-  ['04', 'Compounding access', 'References, operator intros, advisory paths, and future co-founder conversations that happen because trust already exists.'],
+const heroCommits = [
+  {
+    hash: 'fc-0001',
+    message: 'init room-for-founding-engineers',
+    meta: 'A dinner felt obvious. The category did not exist yet.',
+  },
+  {
+    hash: 'fc-0002',
+    message: 'remove panels-and-pitches',
+    meta: 'Keep the room small enough for useful context.',
+  },
+  {
+    hash: 'fc-0003',
+    message: 'merge early-builders into main',
+    meta: 'Private dinners, referrals, and working sessions.',
+  },
 ]
 
-const signals = [
-  'first technical hire',
-  'pre-Series A builder',
-  'wrote v1',
-  'owned architecture',
-  'scaled the first team',
-  'made the first commits',
+const gatherings = [
+  {
+    label: 'Private dinners',
+    title: 'One table, no stage.',
+    description: 'Fifteen to twenty-five founding engineers in a room built for the kind of candor that never happens on a panel.',
+    image: '/founding-engineers-dinner-room.jpeg',
+  },
+  {
+    label: 'Working salons',
+    title: 'Technical context first.',
+    description: 'Conversations around the early decisions that shape companies: architecture, hiring, incidents, velocity, and taste.',
+    image: '/partner-dinner.jpeg',
+  },
+  {
+    label: 'Partner-hosted rooms',
+    title: 'Useful access, not sponsorship theater.',
+    description: 'We bring together members, operators, and aligned partners when the room gets sharper because they are there.',
+    image: '/partner-hosted-room.jpeg',
+  },
 ]
 
 export default function Home() {
@@ -62,13 +85,9 @@ export default function Home() {
       <div id="main-content" />
 
       <section className={styles.hero}>
-        <div className={styles.heroMedia} aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/event-dinner.jpeg" alt="" className={styles.heroImage} />
-        </div>
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>First Commits / founding engineer society</p>
+            <p className={styles.eyebrow}>For the first technical hires</p>
             <h1 className={styles.heroTitle}>Founding engineers deserve their own room.</h1>
             <p className={styles.heroText}>
               First Commits is a private community for the first technical hires:
@@ -81,39 +100,42 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className={styles.heroPanel} aria-label="Community signals">
-            <p className={styles.panelKicker}>Member signal</p>
-            <div className={styles.commitCard}>
-              <span className={styles.commitHash}>commit 000001</span>
-              <span className={styles.commitMessage}>make the first version real</span>
+          <aside className={styles.heroPanel} aria-label="Commit-style First Commits preview">
+            <div className={styles.heroPhoto}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/event-dinner.jpeg" alt="First Commits private dinner" />
             </div>
-            <div className={styles.signalList}>
-              {signals.map((signal) => (
-                <span key={signal}>{signal}</span>
-              ))}
+            <div className={styles.commitBrowser}>
+              <div className={styles.commitBrowserTop}>
+                <span>first-commits/main</span>
+                <span>3 commits</span>
+              </div>
+              <div className={styles.commitRows}>
+                {heroCommits.map((commit) => (
+                  <div className={styles.commitRow} key={commit.hash}>
+                    <span className={styles.commitHash}>{commit.hash}</span>
+                    <div>
+                      <span className={styles.commitMessage}>{commit.message}</span>
+                      <span className={styles.commitMeta}>{commit.meta}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.diffStat} aria-label="Event format summary">
+                <span>+ founding engineers</span>
+                <span>- panels</span>
+                <span>- pitches</span>
+              </div>
             </div>
           </aside>
         </div>
-        <div className={styles.partnerRail} aria-label="Partner organizations">
-          {partnerLogos.map((logo) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img key={logo.alt} src={logo.src} alt={logo.alt} className={styles.partnerLogo} />
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.positioning}>
-        <div className="container-wide">
-          <div className={styles.positioningGrid}>
-            <p className={`${styles.sectionLabel} reveal`}>Positioning</p>
-            <div className={styles.positioningCopy}>
-              <h2 className="reveal">Not a networking group. A reputation layer for zero-to-one engineers.</h2>
-              <p className="reveal">
-                The first engineering hires operate in a strange middle: not founders,
-                not employees in a machine, but the people who make the machine possible.
-                First Commits gives that role a name, a standard, and a room.
-              </p>
-            </div>
+        <div className={styles.partnerBlock}>
+          <p className={styles.partnerLabel}>Our partners</p>
+          <div className={styles.partnerRail} aria-label="Partner organizations">
+            {partnerLogos.map((logo) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={logo.alt} src={logo.src} alt={logo.alt} className={styles.partnerLogo} />
+            ))}
           </div>
         </div>
       </section>
@@ -121,16 +143,6 @@ export default function Home() {
       <section className={styles.manifestoSection}>
         <div className="container-wide">
           <div className={styles.manifestoGrid}>
-            <div className={styles.photoStack}>
-              <div className={`${styles.photoFrame} reveal`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/event-lounge.jpeg" alt="First Commits members in conversation" />
-              </div>
-              <div className={`${styles.photoFrame} ${styles.photoFrameOffset} reveal`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/partner-dinner.jpeg" alt="First Commits private partner dinner" />
-              </div>
-            </div>
             <div className={styles.manifestoCopy}>
               <p className={`${styles.sectionLabel} reveal`}>Why we exist</p>
               <h2 className="reveal">The earliest builders deserve a category of their own.</h2>
@@ -152,15 +164,21 @@ export default function Home() {
       <section className={styles.principlesSection}>
         <div className="container-wide">
           <div className={styles.sectionHeader}>
-            <p className={`${styles.sectionLabel} reveal`}>Community design</p>
-            <h2 className="reveal">Built like the best early teams: small, technical, and useful.</h2>
+            <p className={`${styles.sectionLabel} reveal`}>What we host</p>
+            <h2 className="reveal">Small rooms with enough context to become useful.</h2>
           </div>
           <div className={styles.principleGrid}>
-            {principles.map(([number, title, description]) => (
-              <article key={title} className={`${styles.principleCard} reveal`}>
-                <span>{number}</span>
-                <h3>{title}</h3>
-                <p>{description}</p>
+            {gatherings.map((gathering) => (
+              <article key={gathering.title} className={`${styles.principleCard} reveal`}>
+                <div className={styles.principleImage}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={gathering.image} alt="" />
+                </div>
+                <div className={styles.principleBody}>
+                  <span>{gathering.label}</span>
+                  <h3>{gathering.title}</h3>
+                  <p>{gathering.description}</p>
+                </div>
               </article>
             ))}
           </div>
