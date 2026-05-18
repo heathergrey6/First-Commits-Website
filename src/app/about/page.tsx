@@ -58,6 +58,17 @@ export default function About() {
               </p>
             </div>
           </div>
+          <div className={styles.statsGrid}>
+            <p className={styles.sectionLabel}>By the numbers</p>
+            <div className={styles.statItem}>
+              <strong>80+</strong>
+              <span>Community members</span>
+              <p>
+                Founding engineers and first technical hires across the First
+                Commits network.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

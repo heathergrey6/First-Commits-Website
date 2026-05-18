@@ -74,6 +74,51 @@
   line-height: 1.65;
 }
 
+.statsGrid {
+  margin-top: var(--spacing-lg);
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245, 240, 230, 0.24);
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.statsGrid .sectionLabel {
+  color: rgba(245, 240, 230, 0.72);
+}
+
+.statItem {
+  max-width: 32rem;
+}
+
+.statItem strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--color-porcelain);
+  font-size: 5rem;
+  line-height: 0.92;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.statItem span {
+  display: block;
+  font-family: var(--font-mono);
+  color: var(--color-citrine);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.statItem p {
+  max-width: 28rem;
+  margin-top: 0.85rem;
+  color: rgba(245, 240, 230, 0.72);
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
 .people {
   background: var(--color-porcelain);
 }
@@ -133,6 +178,7 @@
 
 @media (max-width: 900px) {
   .storyGrid,
+  .statsGrid,
   .founderGrid {
     grid-template-columns: 1fr;
   }
@@ -158,5 +204,13 @@
 
   .storyCopy p {
     font-size: 1.05rem;
+  }
+
+  .statsGrid {
+    gap: 1.25rem;
+  }
+
+  .statItem strong {
+    font-size: 3.8rem;
   }
 }
