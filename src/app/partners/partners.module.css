@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  background: var(--color-porcelain);
 }
 
 /* Navigation */
@@ -78,9 +79,9 @@
 }
 
 .bannerTitle {
-  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-size: 2.65rem;
   margin-bottom: var(--spacing-md);
-  line-height: 1.3;
+  line-height: 1.05;
 }
 
 .bannerIntro {
@@ -102,7 +103,7 @@
 .dividerShort {
   width: 40px;
   height: 2px;
-  background-color: var(--color-accent);
+  background-color: var(--color-rust);
   margin-bottom: var(--spacing-md);
 }
 
@@ -168,7 +169,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.3) contrast(1.05);
+  filter: saturate(0.72) contrast(1.05);
 }
 
 @media (max-width: 768px) {
@@ -199,7 +200,8 @@
 }
 
 .formTitle {
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-size: 2.25rem;
+  line-height: 1.08;
   margin-bottom: var(--spacing-md);
 }
 
@@ -295,9 +297,10 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border: 1px solid var(--color-black);
+  background-color: var(--color-ink);
+  color: var(--color-porcelain);
+  border: 1px solid var(--color-ink);
+  border-radius: 999px;
   cursor: pointer;
   transition: background-color var(--duration-normal) var(--ease-out-expo),
               color var(--duration-normal) var(--ease-out-expo),
@@ -309,8 +312,8 @@
 }
 
 .submitBtn:hover:not(:disabled) {
-  background-color: transparent;
-  color: var(--color-black);
+  background-color: var(--color-citrine);
+  color: var(--color-ink);
 }
 
 .submitBtn:disabled {
@@ -343,7 +346,8 @@
 }
 
 .confirmationTitle {
-  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-size: 3.35rem;
+  line-height: 1.05;
   margin-bottom: var(--spacing-md);
 }
 
@@ -406,6 +410,15 @@
 
   .formSection {
     padding: var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
+  }
+
+  .bannerTitle,
+  .confirmationTitle {
+    font-size: 2.35rem;
+  }
+
+  .formTitle {
+    font-size: 2rem;
   }
 
   .formGroup {

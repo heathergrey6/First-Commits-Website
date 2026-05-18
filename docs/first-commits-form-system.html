@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>First Commits Form System</title>
+    <style>
+      :root {
+        --ink: #080c16;
+        --blueprint: #16213a;
+        --porcelain: #f5f0e6;
+        --bone: #ebe1d2;
+        --citrine: #d4ff4f;
+        --rust: #ff6b35;
+        --smoke: #48505f;
+        --fog: #c8c0b4;
+        --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+        --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+        --wide: 1220px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--porcelain);
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 18px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .hero,
+      section {
+        width: min(100%, var(--wide));
+        margin: 0 auto;
+      }
+
+      .hero {
+        min-height: 70vh;
+        padding: 18px 32px 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--porcelain);
+      }
+
+      .topbar {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .mark {
+        width: 40px;
+        height: 40px;
+        background:
+          url("../public/fc-logo.svg") center / 78% no-repeat,
+          #f8f5ef;
+        border: 1px solid #ded9cf;
+        border-radius: 11px;
+      }
+
+      .artifact-link {
+        color: var(--smoke);
+        text-decoration: none;
+      }
+
+      .artifact-link:hover {
+        color: var(--ink);
+      }
+
+      .hero-grid,
+      .section-header,
+      .form-showcase,
+      .review-grid {
+        display: grid;
+        gap: 64px;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) 380px;
+        align-items: end;
+      }
+
+      .eyebrow,
+      .label,
+      .field-label,
+      .tag,
+      .status {
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .eyebrow,
+      .label,
+      .field-label {
+        color: var(--rust);
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: 88px;
+        line-height: 0.94;
+      }
+
+      h2 {
+        font-size: 54px;
+        line-height: 1.04;
+      }
+
+      h3 {
+        font-size: 30px;
+        line-height: 1.08;
+      }
+
+      .hero-copy,
+      .muted,
+      .hint {
+        color: var(--smoke);
+      }
+
+      .hero-copy {
+        font-size: 21px;
+      }
+
+      section {
+        padding: 92px 32px;
+        border-top: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .section-header {
+        grid-template-columns: 190px minmax(0, 1fr);
+        margin-bottom: 56px;
+      }
+
+      .form-showcase {
+        grid-template-columns: minmax(0, 1fr) 360px;
+        align-items: start;
+      }
+
+      .form-card,
+      .side-panel,
+      .card {
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: rgba(255, 255, 255, 0.34);
+      }
+
+      .form-card {
+        padding: 28px;
+      }
+
+      .form-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .form-header p {
+        max-width: 30rem;
+        margin-top: 12px;
+        color: var(--smoke);
+      }
+
+      .progress {
+        min-width: 126px;
+        height: 126px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        color: var(--rust);
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .fields {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px 18px;
+        padding-top: 28px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field.full {
+        grid-column: 1 / -1;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border: 1px solid rgba(8, 12, 22, 0.18);
+        border-radius: 8px;
+        background: var(--porcelain);
+        color: var(--ink);
+        padding: 14px 14px;
+        font-family: var(--serif);
+        font-size: 19px;
+      }
+
+      textarea {
+        min-height: 138px;
+        resize: vertical;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: 2px solid var(--citrine);
+        outline-offset: 2px;
+        border-color: var(--ink);
+      }
+
+      .hint {
+        font-size: 15px;
+        line-height: 1.4;
+      }
+
+      .error input {
+        border-color: var(--rust);
+      }
+
+      .error .hint {
+        color: var(--rust);
+      }
+
+      .form-actions {
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(8, 12, 22, 0.14);
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+      }
+
+      button,
+      .secondary-action {
+        min-height: 50px;
+        padding: 14px 18px;
+        border-radius: 8px;
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      button {
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: var(--porcelain);
+      }
+
+      .secondary-action {
+        border: 1px solid rgba(8, 12, 22, 0.18);
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .side-panel {
+        padding: 22px;
+        position: sticky;
+        top: 24px;
+      }
+
+      .side-panel h3 {
+        margin: 14px 0 16px;
+      }
+
+      .requirements {
+        display: grid;
+        gap: 12px;
+      }
+
+      .requirements p,
+      .card p {
+        color: var(--smoke);
+      }
+
+      .requirement {
+        padding: 14px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--bone);
+      }
+
+      .tag-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+
+      .tag {
+        padding: 7px 10px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        border-radius: 999px;
+        color: var(--smoke);
+      }
+
+      .review-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .card h3 {
+        margin: 14px 0 12px;
+      }
+
+      .status {
+        display: inline-flex;
+        padding: 7px 9px;
+        background: var(--citrine);
+        color: var(--ink);
+      }
+
+      .state-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .state-list .card:nth-child(2) {
+        background: var(--ink);
+        color: var(--porcelain);
+      }
+
+      .state-list .card:nth-child(2) .label {
+        color: var(--citrine);
+      }
+
+      .state-list .card:nth-child(2) p {
+        color: rgba(245, 240, 230, 0.76);
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .section-header,
+        .form-showcase,
+        .review-grid,
+        .state-list {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 54px;
+        }
+
+        h2 {
+          font-size: 38px;
+        }
+
+        .hero,
+        section {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .fields {
+          grid-template-columns: 1fr;
+        }
+
+        .form-header,
+        .form-actions {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .side-panel {
+          position: static;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="topbar">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Form System / v1</span>
+        <a class="artifact-link" href="./index.html">Artifacts</a>
+        <a class="artifact-link" href="./first-commits-design-system.html">Design system</a>
+        <a class="artifact-link" href="./first-commits-logo-usage.html">Logo usage</a>
+        <a class="artifact-link" href="./first-commits-motion-system.html">Motion</a>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Critical conversion surface</p>
+          <h1>Forms should feel like review, not intake.</h1>
+        </div>
+        <p class="hero-copy">
+          First Commits forms ask for proof. They should be calm, specific, and
+          human-reviewed. Every field needs to help the committee understand
+          whether someone actually built early.
+        </p>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">01 / Membership</p>
+        <h2>Application Form</h2>
+      </div>
+      <div class="form-showcase">
+        <form class="form-card">
+          <div class="form-header">
+            <div>
+              <p class="label">Request membership</p>
+              <h3>Tell us what you built when there was no system yet.</h3>
+              <p>Applications are reviewed by humans. Specific technical evidence matters more than polished narrative.</p>
+            </div>
+            <div class="progress">Step 1 / 3</div>
+          </div>
+          <div class="fields">
+            <label class="field">
+              <span class="field-label">Full name</span>
+              <input value="Maya Chen" />
+            </label>
+            <label class="field">
+              <span class="field-label">Work email</span>
+              <input value="maya@earlyco.com" />
+            </label>
+            <label class="field">
+              <span class="field-label">Early role</span>
+              <select>
+                <option>Founding engineer / first 5</option>
+              </select>
+            </label>
+            <label class="field">
+              <span class="field-label">Company</span>
+              <input value="EarlyCo, engineer #2" />
+            </label>
+            <label class="field full">
+              <span class="field-label">What did you make real?</span>
+              <textarea>Owned the first production architecture, shipped the v1 customer workflow, and hired the next two engineers.</textarea>
+              <span class="hint">Ask for decisions, systems, launches, incidents, and people they were responsible for.</span>
+            </label>
+            <label class="field full error">
+              <span class="field-label">Proof link</span>
+              <input value="" placeholder="LinkedIn, launch post, repo, press, or reference" />
+              <span class="hint">Required. Give the reviewer a way to verify the claim.</span>
+            </label>
+          </div>
+          <div class="form-actions">
+            <a class="secondary-action" href="#">Save draft</a>
+            <button type="button">Continue application</button>
+          </div>
+        </form>
+        <aside class="side-panel">
+          <p class="label">Review lens</p>
+          <h3>Evidence over story.</h3>
+          <div class="requirements">
+            <div class="requirement">Was this person early enough for the work to be ambiguous?</div>
+            <div class="requirement">Can they name technical decisions they owned?</div>
+            <div class="requirement">Is there a verifier: member, founder, artifact, or public proof?</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">first technical hire</span>
+            <span class="tag">owned architecture</span>
+            <span class="tag">v1 shipped</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">02 / Partner</p>
+        <h2>Partner Inquiry</h2>
+      </div>
+      <div class="review-grid">
+        <article class="card">
+          <span class="status">Default</span>
+          <h3>Compact partner form</h3>
+          <p>Ask who they support, what room they can help create, and whether they bring operators rather than only capital.</p>
+        </article>
+        <article class="card">
+          <span class="status">Referral</span>
+          <h3>Member referral</h3>
+          <p>Use a short path: member name, candidate name, proof sentence, and why the room gets sharper.</p>
+        </article>
+        <article class="card">
+          <span class="status">Event RSVP</span>
+          <h3>Private dinner RSVP</h3>
+          <p>Keep it lean: availability, dietary notes, and one prompt that creates useful context before the event.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">03 / States</p>
+        <h2>Form States</h2>
+      </div>
+      <div class="state-list">
+        <article class="card">
+          <span class="label">Empty</span>
+          <h3>Quiet start</h3>
+          <p>No giant instructions. The field label and hint should do the work.</p>
+        </article>
+        <article class="card">
+          <span class="label">Focused</span>
+          <h3>Citrine ring</h3>
+          <p>Focus states should be obvious and accessible without feeling noisy.</p>
+        </article>
+        <article class="card">
+          <span class="label">Error</span>
+          <h3>Specific correction</h3>
+          <p>Tell them exactly what is missing: proof link, role clarity, or evidence.</p>
+        </article>
+        <article class="card">
+          <span class="label">Submitted</span>
+          <h3>Human review</h3>
+          <p>Confirm receipt and explain the review cadence. Do not overpromise timing.</p>
+        </article>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>First Commits Logo Usage</title>
+    <style>
+      :root {
+        --ink: #080c16;
+        --blueprint: #16213a;
+        --porcelain: #f5f0e6;
+        --bone: #ebe1d2;
+        --citrine: #d4ff4f;
+        --rust: #ff6b35;
+        --smoke: #48505f;
+        --fog: #c8c0b4;
+        --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+        --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+        --wide: 1220px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--ink);
+        color: var(--ink);
+      }
+
+      body {
+        margin: 0;
+        background: var(--porcelain);
+        font-family: var(--serif);
+        font-size: 18px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      code {
+        font-family: var(--mono);
+      }
+
+      .hero,
+      section {
+        width: min(100%, var(--wide));
+        margin: 0 auto;
+      }
+
+      .hero {
+        min-height: 72vh;
+        padding: 18px 32px 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--porcelain);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        min-height: 48px;
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .artifact-link {
+        color: var(--smoke);
+        text-decoration: none;
+      }
+
+      .artifact-link:hover {
+        color: var(--ink);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 420px;
+        gap: 64px;
+        align-items: end;
+      }
+
+      .eyebrow,
+      .label,
+      .rule-label {
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--rust);
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        max-width: 11ch;
+        font-size: 88px;
+        line-height: 0.94;
+      }
+
+      h2 {
+        font-size: 54px;
+        line-height: 1.04;
+      }
+
+      h3 {
+        font-size: 28px;
+        line-height: 1.08;
+      }
+
+      .hero-copy,
+      .muted {
+        color: var(--smoke);
+      }
+
+      .hero-copy {
+        font-size: 21px;
+      }
+
+      section {
+        padding: 92px 32px;
+        border-top: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 64px;
+        margin-bottom: 56px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: rgba(255, 255, 255, 0.32);
+        padding: 22px;
+      }
+
+      .dark {
+        background: var(--ink);
+        color: var(--porcelain);
+        border-color: rgba(8, 12, 22, 0.4);
+      }
+
+      .blue {
+        background: var(--blueprint);
+        color: var(--porcelain);
+        border-color: rgba(8, 12, 22, 0.4);
+      }
+
+      .signal {
+        background: var(--citrine);
+      }
+
+      .card .rule-label {
+        display: block;
+        margin-bottom: 14px;
+      }
+
+      .card p {
+        color: var(--smoke);
+        margin-top: 12px;
+      }
+
+      .dark p,
+      .blue p {
+        color: rgba(245, 240, 230, 0.76);
+      }
+
+      .dark .rule-label,
+      .blue .rule-label {
+        color: var(--citrine);
+      }
+
+      .logo-row {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .mark {
+        width: 72px;
+        height: 72px;
+        display: grid;
+        place-items: center;
+        background:
+          url("../public/fc-logo.svg") center / 78% no-repeat,
+          #f8f5ef;
+        border: 1px solid #ded9cf;
+        border-radius: 16px;
+        color: transparent;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+      }
+
+      .mark-small {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+      }
+
+      .wordmark {
+        font-family: var(--mono);
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+
+      .lockup {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 0;
+        border: 0;
+      }
+
+      .stacked {
+        display: inline-grid;
+        gap: 14px;
+        justify-items: start;
+      }
+
+      .avatar-demo {
+        display: flex;
+        gap: 14px;
+        align-items: end;
+      }
+
+      .avatar {
+        display: grid;
+        place-items: center;
+        background:
+          url("../public/fc-logo.svg") center / 78% no-repeat,
+          #f8f5ef;
+        border: 1px solid #ded9cf;
+        border-radius: 16px;
+        color: transparent;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+      }
+
+      .avatar.xl {
+        width: 96px;
+        height: 96px;
+        border-radius: 22px;
+      }
+
+      .avatar.md {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+      }
+
+      .avatar.sm {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+      }
+
+      .clearspace {
+        position: relative;
+        padding: 42px;
+        border: 1px dashed rgba(8, 12, 22, 0.32);
+        display: inline-flex;
+      }
+
+      .clearspace::before,
+      .clearspace::after {
+        content: "1x";
+        position: absolute;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--rust);
+      }
+
+      .clearspace::before {
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .clearspace::after {
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .size-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .size-table th,
+      .size-table td {
+        padding: 14px;
+        border-bottom: 1px solid rgba(8, 12, 22, 0.14);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .size-table th {
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--rust);
+      }
+
+      .size-table td {
+        color: var(--smoke);
+      }
+
+      .bad-demo {
+        min-height: 190px;
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bad-demo::after {
+        content: "";
+        position: absolute;
+        inset: 20px;
+        border-top: 2px solid var(--rust);
+        transform: rotate(-18deg);
+        pointer-events: none;
+      }
+
+      .bad-stretch .mark {
+        transform: scaleX(1.6);
+      }
+
+      .bad-shadow .mark {
+        box-shadow: 0 18px 34px rgba(8, 12, 22, 0.42);
+      }
+
+      .bad-color {
+        background: #8c61ff;
+        color: #ffffff;
+      }
+
+      .co-brand {
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        font-family: var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .partner-name {
+        padding: 14px 18px;
+        border: 1px solid currentColor;
+      }
+
+      .usage-note {
+        padding: 18px 20px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--citrine);
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .section-header,
+        .two,
+        .three,
+        .four {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 54px;
+        }
+
+        h2 {
+          font-size: 38px;
+        }
+
+        .hero,
+        section {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="topbar">
+        <span class="mark mark-small">FC</span>
+        <span>Logo Usage / v1</span>
+        <a class="artifact-link" href="./index.html">Artifacts</a>
+        <a class="artifact-link" href="./first-commits-design-system.html">Design system</a>
+        <a class="artifact-link" href="./first-commits-form-system.html">Forms</a>
+        <a class="artifact-link" href="./first-commits-motion-system.html">Motion</a>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">First Commits identity reference</p>
+          <h1>Use the current mark like a signal, not decoration.</h1>
+        </div>
+        <p class="hero-copy">
+          This artifact documents practical usage for the current First Commits
+          utility mark and wordmark system. It is an internal reference file, not
+          a production asset bundle.
+        </p>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">01 / Status</p>
+        <h2>Logo System Read</h2>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <span class="rule-label">Current mark</span>
+          <h3>Use the existing FC tile as the source mark.</h3>
+          <p>
+            The canonical file is <code>public/fc-logo.svg</code>. Use that asset
+            for favicon, avatar, badge, event signage, and compact UI. Do not
+            recreate it with live text or approximation shapes.
+          </p>
+        </article>
+        <article class="card signal">
+          <span class="rule-label">Extension direction</span>
+          <h3>Build provenance language around the existing mark.</h3>
+          <p>
+            Keep the current tile as the logo. Add distinctiveness through nearby
+            systems: commit IDs, diff lines, build-log labels, member stamps, and
+            first-repo metadata.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">02 / Core Lockups</p>
+        <h2>Primary Logo Usage</h2>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <span class="rule-label">Horizontal lockup</span>
+          <div class="logo-row">
+            <div class="lockup">
+              <span class="mark mark-small">FC</span>
+              <span class="wordmark">First Commits</span>
+            </div>
+          </div>
+          <p>Default for nav, event headers, partner slides, and formal placements.</p>
+        </article>
+        <article class="card">
+          <span class="rule-label">Stacked lockup</span>
+          <div class="stacked">
+            <span class="mark">FC</span>
+            <span class="wordmark">First Commits</span>
+          </div>
+          <p>Use when vertical space is available and the identity needs more presence.</p>
+        </article>
+        <article class="card">
+          <span class="rule-label">Standalone mark</span>
+          <span class="mark">FC</span>
+          <p>Use for avatars, badges, favicons, watermarks, table cards, and compact event collateral.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">03 / Color Variants</p>
+        <h2>Approved Treatments</h2>
+      </div>
+      <div class="grid four">
+        <article class="card">
+          <span class="rule-label">Default on porcelain</span>
+          <div class="lockup"><span class="mark mark-small">FC</span><span class="wordmark">First Commits</span></div>
+          <p>Primary everyday usage. Keep the tile intact and set the wordmark in ink.</p>
+        </article>
+        <article class="card dark">
+          <span class="rule-label">Tile on ink</span>
+          <div class="lockup"><span class="mark mark-small">FC</span><span class="wordmark">First Commits</span></div>
+          <p>Use the same tile on dark editorial surfaces. Do not invert or recolor the logo file.</p>
+        </article>
+        <article class="card blue">
+          <span class="rule-label">Tile on blueprint</span>
+          <div class="lockup"><span class="mark mark-small">FC</span><span class="wordmark">First Commits</span></div>
+          <p>Use for technical, membership, and partner contexts. The tile remains neutral.</p>
+        </article>
+        <article class="card signal">
+          <span class="rule-label">Tile on citrine</span>
+          <div class="lockup"><span class="mark mark-small">FC</span><span class="wordmark">First Commits</span></div>
+          <p>Use sparingly for high-signal moments. Prefer the standalone tile over a full lockup here.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">04 / Clear Space</p>
+        <h2>Breathing Room</h2>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <span class="rule-label">Clear space</span>
+          <div class="clearspace">
+            <div class="lockup">
+              <span class="mark mark-small">FC</span>
+              <span class="wordmark">First Commits</span>
+            </div>
+          </div>
+          <p>Keep at least one mark radius of clear space around the lockup. More is better on event collateral.</p>
+        </article>
+        <article class="card">
+          <span class="rule-label">Minimum sizing</span>
+          <table class="size-table">
+            <tr><th>Use</th><th>Minimum</th><th>Notes</th></tr>
+            <tr><td>Full lockup</td><td>160px wide</td><td>Below this, use the standalone mark.</td></tr>
+            <tr><td>Standalone mark</td><td>28px</td><td>Keep the tile shape visible.</td></tr>
+            <tr><td>Event signage</td><td>2 in</td><td>Prefer generous clear space.</td></tr>
+            <tr><td>Social avatar</td><td>400 x 400</td><td>Center the mark with 18-22% inset.</td></tr>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">05 / Avatar and Badge</p>
+        <h2>Compact Identity</h2>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <span class="rule-label">Avatar sizes</span>
+          <div class="avatar-demo">
+            <span class="avatar xl">FC</span>
+            <span class="avatar md">FC</span>
+            <span class="avatar sm">FC</span>
+          </div>
+          <p>Use the standalone mark for LinkedIn, Luma host image, Slack, and favicon contexts.</p>
+        </article>
+        <article class="card dark">
+          <span class="rule-label">Member badge</span>
+          <div class="stacked">
+            <span class="mark">FC</span>
+            <span class="wordmark">Member / commit 000001</span>
+          </div>
+          <p>Badge systems should pair the mark with provenance language.</p>
+        </article>
+        <article class="card">
+          <span class="rule-label">Event stamp</span>
+          <div class="stacked">
+            <span class="mark">FC</span>
+            <span class="wordmark">Salon 03 / SF</span>
+          </div>
+          <p>Use the stamp style on table cards, recaps, and partner dinner collateral.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">06 / Co-branding</p>
+        <h2>Partner Lockups</h2>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <span class="rule-label">Equal-weight partner lockup</span>
+          <div class="co-brand">
+            <div class="lockup"><span class="mark mark-small">FC</span><span>First Commits</span></div>
+            <span>x</span>
+            <span class="partner-name">Partner</span>
+          </div>
+          <p>Use when the partner is a co-host or primary supporter.</p>
+        </article>
+        <article class="card">
+          <span class="rule-label">Presented by</span>
+          <div class="co-brand">
+            <div class="stacked">
+              <span class="wordmark">First Commits</span>
+              <span class="muted">Presented with Partner</span>
+            </div>
+          </div>
+          <p>Use when First Commits should remain the lead brand.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">07 / Misuse</p>
+        <h2>Do Not</h2>
+      </div>
+      <div class="grid three">
+        <article class="card bad-demo bad-stretch">
+          <span class="mark">FC</span>
+        </article>
+        <article class="card bad-demo bad-shadow">
+          <span class="mark">FC</span>
+        </article>
+        <article class="card bad-demo bad-color">
+          <span class="mark">FC</span>
+        </article>
+      </div>
+      <p class="muted" style="margin-top:18px">
+        Do not stretch the mark, add shadows, invent colors, outline text, use low contrast,
+        crowd it with partner logos, or treat the monogram as a decorative pattern.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">08 / Practical Checklist</p>
+        <h2>Before Using the Logo</h2>
+      </div>
+      <div class="usage-note">
+        Choose the lockup first, check contrast, preserve clear space, avoid novelty effects,
+        and pair the mark with provenance language when possible.
+      </div>
+    </section>
+  </body>
+</html>

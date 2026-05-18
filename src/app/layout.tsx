@@ -18,12 +18,12 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'First Commits — For those before it was built',
-  description: 'An invite-only community for founding engineers.',
+  title: 'First Commits — The room for founding engineers',
+  description: 'A private community for the first technical hires who built before it was obvious.',
   metadataBase: new URL('https://firstcommits.com'),
   openGraph: {
-    title: 'First Commits — For those before it was built',
-    description: 'An invite-only community for founding engineers.',
+    title: 'First Commits — The room for founding engineers',
+    description: 'A private community for the first technical hires who built before it was obvious.',
     type: 'website',
     url: 'https://firstcommits.com',
     siteName: 'First Commits',
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'First Commits — For those before it was built',
+        alt: 'First Commits — The room for founding engineers',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'First Commits — For those before it was built',
-    description: 'An invite-only community for founding engineers.',
+    title: 'First Commits — The room for founding engineers',
+    description: 'A private community for the first technical hires who built before it was obvious.',
     images: ['/og-image.jpg'],
   },
   robots: {

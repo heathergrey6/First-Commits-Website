@@ -5,6 +5,33 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import styles from './page.module.css'
 
+const partnerLogos = [
+  { src: '/bessemer_logo.png', alt: 'Bessemer Venture Partners' },
+  { src: '/forerunner-logo.png', alt: 'Forerunner' },
+  { src: '/accel-logo.png', alt: 'Accel' },
+  { src: '/bullpen-logo.jpeg', alt: 'Bullpen' },
+  { src: '/crosslink.svg', alt: 'Crosslink Capital' },
+  { src: '/langchain.png', alt: 'LangChain' },
+  { src: '/alpha.png', alt: 'Alpha' },
+  { src: '/greycroft.png', alt: 'Greycroft' },
+]
+
+const principles = [
+  ['01', 'Proof over pedigree', 'We care less about where you went and more about what you shipped when the company was still fragile.'],
+  ['02', 'Small rooms, real context', 'Dinners, salons, and working sessions built for candor instead of performance.'],
+  ['03', 'The early operator graph', 'Founding engineers, first technical hires, and the investors who know how much that work matters.'],
+  ['04', 'Compounding access', 'References, operator intros, advisory paths, and future co-founder conversations that happen because trust already exists.'],
+]
+
+const signals = [
+  'first technical hire',
+  'pre-Series A builder',
+  'wrote v1',
+  'owned architecture',
+  'scaled the first team',
+  'made the first commits',
+]
+
 export default function Home() {
   useEffect(() => {
     const revealElements = document.querySelectorAll('.reveal')
@@ -18,7 +45,7 @@ export default function Home() {
         })
       },
       {
-        threshold: 0.1,
+        threshold: 0.12,
         rootMargin: '0px 0px -50px 0px',
       }
     )
@@ -32,223 +59,156 @@ export default function Home() {
     <main className={styles.main}>
       <a href="#main-content" className="skip-to-content">Skip to content</a>
       <Nav />
-      <div id="main-content"></div>
+      <div id="main-content" />
 
-      {/* Hero Section */}
       <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>
-            For those before<br />
-            it was built.
-          </h1>
-          <p className={styles.heroSubtitle}>
-            An invite-only community for founding engineers.
-          </p>
-          <div className={styles.heroDivider}></div>
-          <div className={styles.heroCta}>
-            <Link href="/apply" className={styles.heroBtn}>
-              Request an Invite
-            </Link>
-          </div>
+        <div className={styles.heroMedia} aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/event-dinner.jpeg" alt="" className={styles.heroImage} />
         </div>
-        <div className={styles.heroPartnerBar}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/bessemer_logo.png" alt="Bessemer Venture Partners" className={styles.partnerBarLogo} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/forerunner-logo.png" alt="Forerunner" className={styles.partnerBarLogo} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/accel-logo.png" alt="Accel" className={styles.partnerBarLogo} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/bullpen-logo.jpeg" alt="Bullpen" className={styles.partnerBarLogo} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/crosslink.svg" alt="Crosslink Capital" className={styles.partnerBarLogo} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/langchain.png" alt="LangChain" className={styles.partnerBarLogo} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/alpha.png" alt="Alpha" className={styles.partnerBarLogo} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/greycroft.png" alt="Greycroft" className={styles.partnerBarLogo} />
-        </div>
-      </section>
-
-      {/* Ethos Section */}
-      <section className={styles.section}>
-        <div className={`container ${styles.ethosContent}`}>
-          <div className="reveal">
-            <h2 className={styles.sectionLabel}>The Ethos</h2>
-            <div className={styles.dividerShort}></div>
-          </div>
-          <div className={styles.manifesto}>
-            <p className="reveal">
-              You joined when the codebase was a single repo. When the architecture
-              was whatever you decided it was. When "the engineering team" meant you
-              and maybe one other person.
+        <div className={styles.heroGrid}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>First Commits / founding engineer society</p>
+            <h1 className={styles.heroTitle}>Founding engineers deserve their own room.</h1>
+            <p className={styles.heroText}>
+              First Commits is a private community for the first technical hires:
+              operators who turned an idea into a product, a repo into a company,
+              and uncertainty into working software.
             </p>
-            <p className="reveal">
-              You weren't the founder. You weren't engineer #47. You were the one
-              they called first — the one who turned a pitch deck into a working
-              product, who shipped v1 when nothing was certain.
-            </p>
-            <p className="reveal">
-              First Commits is for those engineers. The first technical hires. The
-              ones who wrote the code that everything else was built on.
-            </p>
-            <p className="reveal">
-              Not founders. Not late hires. Founding engineers.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Photo Strip */}
-      <section className={styles.photoStrip}>
-        <div className={styles.photoGrid}>
-          <div className={styles.photoItem}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/event-dinner.jpeg"
-              alt="First Commits dinner gathering"
-              className={styles.photoImage}
-            />
-          </div>
-          <div className={styles.photoItem}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/event-lounge.jpeg"
-              alt="First Commits lounge conversation"
-              className={styles.photoImage}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* What We Mean Section */}
-      <section className={styles.sectionDark}>
-        <div className="container">
-          <div className="reveal">
-            <h2 className={styles.sectionLabelLight}>What &ldquo;First Commits&rdquo; Means</h2>
-            <div className={styles.dividerShortLight}></div>
-          </div>
-          <div className={styles.twoColumn}>
-            <div className={styles.columnLeft}>
-              <p className="reveal text-muted" style={{ color: 'var(--color-gray-400)' }}>
-                In software, the first commit is the initial contribution to a codebase.
-                It's the moment an idea becomes code. Before product-market fit.
-                Before the Series A deck. Before anyone knew if it would work.
-              </p>
+            <div className={styles.heroActions}>
+              <Link href="/apply" className={styles.primaryAction}>Request an invite</Link>
+              <Link href="/partners" className={styles.secondaryAction}>Partner with us</Link>
             </div>
-            <div className={styles.columnRight}>
-              <p className="reveal" style={{ color: 'var(--color-gray-200)' }}>
-                We believe founding engineers deserve recognition distinct from founders
-                and later engineers. You took founder-level risk without founder-level
-                equity. You wrote the code that everything else was built on.
+          </div>
+
+          <aside className={styles.heroPanel} aria-label="Community signals">
+            <p className={styles.panelKicker}>Member signal</p>
+            <div className={styles.commitCard}>
+              <span className={styles.commitHash}>commit 000001</span>
+              <span className={styles.commitMessage}>make the first version real</span>
+            </div>
+            <div className={styles.signalList}>
+              {signals.map((signal) => (
+                <span key={signal}>{signal}</span>
+              ))}
+            </div>
+          </aside>
+        </div>
+        <div className={styles.partnerRail} aria-label="Partner organizations">
+          {partnerLogos.map((logo) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={logo.alt} src={logo.src} alt={logo.alt} className={styles.partnerLogo} />
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.positioning}>
+        <div className="container-wide">
+          <div className={styles.positioningGrid}>
+            <p className={`${styles.sectionLabel} reveal`}>Positioning</p>
+            <div className={styles.positioningCopy}>
+              <h2 className="reveal">Not a networking group. A reputation layer for zero-to-one engineers.</h2>
+              <p className="reveal">
+                The first engineering hires operate in a strange middle: not founders,
+                not employees in a machine, but the people who make the machine possible.
+                First Commits gives that role a name, a standard, and a room.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Value Section */}
-      <section className={styles.section}>
-        <div className="container">
-          <div className="reveal">
-            <h2 className={styles.sectionLabel}>What You Get</h2>
-            <div className={styles.dividerShort}></div>
-          </div>
-          <div className={styles.valueGrid}>
-            <div className={`${styles.valueItem} reveal`}>
-              <span className={styles.valueNumber}>01</span>
-              <h3 className={styles.valueTitle}>Access</h3>
-              <p className={styles.valueDesc}>
-                Direct lines to engineers who've been where you are. No cold intros.
-                No performative networking.
-              </p>
+      <section className={styles.manifestoSection}>
+        <div className="container-wide">
+          <div className={styles.manifestoGrid}>
+            <div className={styles.photoStack}>
+              <div className={`${styles.photoFrame} reveal`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/event-lounge.jpeg" alt="First Commits members in conversation" />
+              </div>
+              <div className={`${styles.photoFrame} ${styles.photoFrameOffset} reveal`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/partner-dinner.jpeg" alt="First Commits private partner dinner" />
+              </div>
             </div>
-            <div className={`${styles.valueItem} reveal`}>
-              <span className={styles.valueNumber}>02</span>
-              <h3 className={styles.valueTitle}>Signal</h3>
-              <p className={styles.valueDesc}>
-                Membership indicates you've shipped the code. A quiet credential
-                recognized by those who matter.
+            <div className={styles.manifestoCopy}>
+              <p className={`${styles.sectionLabel} reveal`}>Why we exist</p>
+              <h2 className="reveal">The earliest builders deserve a category of their own.</h2>
+              <p className="reveal">
+                You joined when the product was mostly conviction. You chose the stack,
+                handled the outage, shipped the demo, hired the next engineer, and made
+                the technical bets that everyone else later inherited.
               </p>
-            </div>
-            <div className={`${styles.valueItem} reveal`}>
-              <span className={styles.valueNumber}>03</span>
-              <h3 className={styles.valueTitle}>Craft</h3>
-              <p className={styles.valueDesc}>
-                Intimate dinners, small gatherings, and candid conversations with
-                engineers who've built what you're building. No panels. No pitches.
-              </p>
-            </div>
-            <div className={`${styles.valueItem} reveal`}>
-              <span className={styles.valueNumber}>04</span>
-              <h3 className={styles.valueTitle}>Network</h3>
-              <p className={styles.valueDesc}>
-                A curated group of founding engineers from companies you'd recognize.
-                Future co-founders, technical advisors, references.
+              <p className="reveal">
+                First Commits exists to recognize that work and connect the people who
+                have done it with others operating at the same level of trust, taste,
+                and urgency.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Exclusivity Section */}
-      <section className={styles.section}>
-        <div className={`container ${styles.exclusivityContent}`}>
-          <div className="reveal">
-            <h2 className={styles.sectionLabel}>How It Works</h2>
-            <div className={styles.dividerShort}></div>
+      <section className={styles.principlesSection}>
+        <div className="container-wide">
+          <div className={styles.sectionHeader}>
+            <p className={`${styles.sectionLabel} reveal`}>Community design</p>
+            <h2 className="reveal">Built like the best early teams: small, technical, and useful.</h2>
           </div>
-          <div className={styles.exclusivityText}>
-            <p className="reveal">
-              First Commits is invite-only and referral-based. We don't optimize for
-              growth. We optimize for density — ensuring every member has genuinely
-              done the work.
-            </p>
-            <p className="reveal">
-              Applications are reviewed by current members. We look for evidence of
-              early-stage engineering: founding team experience, pre-Series A
-              technical contribution, demonstrable impact when the codebase was still taking shape.
-            </p>
-            <p className="reveal text-muted">
-              We accept applications on a rolling basis. If you're not accepted immediately,
-              you may be added to our waitlist for future consideration.
-            </p>
+          <div className={styles.principleGrid}>
+            {principles.map(([number, title, description]) => (
+              <article key={title} className={`${styles.principleCard} reveal`}>
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className={styles.sectionFinal}>
-        <div className="container">
-          <div className={styles.finalContent}>
-            <h2 className={`${styles.finalTitle} reveal`}>
-              If this resonates, you<br />
-              probably belong here.
-            </h2>
-            <div className="reveal">
-              <Link href="/apply" className="btn btn-primary">
-                Request Invitation
-              </Link>
+      <section className={styles.membershipSection}>
+        <div className="container-wide">
+          <div className={styles.membershipGrid}>
+            <div>
+              <p className={`${styles.sectionLabel} reveal`}>Membership standard</p>
+              <h2 className="reveal">Invite-only, referral-led, evidence-based.</h2>
+            </div>
+            <div className={styles.membershipCopy}>
+              <p className="reveal">
+                We are looking for people who can point to the work: the first repo,
+                the first launch, the early architecture, the production incidents,
+                the first hires, and the hard technical calls made without much cover.
+              </p>
+              <p className="reveal">
+                The goal is not scale. The goal is density: every member should make
+                the room sharper for every other member.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      <section className={styles.finalCta}>
+        <div className={styles.finalInner}>
+          <p className={`${styles.sectionLabel} reveal`}>First Commits</p>
+          <h2 className="reveal">If you built the first version, this is your room.</h2>
+          <Link href="/apply" className={`${styles.primaryAction} reveal`}>Request an invite</Link>
+        </div>
+      </section>
+
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
-          <span className={styles.footerLogo}>
+          <Link href="/" className={styles.footerLogo}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/fc-logo.svg" alt="" className={styles.footerLogoIcon} />
             First Commits
-          </span>
-          <span className={styles.footerCopy}>For founding engineers, by founding engineers.</span>
+          </Link>
+          <span>For founding engineers, by founding engineers.</span>
           <a
             href="https://www.linkedin.com/company/first-commits"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.footerLink}
           >
             LinkedIn
           </a>

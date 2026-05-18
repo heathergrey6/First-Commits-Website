@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>First Commits Design System</title>
+    <style>
+      :root {
+        --ink: #080c16;
+        --blueprint: #16213a;
+        --porcelain: #f5f0e6;
+        --bone: #ebe1d2;
+        --citrine: #d4ff4f;
+        --rust: #ff6b35;
+        --smoke: #48505f;
+        --fog: #c8c0b4;
+        --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+        --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+        --wide: 1220px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--ink);
+        color: var(--ink);
+      }
+
+      body {
+        margin: 0;
+        background: var(--porcelain);
+        font-family: var(--serif);
+        font-size: 18px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      code,
+      .mono {
+        font-family: var(--mono);
+      }
+
+      .hero {
+        min-height: 74vh;
+        padding: 18px 32px 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--porcelain);
+      }
+
+      .topbar,
+      .hero-grid,
+      section {
+        width: min(100%, var(--wide));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .mark {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        background:
+          url("../public/fc-logo.svg") center / 78% no-repeat,
+          #f8f5ef;
+        border: 1px solid #ded9cf;
+        border-radius: 11px;
+        color: transparent;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+      }
+
+      .file-note {
+        margin-left: auto;
+        color: var(--smoke);
+      }
+
+      .artifact-link {
+        margin-left: 18px;
+        color: var(--smoke);
+        text-decoration: none;
+      }
+
+      .artifact-link:hover {
+        color: var(--ink);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 380px;
+        gap: 64px;
+        align-items: end;
+      }
+
+      .eyebrow,
+      .label,
+      .card-label {
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--rust);
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        max-width: 12ch;
+        font-size: 88px;
+        line-height: 0.94;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        color: var(--smoke);
+        font-size: 21px;
+      }
+
+      section {
+        padding: 96px 32px;
+        border-top: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 64px;
+        margin-bottom: 64px;
+      }
+
+      h2 {
+        font-size: 54px;
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        font-size: 28px;
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .five {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .six {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: rgba(255, 255, 255, 0.3);
+        padding: 20px;
+      }
+
+      .card .card-label {
+        display: block;
+        margin-bottom: 14px;
+      }
+
+      .card h3 {
+        margin-bottom: 16px;
+      }
+
+      .card p,
+      .muted {
+        color: var(--smoke);
+      }
+
+      .swatch {
+        min-height: 132px;
+        border-bottom: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .color-card {
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .color-card div:last-child {
+        padding: 18px;
+      }
+
+      .color-card code,
+      .type-row code {
+        color: var(--smoke);
+        font-size: 13px;
+      }
+
+      .type-spec {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 12px;
+      }
+
+      .type-preview {
+        min-height: 420px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: var(--ink);
+        color: var(--porcelain);
+      }
+
+      .type-preview h3 {
+        margin: 14px 0;
+        font-size: 58px;
+        line-height: 0.98;
+      }
+
+      .type-preview p {
+        color: rgba(245, 240, 230, 0.72);
+      }
+
+      .type-table {
+        border: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .type-row {
+        display: grid;
+        grid-template-columns: 150px 1fr 120px;
+        gap: 16px;
+        padding: 18px;
+        border-bottom: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .type-row:last-child {
+        border-bottom: 0;
+      }
+
+      .type-row p {
+        grid-column: 2 / -1;
+        color: var(--smoke);
+        font-size: 16px;
+      }
+
+      .component-demo {
+        margin-top: 16px;
+        padding: 18px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--bone);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .button,
+      .secondary {
+        min-height: 48px;
+        padding: 14px 18px;
+        border-radius: 8px;
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+      }
+
+      .button {
+        background: var(--ink);
+        color: var(--porcelain);
+      }
+
+      .secondary {
+        border: 1px solid rgba(8, 12, 22, 0.18);
+      }
+
+      .pill {
+        padding: 8px 11px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        border-radius: 999px;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--smoke);
+      }
+
+      .collateral article {
+        min-height: 292px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        overflow: hidden;
+        background: var(--bone);
+      }
+
+      .asset-note {
+        padding: 16px 18px;
+        margin-bottom: 18px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--citrine);
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .luma-card,
+      .social-card,
+      .badge-card,
+      .signage-card,
+      .partner-card {
+        grid-column: span 2;
+      }
+
+      .banner-card {
+        grid-column: span 4;
+      }
+
+      .mock-image {
+        height: 178px;
+        border-bottom: 1px solid rgba(8, 12, 22, 0.14);
+        background:
+          radial-gradient(circle at 18% 35%, rgba(212, 255, 79, 0.55), transparent 8%),
+          radial-gradient(circle at 74% 24%, rgba(255, 107, 53, 0.45), transparent 10%),
+          linear-gradient(135deg, rgba(8, 12, 22, 0.95), rgba(22, 33, 58, 0.84)),
+          repeating-linear-gradient(90deg, rgba(245, 240, 230, 0.12) 0 1px, transparent 1px 80px);
+      }
+
+      .mock-body {
+        padding: 20px;
+      }
+
+      .mock-body h3 {
+        margin: 12px 0;
+      }
+
+      .mock-tags {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .mock-tags small {
+        padding: 6px 9px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        border-radius: 999px;
+        font-family: var(--mono);
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+
+      .collateral .banner-card {
+        padding: 22px;
+        color: var(--porcelain);
+        background:
+          linear-gradient(90deg, rgba(8, 12, 22, 0.96), rgba(22, 33, 58, 0.88)),
+          repeating-linear-gradient(90deg, rgba(245, 240, 230, 0.1) 0 1px, transparent 1px 82px),
+          var(--blueprint);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border-color: rgba(8, 12, 22, 0.34);
+      }
+
+      .collateral .banner-card h3 {
+        max-width: 12ch;
+        font-size: 54px;
+        line-height: 0.98;
+        color: var(--porcelain);
+      }
+
+      .collateral .banner-card p {
+        color: rgba(245, 240, 230, 0.82);
+      }
+
+      .collateral .banner-card .card-label {
+        color: var(--citrine);
+      }
+
+      .collateral .social-card {
+        padding: 22px;
+        background: var(--citrine);
+      }
+
+      .social-card h3,
+      .signage-card h3 {
+        margin-bottom: 18px;
+        font-size: 36px;
+        line-height: 1.02;
+      }
+
+      .collateral .badge-card {
+        padding: 22px;
+        background:
+          linear-gradient(135deg, rgba(212, 255, 79, 0.08), transparent 42%),
+          var(--ink);
+        color: var(--porcelain);
+        border-color: rgba(8, 12, 22, 0.34);
+      }
+
+      .collateral .badge-card .card-label {
+        color: var(--citrine);
+      }
+
+      .badge {
+        margin-top: 34px;
+        width: 176px;
+        aspect-ratio: 3 / 4;
+        padding: 18px;
+        border: 1px solid rgba(245, 240, 230, 0.36);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: rgba(245, 240, 230, 0.06);
+      }
+
+      .badge strong {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        background:
+          url("../public/fc-logo.svg") center / 78% no-repeat,
+          #f8f5ef;
+        border: 1px solid #ded9cf;
+        border-radius: 12px;
+        color: transparent;
+        font-size: 0;
+        line-height: 0;
+      }
+
+      .badge p {
+        color: var(--porcelain);
+        font-size: 32px;
+      }
+
+      .badge small,
+      .partner-card small {
+        font-family: var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(245, 240, 230, 0.68);
+      }
+
+      .collateral .signage-card {
+        padding: 22px;
+        color: var(--porcelain);
+        background:
+          linear-gradient(180deg, rgba(8, 12, 22, 0.18), transparent),
+          var(--blueprint);
+        border-color: rgba(8, 12, 22, 0.34);
+      }
+
+      .collateral .signage-card .card-label {
+        color: var(--citrine);
+      }
+
+      .collateral .signage-card h3 {
+        color: var(--porcelain);
+      }
+
+      .collateral .signage-card p {
+        color: rgba(245, 240, 230, 0.82);
+      }
+
+      .partner-card {
+        padding: 22px;
+      }
+
+      .partner-lockup {
+        min-height: 126px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        border-bottom: 1px solid rgba(8, 12, 22, 0.14);
+        margin-bottom: 18px;
+      }
+
+      .partner-lockup strong {
+        font-size: 24px;
+      }
+
+      .partner-lockup small {
+        color: var(--smoke);
+      }
+
+      .checklist {
+        padding: 22px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: rgba(255, 255, 255, 0.3);
+        color: var(--smoke);
+      }
+
+      @media (max-width: 1050px) {
+        .hero-grid,
+        .section-header,
+        .type-spec {
+          grid-template-columns: 1fr;
+        }
+
+        .three,
+        .four,
+        .five,
+        .six {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .luma-card,
+        .banner-card,
+        .social-card,
+        .badge-card,
+        .signage-card,
+        .partner-card {
+          grid-column: span 1;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .hero {
+          min-height: auto;
+          padding: 16px 16px 64px;
+        }
+
+        h1 {
+          font-size: 50px;
+        }
+
+        h2,
+        .type-preview h3,
+        .banner-card h3 {
+          font-size: 38px;
+        }
+
+        section {
+          padding: 64px 16px;
+        }
+
+        .three,
+        .four,
+        .five,
+        .six {
+          grid-template-columns: 1fr;
+        }
+
+        .type-row {
+          grid-template-columns: 1fr;
+        }
+
+        .type-row p {
+          grid-column: auto;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .file-note {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="Design system navigation">
+        <span class="mark">FC</span>
+        <span>Design System / v1</span>
+        <a class="artifact-link" href="./index.html">Artifacts</a>
+        <a class="artifact-link" href="./first-commits-logo-usage.html">Logo usage</a>
+        <a class="artifact-link" href="./first-commits-form-system.html">Forms</a>
+        <a class="artifact-link" href="./first-commits-motion-system.html">Motion</a>
+        <span class="file-note">Standalone reference HTML</span>
+      </nav>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">First Commits brand system</p>
+          <h1>Tools for making the earliest builders feel seen.</h1>
+        </div>
+        <p class="hero-copy">
+          A practical identity kit for web, member communications, event pages,
+          partner decks, Luma listings, social posts, room signage, badges, and
+          future product surfaces.
+        </p>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">01 / Strategy</p>
+        <h2>Brand Foundation</h2>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <span class="card-label">Position</span>
+          <h3>A reputation layer for zero-to-one engineers.</h3>
+          <p>First Commits is not a broad developer community. It is a private trust network for engineers who carried founder-level technical risk before there was much company around them.</p>
+        </article>
+        <article class="card">
+          <span class="card-label">Audience</span>
+          <h3>First technical hires, founding engineers, and trusted partners.</h3>
+          <p>The system should speak to people who have shipped under ambiguity. It should feel earned, calm, and useful rather than aspirational.</p>
+        </article>
+        <article class="card">
+          <span class="card-label">Promise</span>
+          <h3>A category, a standard, and a room.</h3>
+          <p>The community gives a name to a role that is often misread: the early operator who made the first product real.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">02 / Tokens</p>
+        <h2>Color System</h2>
+      </div>
+      <div class="grid four">
+        <article class="card color-card"><div class="swatch" style="background:#080c16"></div><div><h3>Ink</h3><code>#080C16</code><p>Primary text, dark fields, high-signal surfaces.</p></div></article>
+        <article class="card color-card"><div class="swatch" style="background:#16213a"></div><div><h3>Blueprint</h3><code>#16213A</code><p>Technical depth, membership sections, event systems.</p></div></article>
+        <article class="card color-card"><div class="swatch" style="background:#f5f0e6"></div><div><h3>Porcelain</h3><code>#F5F0E6</code><p>Base canvas and editorial backgrounds.</p></div></article>
+        <article class="card color-card"><div class="swatch" style="background:#ebe1d2"></div><div><h3>Bone</h3><code>#EBE1D2</code><p>Secondary canvas and warm panels.</p></div></article>
+        <article class="card color-card"><div class="swatch" style="background:#d4ff4f"></div><div><h3>Citrine</h3><code>#D4FF4F</code><p>Member signal, highlight, decisive action.</p></div></article>
+        <article class="card color-card"><div class="swatch" style="background:#ff6b35"></div><div><h3>Rust</h3><code>#FF6B35</code><p>Section labels, warmth, human energy.</p></div></article>
+        <article class="card color-card"><div class="swatch" style="background:#48505f"></div><div><h3>Smoke</h3><code>#48505F</code><p>Body copy and secondary context.</p></div></article>
+        <article class="card color-card"><div class="swatch" style="background:#c8c0b4"></div><div><h3>Fog</h3><code>#C8C0B4</code><p>Rules, dividers, quiet boundaries.</p></div></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">03 / Typography</p>
+        <h2>Type Hierarchy</h2>
+      </div>
+      <div class="type-spec">
+        <div class="type-preview">
+          <span class="card-label">commit 000001</span>
+          <h3>Make the first version real.</h3>
+          <p>Cormorant carries the editorial authority. JetBrains Mono carries the technical signal. Use the contrast, not extra decoration.</p>
+        </div>
+        <div class="type-table">
+          <div class="type-row"><strong>Display</strong><span>Cormorant Garamond Semibold</span><code>72-96 / 0.94</code><p>Hero statements and high-conviction brand lines.</p></div>
+          <div class="type-row"><strong>Editorial H1</strong><span>Cormorant Garamond Semibold</span><code>52 / 1.04</code><p>Section-defining claims and page titles.</p></div>
+          <div class="type-row"><strong>Editorial H2</strong><span>Cormorant Garamond Semibold</span><code>36 / 1.08</code><p>Collateral headlines and compact surfaces.</p></div>
+          <div class="type-row"><strong>Body</strong><span>Cormorant Garamond Medium</span><code>18-22 / 1.55</code><p>Narrative copy, member explanations, longform.</p></div>
+          <div class="type-row"><strong>Mono Label</strong><span>JetBrains Mono Medium</span><code>11-12 / 1.4</code><p>Navigation, metadata, labels, proof points.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">04 / Voice</p>
+        <h2>Messaging Rules</h2>
+      </div>
+      <div class="grid four">
+        <article class="card"><span class="card-label">Say</span><p>founding engineers, first technical hires, early builders, proof, rooms, signal, density</p></article>
+        <article class="card"><span class="card-label">Avoid</span><p>networking, hustle, exclusive for its own sake, generic founder language, conference energy</p></article>
+        <article class="card"><span class="card-label">Tone</span><p>Precise, quiet, technical, warm at the edges, never breathless.</p></article>
+        <article class="card"><span class="card-label">Claim</span><p>First Commits gives the earliest engineering work a category, a standard, and a room.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">05 / UI</p>
+        <h2>Interface Primitives</h2>
+      </div>
+      <div class="grid five">
+        <article class="card"><span class="card-label">Primary action</span><p>Ink fill, porcelain text, rust hover. Use for application and RSVP intent.</p></article>
+        <article class="card"><span class="card-label">Secondary action</span><p>Transparent or porcelain fill with ink border. Use for partner and learn-more paths.</p></article>
+        <article class="card"><span class="card-label">Signal pill</span><p>Mono label inside a rounded chip. Use for role, stage, proof, and event tags.</p></article>
+        <article class="card"><span class="card-label">Editorial card</span><p>Sharp 1px border, warm canvas. Use for principles, details, and proof.</p></article>
+        <article class="card"><span class="card-label">Photo panel</span><p>Use real event photography later, but keep this HTML independent of site assets.</p></article>
+      </div>
+      <div class="component-demo">
+        <span class="button">Request invite</span>
+        <span class="secondary">View collateral</span>
+        <span class="pill">pre-Series A builder</span>
+        <span class="pill">owned architecture</span>
+        <span class="pill">first technical hire</span>
+      </div>
+    </section>
+
+    <section id="collateral">
+      <div class="section-header">
+        <p class="eyebrow">06 / Collateral</p>
+        <h2>Event and Community Assets</h2>
+      </div>
+      <p class="asset-note">Reference only: these are mockups and do not need to ship as website assets.</p>
+      <div class="grid six collateral">
+        <article class="luma-card">
+          <div class="mock-image"></div>
+          <div class="mock-body">
+            <span class="card-label">Private Dinner / SF</span>
+            <h3>First Commits: The First Technical Hire</h3>
+            <p>Twenty founding engineers. One table. No panels, no pitches.</p>
+            <div class="mock-tags"><small>Mar 14</small><small>Invite only</small></div>
+          </div>
+        </article>
+
+        <article class="banner-card">
+          <span class="card-label">Event banner / 1600 x 900</span>
+          <h3>Before product-market fit, somebody had to ship.</h3>
+          <p>First Commits Dinner Series</p>
+        </article>
+
+        <article class="social-card">
+          <span class="card-label">LinkedIn / square</span>
+          <h3>Not founders. Not late hires. Founding engineers.</h3>
+          <p>First Commits gives the earliest builders a category of their own.</p>
+        </article>
+
+        <article class="badge-card">
+          <span class="card-label">Member badge</span>
+          <div class="badge">
+            <strong>FC</strong>
+            <p>Member</p>
+            <small>commit 000001</small>
+          </div>
+        </article>
+
+        <article class="signage-card">
+          <span class="card-label">Room signage</span>
+          <h3>No panels. No pitches. Just the people who built first.</h3>
+          <p>First Commits / Salon 03</p>
+        </article>
+
+        <article class="partner-card">
+          <span class="card-label">Partner lockup</span>
+          <div class="partner-lockup">
+            <strong>First Commits</strong>
+            <small>x</small>
+            <strong>Bessemer</strong>
+          </div>
+          <p>Supported by partners who understand the earliest technical work.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <p class="eyebrow">07 / Asset Checklist</p>
+        <h2>What to Make Next</h2>
+      </div>
+      <div class="checklist">
+        <p>Luma event cover, Luma card image, LinkedIn announcement, partner dinner invite, member badge, speaker card, email header, event signage, table card, post-event recap image, partner one-pager, membership acceptance email, referral request template.</p>
+      </div>
+    </section>
+  </body>
+</html>

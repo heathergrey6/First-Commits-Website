@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>First Commits Motion System</title>
+    <style>
+      :root {
+        --ink: #080c16;
+        --blueprint: #16213a;
+        --porcelain: #f5f0e6;
+        --bone: #ebe1d2;
+        --citrine: #d4ff4f;
+        --rust: #ff6b35;
+        --smoke: #48505f;
+        --fog: #c8c0b4;
+        --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+        --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+        --wide: 1220px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--porcelain);
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 18px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .hero,
+      section {
+        width: min(100%, var(--wide));
+        margin: 0 auto;
+      }
+
+      .hero {
+        min-height: 72vh;
+        padding: 18px 32px 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--porcelain);
+      }
+
+      .topbar {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .mark {
+        width: 40px;
+        height: 40px;
+        background:
+          url("../public/fc-logo.svg") center / 78% no-repeat,
+          #f8f5ef;
+        border: 1px solid #ded9cf;
+        border-radius: 11px;
+      }
+
+      .artifact-link {
+        color: var(--smoke);
+        text-decoration: none;
+      }
+
+      .artifact-link:hover {
+        color: var(--ink);
+      }
+
+      .hero-grid,
+      .section-header,
+      .principle-grid,
+      .timeline,
+      .interaction-grid {
+        display: grid;
+        gap: 64px;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) 430px;
+        align-items: end;
+      }
+
+      .eyebrow,
+      .label,
+      .tag,
+      .motion-label,
+      .timecode {
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .eyebrow,
+      .label,
+      .motion-label {
+        color: var(--rust);
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: 88px;
+        line-height: 0.94;
+      }
+
+      h2 {
+        font-size: 54px;
+        line-height: 1.04;
+      }
+
+      h3 {
+        font-size: 30px;
+        line-height: 1.08;
+      }
+
+      .hero-copy,
+      .muted {
+        color: var(--smoke);
+      }
+
+      .hero-copy {
+        font-size: 21px;
+      }
+
+      .motion-stage {
+        min-height: 430px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--bone);
+      }
+
+      .stage-header {
+        position: relative;
+        z-index: 4;
+        padding: 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        color: var(--smoke);
+      }
+
+      .stage-layer {
+        position: absolute;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: rgba(245, 240, 230, 0.72);
+        animation: quiet-drift 8s ease-in-out infinite alternate;
+      }
+
+      .layer-one {
+        width: 74%;
+        height: 170px;
+        left: 9%;
+        top: 108px;
+        background: var(--ink);
+        color: var(--porcelain);
+        animation-duration: 10s;
+      }
+
+      .layer-two {
+        width: 56%;
+        min-height: 132px;
+        right: 7%;
+        bottom: 76px;
+        padding: 18px;
+        background: var(--porcelain);
+        animation-delay: -2s;
+      }
+
+      .layer-three {
+        width: 96px;
+        height: 96px;
+        left: 13%;
+        bottom: 58px;
+        display: grid;
+        place-items: center;
+        background: var(--citrine);
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        animation-duration: 6s;
+      }
+
+      .layer-one .motion-label {
+        display: block;
+        padding: 24px 24px 0;
+        color: var(--citrine);
+      }
+
+      .layer-one p {
+        max-width: 9ch;
+        padding: 38px 24px 24px;
+        font-size: 42px;
+        line-height: 0.95;
+      }
+
+      .layer-two p {
+        margin-top: 28px;
+        font-size: 29px;
+        line-height: 1.05;
+      }
+
+      section {
+        padding: 92px 32px;
+        border-top: 1px solid rgba(8, 12, 22, 0.14);
+      }
+
+      .section-header {
+        grid-template-columns: 190px minmax(0, 1fr);
+        margin-bottom: 56px;
+      }
+
+      .section-header p {
+        max-width: 720px;
+        color: var(--smoke);
+        font-size: 22px;
+      }
+
+      .principle-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .card,
+      .token-row,
+      .state-card,
+      .note {
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: rgba(255, 255, 255, 0.34);
+      }
+
+      .card {
+        min-height: 260px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card.dark {
+        background: var(--ink);
+        color: var(--porcelain);
+      }
+
+      .card.dark .muted {
+        color: rgba(245, 240, 230, 0.72);
+      }
+
+      .card.signal {
+        background: var(--citrine);
+      }
+
+      .tag,
+      .timecode {
+        color: var(--rust);
+      }
+
+      .card.dark .tag {
+        color: var(--citrine);
+      }
+
+      .card p {
+        color: var(--smoke);
+      }
+
+      .card.signal p {
+        color: rgba(8, 12, 22, 0.76);
+      }
+
+      .timeline {
+        gap: 10px;
+      }
+
+      .token-row {
+        min-height: 104px;
+        padding: 18px 20px;
+        display: grid;
+        grid-template-columns: 160px minmax(0, 1fr) 190px;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .token-row strong {
+        font-size: 25px;
+        line-height: 1.05;
+      }
+
+      .token-row p {
+        color: var(--smoke);
+      }
+
+      .scroll-reference {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+        gap: 28px;
+        align-items: start;
+      }
+
+      .scroll-copy {
+        position: sticky;
+        top: 24px;
+        padding: 24px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--ink);
+        color: var(--porcelain);
+      }
+
+      .scroll-copy p {
+        margin-top: 22px;
+        color: rgba(245, 240, 230, 0.74);
+      }
+
+      .scroll-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .motion-step {
+        min-height: 330px;
+        padding: 20px;
+        position: sticky;
+        top: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--porcelain);
+        box-shadow: 0 24px 42px rgba(8, 12, 22, 0.08);
+      }
+
+      .motion-step:nth-child(2) {
+        top: 54px;
+        background: var(--bone);
+      }
+
+      .motion-step:nth-child(3) {
+        top: 84px;
+        background: var(--blueprint);
+        color: var(--porcelain);
+      }
+
+      .motion-step:nth-child(4) {
+        top: 114px;
+        background: var(--citrine);
+      }
+
+      .motion-step:nth-child(3) .muted {
+        color: rgba(245, 240, 230, 0.72);
+      }
+
+      .motion-step h3 {
+        max-width: 12ch;
+        font-size: 44px;
+      }
+
+      .interaction-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .state-card {
+        min-height: 300px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .button-demo,
+      .field-demo,
+      .toast-demo {
+        min-height: 112px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--porcelain);
+      }
+
+      .button-demo span {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 18px;
+        border: 1px solid var(--ink);
+        border-radius: 8px;
+        background: var(--ink);
+        color: var(--porcelain);
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        transition:
+          transform 160ms ease,
+          background 160ms ease,
+          color 160ms ease;
+      }
+
+      .state-card:hover .button-demo span {
+        transform: translateY(-2px);
+        background: var(--rust);
+      }
+
+      .field-demo input {
+        width: min(100%, 240px);
+        border: 1px solid rgba(8, 12, 22, 0.18);
+        border-radius: 8px;
+        background: var(--porcelain);
+        padding: 13px 14px;
+        color: var(--ink);
+        font: inherit;
+        transition:
+          border-color 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .state-card:hover .field-demo input {
+        border-color: var(--ink);
+        box-shadow: 0 0 0 3px var(--citrine);
+      }
+
+      .toast-demo span {
+        width: min(100%, 260px);
+        padding: 14px 16px;
+        border: 1px solid rgba(8, 12, 22, 0.14);
+        background: var(--bone);
+        color: var(--smoke);
+        transform: translateY(12px);
+        opacity: 0.72;
+        transition:
+          transform 180ms ease,
+          opacity 180ms ease;
+      }
+
+      .state-card:hover .toast-demo span {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .note {
+        padding: 28px;
+        background: var(--bone);
+      }
+
+      .note p {
+        max-width: 760px;
+        color: var(--smoke);
+        font-size: 22px;
+      }
+
+      @keyframes quiet-drift {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+
+        to {
+          transform: translate3d(0, -14px, 0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          min-height: auto;
+          gap: 72px;
+          padding: 16px 18px 56px;
+        }
+
+        .hero-grid,
+        .section-header,
+        .scroll-reference,
+        .interaction-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .principle-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        h1 {
+          font-size: 56px;
+        }
+
+        h2 {
+          font-size: 42px;
+        }
+
+        section {
+          padding: 64px 18px;
+        }
+
+        .token-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .scroll-copy,
+        .motion-step {
+          position: relative;
+          top: auto;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topbar {
+          flex-wrap: wrap;
+        }
+
+        .principle-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .motion-stage {
+          min-height: 360px;
+        }
+
+        .layer-one p {
+          font-size: 34px;
+        }
+
+        .layer-two {
+          width: 70%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <nav class="topbar" aria-label="Brand artifact navigation">
+          <span class="mark" aria-hidden="true"></span>
+          <strong>First Commits Motion System</strong>
+          <a class="artifact-link" href="./index.html">Artifacts</a>
+          <a class="artifact-link" href="./first-commits-design-system.html">Design system</a>
+          <a class="artifact-link" href="./first-commits-logo-usage.html">Logo usage</a>
+          <a class="artifact-link" href="./first-commits-form-system.html">Forms</a>
+        </nav>
+
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Reference only / motion direction</p>
+            <h1>Motion should clarify the room, not perform.</h1>
+          </div>
+          <p class="hero-copy">
+            First Commits motion should make the experience feel live, calm,
+            and intentional. Use movement to reveal priority, explain progress,
+            and create depth around people and events.
+          </p>
+        </div>
+      </header>
+
+      <section aria-labelledby="motion-preview">
+        <div class="section-header">
+          <p class="label">01 / Preview</p>
+          <div>
+            <h2 id="motion-preview">Quiet parallax.</h2>
+            <p>
+              The default expression is layered, editorial, and slow. Nothing
+              should wobble, bounce, spin, or steal attention from the content.
+            </p>
+          </div>
+        </div>
+
+        <div class="motion-stage" aria-label="Parallax motion mockup">
+          <div class="stage-header">
+            <span class="timecode">Scroll scene / 6s</span>
+            <span>Reduced amplitude, layered depth</span>
+          </div>
+          <div class="stage-layer layer-one">
+            <span class="motion-label">Dinner series</span>
+            <p>Before scale, somebody shipped.</p>
+          </div>
+          <div class="stage-layer layer-two">
+            <span class="motion-label">Event state</span>
+            <p>Twenty founding engineers. One table.</p>
+          </div>
+          <div class="stage-layer layer-three">FC</div>
+        </div>
+      </section>
+
+      <section aria-labelledby="principles">
+        <div class="section-header">
+          <p class="label">02 / Principles</p>
+          <div>
+            <h2 id="principles">Movement rules.</h2>
+            <p>
+              Motion should be useful enough that removing it would make the
+              interface feel less clear, not just less decorated.
+            </p>
+          </div>
+        </div>
+
+        <div class="principle-grid">
+          <article class="card">
+            <span class="tag">Hierarchy</span>
+            <h3>Move the next decision first.</h3>
+            <p>Use motion to rank what the visitor should notice, read, or act on.</p>
+          </article>
+          <article class="card dark">
+            <span class="tag">Restraint</span>
+            <h3>One active idea per viewport.</h3>
+            <p class="muted">Background movement must stay slower than the reader.</p>
+          </article>
+          <article class="card">
+            <span class="tag">Continuity</span>
+            <h3>Motion connects sections.</h3>
+            <p>Parallax should help the page feel physically continuous as users scroll.</p>
+          </article>
+          <article class="card signal">
+            <span class="tag">Access</span>
+            <h3>Reduced motion is first class.</h3>
+            <p>Every animated pattern needs a calm, complete still-state fallback.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="timing">
+        <div class="section-header">
+          <p class="label">03 / Timing</p>
+          <div>
+            <h2 id="timing">Speed tokens.</h2>
+            <p>
+              Keep timings tight for controls and slower for spatial depth.
+              Nothing in the product should feel like a splash screen.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="token-row">
+            <span class="timecode">120-180ms</span>
+            <strong>Micro feedback</strong>
+            <p>Buttons, inputs, hover states, pressed states, and active tabs.</p>
+          </div>
+          <div class="token-row">
+            <span class="timecode">220-320ms</span>
+            <strong>Content reveal</strong>
+            <p>New form fields, validation summaries, cards, and lightweight panels.</p>
+          </div>
+          <div class="token-row">
+            <span class="timecode">500-900ms</span>
+            <strong>Spatial depth</strong>
+            <p>Hero layers, editorial parallax, room signage, and event compositions.</p>
+          </div>
+          <div class="token-row">
+            <span class="timecode">0ms</span>
+            <strong>Critical correction</strong>
+            <p>Errors, destructive confirmations, and submit disabled states appear immediately.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="scroll">
+        <div class="section-header">
+          <p class="label">04 / Scroll</p>
+          <div>
+            <h2 id="scroll">Parallax choreography.</h2>
+            <p>
+              Use sticky stacking for high-signal pages: homepage story beats,
+              event pages, application review, and partner proof.
+            </p>
+          </div>
+        </div>
+
+        <div class="scroll-reference">
+          <aside class="scroll-copy">
+            <p class="label">Recommended scroll pattern</p>
+            <h3>One layer locks while the next one arrives.</h3>
+            <p>
+              This gives the brand depth without creating a noisy background.
+              Content still owns the page; motion is the pacing layer.
+            </p>
+          </aside>
+
+          <div class="scroll-stack">
+            <article class="motion-step">
+              <span class="tag">Step 01</span>
+              <h3>Founding engineer story.</h3>
+              <p class="muted">Reveal the premise with a single large editorial line.</p>
+            </article>
+            <article class="motion-step">
+              <span class="tag">Step 02</span>
+              <h3>Proof of room.</h3>
+              <p class="muted">Bring in dinner, salon, or member details as grounded evidence.</p>
+            </article>
+            <article class="motion-step">
+              <span class="tag">Step 03</span>
+              <h3>Application moment.</h3>
+              <p class="muted">Shift from story to action when a form becomes the main task.</p>
+            </article>
+            <article class="motion-step">
+              <span class="tag">Step 04</span>
+              <h3>Commit with clarity.</h3>
+              <p class="muted">End with a stable call to action, not another flourish.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="interaction">
+        <div class="section-header">
+          <p class="label">05 / Interaction</p>
+          <div>
+            <h2 id="interaction">Controls move less.</h2>
+            <p>
+              Interactive states should feel responsive and precise. Keep form
+              and navigation motion short so the product still feels serious.
+            </p>
+          </div>
+        </div>
+
+        <div class="interaction-grid">
+          <article class="state-card">
+            <span class="tag">Button</span>
+            <div class="button-demo"><span>Request invite</span></div>
+            <p class="muted">Translate up 2px, change color, no bounce.</p>
+          </article>
+          <article class="state-card">
+            <span class="tag">Input focus</span>
+            <div class="field-demo"><input value="first technical hire" aria-label="Demo input" /></div>
+            <p class="muted">Use citrine as a focus ring, never as a full form surface.</p>
+          </article>
+          <article class="state-card">
+            <span class="tag">Toast</span>
+            <div class="toast-demo"><span>Application saved for review.</span></div>
+            <p class="muted">Move 12px or less. Confirm the state and settle quickly.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="reduced-motion">
+        <div class="section-header">
+          <p class="label">06 / Accessibility</p>
+          <div>
+            <h2 id="reduced-motion">Reduced motion.</h2>
+            <p>
+              If a user prefers reduced motion, keep the same layout, hierarchy,
+              and content. Remove animation duration, preserve final states, and
+              avoid motion-only meaning.
+            </p>
+          </div>
+        </div>
+
+        <div class="note">
+          <p>
+            Implementation rule: every parallax section needs a no-motion version
+            that still reads as a finished composition. Do not make motion the
+            only way to understand progress, validation, or page structure.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
