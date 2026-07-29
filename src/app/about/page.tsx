@@ -3,7 +3,7 @@ import styles from './about.module.css'
 
 const companies = [
   'Babs', 'Baseten', 'Bem', 'Blockit AI', 'Bluejay', 'Boxes.dev', 'Bretton AI',
-  'Centralize', 'Chalk', 'Column', 'Console', 'Convex', 'Coval', 'Cursor',
+  'Centralize', 'Chalk', 'Coefficient', 'Column', 'Console', 'Convex', 'Coval', 'Cursor',
   'Decagon', 'Delphi', 'Doss', 'Echelon', 'Exa', 'fal', 'Fermat', 'Fifteenth',
   'Flagship', 'Flint', 'Forge', 'Fragment', 'Fulcrum', 'Gem', 'Hyperscale',
   'Inception', 'Kaizen', 'Kestral', 'Marin', 'Max AI', 'Maximal', 'Merge API',
