@@ -259,6 +259,46 @@
   opacity: 0.72;
 }
 
+.communityBlock {
+  width: min(100%, var(--max-width-wide));
+  margin: 0 auto;
+  display: grid;
+  gap: 1.1rem;
+  padding-top: 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(8, 12, 22, 0.16);
+}
+
+.communityStats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 12rem));
+  justify-content: center;
+  gap: 3.5rem;
+}
+
+.communityStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.communityStat strong {
+  font-family: var(--font-mono);
+  font-size: 2.6rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+
+.communityStat span {
+  margin-top: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-smoke);
+}
+
 .manifestoSection,
 .principlesSection,
 .membershipSection {
@@ -567,9 +607,18 @@
     padding: 0.65rem;
   }
 
-  .partnerBlock {
+  .partnerBlock,
+  .communityBlock {
     gap: 0.8rem;
     padding-top: 1rem;
+  }
+
+  .communityStats {
+    gap: 2rem;
+  }
+
+  .communityStat strong {
+    font-size: 2.1rem;
   }
 
   .heroText,

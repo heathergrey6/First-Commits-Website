@@ -138,6 +138,20 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        <div className={styles.communityBlock}>
+          <p className={styles.partnerLabel}>Our community</p>
+          <div className={styles.communityStats}>
+            <div className={styles.communityStat}>
+              <strong>90+</strong>
+              <span>Members</span>
+            </div>
+            <div className={styles.communityStat}>
+              <strong>70+</strong>
+              <span>Startups represented</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className={styles.manifestoSection}>

@@ -1,17 +1,31 @@
 import Nav from '@/components/Nav'
 import styles from './about.module.css'
 
+const companies = [
+  'Babs', 'Baseten', 'Bem', 'Blockit AI', 'Bluejay', 'Boxes.dev', 'Bretton AI',
+  'Centralize', 'Chalk', 'Coefficient', 'Column', 'Console', 'Convex', 'Coval', 'Cursor',
+  'Decagon', 'Delphi', 'Doss', 'Echelon', 'Exa', 'fal', 'Fermat', 'Fifteenth',
+  'Flagship', 'Flint', 'Forge', 'Fragment', 'Fulcrum', 'Gem', 'Hyperscale',
+  'Inception', 'Kaizen', 'Kestral', 'Marin', 'Max AI', 'Maximal', 'Merge API',
+  'Monaco', 'Nash', 'Nile', 'Orb', 'Paraform', 'Paramark', 'Parcha',
+  'Pi Security', 'Pivot Robotics', 'Ploy', 'Poetic', 'Pylon', 'Reevo',
+  'Resolve AI', 'Rundoo', 'Serafis', 'Shepherd Insurance', 'Simile',
+  'Soma Health', 'Sphere', 'Spot AI', 'Styleframe AI', 'Superscript',
+  'Tandemn', 'Tightrope', 'Town', 'TruckSmarter', 'Unify', 'Vapi',
+  'Virescent', 'Yutori',
+]
+
 const founders = [
   {
-    initials: 'SK',
     name: 'Sujay Khandekar',
     role: 'Co-founder, First Commits',
+    title: 'Founding engineer, Orb',
     url: 'https://www.linkedin.com/in/sujaykhandekar/',
   },
   {
-    initials: 'WN',
     name: 'William Namen',
     role: 'Co-founder, First Commits',
+    title: 'Founding engineer, Coefficient',
     url: 'https://www.linkedin.com/in/williamnamen/?skipRedirect=true',
   },
 ]
@@ -60,14 +74,24 @@ export default function About() {
           </div>
           <div className={styles.statsGrid}>
             <p className={styles.sectionLabel}>By the numbers</p>
-            <div className={styles.statItem}>
-              <strong>80+</strong>
-              <span>Community members</span>
-              <p>
-                Founding engineers and first technical hires across the First
-                Commits network.
-              </p>
+            <div className={styles.statsRow}>
+              <div className={styles.statItem}>
+                <strong>90+</strong>
+                <span>Community members</span>
+              </div>
+              <div className={styles.statItem}>
+                <strong>70+</strong>
+                <span>Represented companies</span>
+              </div>
             </div>
+          </div>
+          <div className={styles.companiesGrid}>
+            <p className={styles.sectionLabel}>Represented companies</p>
+            <ul className={styles.companyList}>
+              {companies.map((company) => (
+                <li key={company}>{company}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -82,10 +106,10 @@ export default function About() {
           <div className={styles.founderGrid}>
             {founders.map((founder) => (
               <article className={styles.founderCard} key={founder.name}>
-                <div className={styles.initials}>{founder.initials}</div>
                 <div>
                   <h3>{founder.name}</h3>
-                  <p>{founder.role}</p>
+                  <p className={styles.founderRole}>{founder.role}</p>
+                  <p>{founder.title}</p>
                 </div>
                 <a href={founder.url} target="_blank" rel="noopener noreferrer">
                   LinkedIn
