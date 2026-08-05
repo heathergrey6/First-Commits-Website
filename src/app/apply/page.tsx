@@ -22,6 +22,16 @@ export default function Apply() {
     e.preventDefault()
     setIsSubmitting(true)
 
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      role: formData.role,
+      company: formData.company,
+      linkedin: formData.linkedin || 'Not provided',
+      why: formData.why,
+      referral: formData.referral || 'None',
+    }
+
     try {
       const response = await fetch('https://formsubmit.co/ajax/community@firstcommits.com', {
         method: 'POST',
@@ -30,16 +40,17 @@ export default function Apply() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          role: formData.role,
-          company: formData.company,
-          linkedin: formData.linkedin || 'Not provided',
-          why: formData.why,
-          referral: formData.referral || 'None',
+          ...payload,
           _subject: `First Commits Application: ${formData.name}`,
         }),
       })
+
+      // Send to Make.com webhook for downstream automation (e.g. Slack); best-effort so a Make outage doesn't block the application.
+      fetch('https://hook.us2.make.com/79r4dmjd9qouki92vce958v34ck88acr', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }).catch(() => {})
 
       if (response.ok) {
         setIsSubmitted(true)
