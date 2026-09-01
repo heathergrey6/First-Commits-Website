@@ -29,7 +29,7 @@
 }
 
 .navLink {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -45,7 +45,7 @@
 }
 
 .logo {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -67,7 +67,7 @@
 /* Form Section */
 .formSection {
   flex: 1;
-  padding: var(--spacing-xl) var(--spacing-md);
+  padding: 3rem var(--spacing-md) var(--spacing-xl);
   display: flex;
   justify-content: center;
 }
@@ -83,7 +83,7 @@
 }
 
 .formLabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -128,7 +128,7 @@
 
 .label {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -215,7 +215,7 @@
 }
 
 .reviewNote {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -227,7 +227,7 @@
 .submitBtn {
   width: 100%;
   padding: 1.25rem 2rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -270,7 +270,7 @@
 }
 
 .confirmationLabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -299,7 +299,7 @@
 }
 
 .backLink {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;

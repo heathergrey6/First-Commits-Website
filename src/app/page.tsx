@@ -3,56 +3,172 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
+import EventCarousel from '@/components/EventCarousel'
 import styles from './page.module.css'
 
-const partnerLogos = [
-  { src: '/bessemer_logo.png', alt: 'Bessemer Venture Partners' },
-  { src: '/forerunner-logo.png', alt: 'Forerunner' },
-  { src: '/accel-logo.png', alt: 'Accel' },
-  { src: '/bullpen-logo.jpeg', alt: 'Bullpen' },
-  { src: '/crosslink.svg', alt: 'Crosslink Capital' },
-  { src: '/langchain.png', alt: 'LangChain' },
-  { src: '/alpha.png', alt: 'Alpha' },
-  { src: '/greycroft.png', alt: 'Greycroft' },
+const partnerNames = [
+  'Bessemer Venture Partners',
+  'Forerunner',
+  'Accel',
+  'Bullpen Capital',
+  'Crosslink Capital',
+  'LangChain',
+  'Alpha Partners',
+  'Greycroft',
+  'M13',
+  'Precursor Ventures',
+  'Bain Capital Ventures',
+  'Scale Venture Partners',
+  'IVP',
+  'Battery Ventures',
+  'ElevenLabs',
 ]
 
-const heroCommits = [
+const representedStartups = [
+  'Aleph',
+  'Ambient.ai',
+  'Amdahl',
+  'Ampersand',
+  'Anori',
+  'Anything',
+  'Anzenna',
+  'Assert',
+  'Babs',
+  'Baseten',
+  'Bem',
+  'Blockit AI',
+  'Bluejay',
+  'Boxes.dev',
+  'Bretton AI',
+  'Centralize',
+  'Chalk',
+  'Coefficient',
+  'Column',
+  'Console',
+  'Convex',
+  'Coval',
+  'Cursor',
+  'Decagon',
+  'Delphi',
+  'Delve',
+  'Doss',
+  'Echelon',
+  'Exa',
+  'fal',
+  'Fermat',
+  'Fifteenth',
+  'Flagship',
+  'Flint',
+  'Forge',
+  'Fragment',
+  'Frontier Security',
+  'Fulcrum',
+  'Gem',
+  'Hyperscale',
+  'Inception',
+  'Kaizen',
+  'Kestral',
+  'Marin',
+  'Max AI',
+  'Maximal',
+  'Merge API',
+  'Monaco',
+  'Nash',
+  'Nile',
+  'Orb',
+  'Paraform',
+  'Paramark',
+  'Parcha',
+  'Persona',
+  'Phonely',
+  'Pi Security',
+  'Pivot Robotics',
+  'Ploy',
+  'Poetic',
+  'Pylon',
+  'Reevo',
+  'Resolve AI',
+  'Rundoo',
+  'Serafis',
+  'Shepherd Insurance',
+  'Simile',
+  'Soma Health',
+  'Specter',
+  'Sphere',
+  'Spot AI',
+  'Styleframe AI',
+  'Superscript',
+  'Tandemn',
+  'Tightrope',
+  'Town',
+  'TruckSmarter',
+  'Unify',
+  'Vapi',
+  'Virescent',
+  'Voicebit',
+  'Yutori',
+]
+
+const eventPhotos = [
   {
-    hash: 'fc-0001',
-    message: 'init room-for-founding-engineers',
-    meta: 'A dinner felt obvious. The category did not exist yet.',
+    src: '/event-scale-1.jpg',
+    alt: 'Founding engineers at a dinner with Scale Venture Partners',
+    caption: 'Dinner with Scale Venture Partners',
   },
   {
-    hash: 'fc-0002',
-    message: 'remove panels-and-pitches',
-    meta: 'Keep the room small enough for useful context.',
+    src: '/event-dinner.jpeg',
+    alt: 'Founding engineers at a First Commits dinner table',
+    caption: 'A First Commits private dinner',
   },
   {
-    hash: 'fc-0003',
-    message: 'merge early-builders into main',
-    meta: 'Private dinners, referrals, and working sessions.',
+    src: '/founding-engineers-dinner-room.jpeg',
+    alt: 'A private dinner room set for a First Commits gathering',
+    caption: 'A private dinner in San Francisco',
+  },
+  {
+    src: '/partner-dinner.jpeg',
+    alt: 'Members talking at a partner-hosted dinner',
+    caption: 'A partner-hosted dinner',
+  },
+  {
+    src: '/partner-hosted-room.jpeg',
+    alt: 'A partner-hosted room during a First Commits event',
+    caption: 'A partner-hosted room',
+  },
+  {
+    src: '/event-lounge.jpeg',
+    alt: 'Members mingling in a lounge before a First Commits event',
+    caption: 'Mingling before the main event',
   },
 ]
 
-const gatherings = [
+const membershipBenefits = [
   {
-    label: 'Private dinners',
-    title: 'One table, no stage.',
-    description: 'Fifteen to twenty-five founding engineers in a room built for the kind of candor that never happens on a panel.',
-    image: '/founding-engineers-dinner-room.jpeg',
+    label: 'Active Slack community',
+    description: 'The Slack channel actually gets used — architecture debates, hiring calls, and outage post-mortems happen there daily, not once a quarter.',
   },
   {
-    label: 'Working salons',
-    title: 'Technical context first.',
-    description: 'Conversations around the early decisions that shape companies: architecture, hiring, incidents, velocity, and taste.',
-    image: '/partner-dinner.jpeg',
+    label: 'Social events',
+    description: "Private dinners and working salons in real rooms, with people who've carried the same kind of pressure you have.",
   },
   {
-    label: 'Partner-hosted rooms',
-    title: 'Useful access, not sponsorship theater.',
-    description: 'We bring together members, operators, and aligned partners when the room gets sharper because they are there.',
-    image: '/partner-hosted-room.jpeg',
+    label: 'Early access to products',
+    description: 'See what other founding engineers are building before it ships, and get first access when it does.',
   },
+  {
+    label: 'Shameless plugs',
+    description: 'Post what you’re hiring for, what you built, or what you need — the room is built for asks, not just conversation.',
+  },
+  {
+    label: 'Resource for questions',
+    description: "A direct line to people who've already made the call you're stuck on — architecture, hiring, or otherwise.",
+  },
+]
+
+const communityStats = [
+  { value: '100+', label: 'Members' },
+  { value: '80+', label: 'Startups represented' },
 ]
 
 export default function Home() {
@@ -84,154 +200,130 @@ export default function Home() {
       <Nav />
       <div id="main-content" />
 
+      {/* Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroGrid}>
-          <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>For the first technical hires</p>
-            <h1 className={styles.heroTitle}>Founding engineers deserve their own room.</h1>
-            <p className={styles.heroText}>
-              First Commits is a private community for the first technical hires:
-              operators who turned an idea into a product, a repo into a company,
-              and uncertainty into working software.
+        <div className={styles.heroInner}>
+          <h1 className={styles.heroTitle}>Founding engineers deserve their own room.</h1>
+          <p className={styles.heroText}>
+            First Commits is a curated community for the founding engineers
+            who turned an idea into a product, a repo into a company, and
+            uncertainty into working software.
+          </p>
+        </div>
+
+        <div className={styles.heroPhoto}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/event-scale.jpg" alt="Founding engineers at a First Commits dinner" />
+        </div>
+      </section>
+
+      {/* Who we are and what we do */}
+      <section className={styles.whoWeAre}>
+        <div className="container-wide">
+          <h2 className="reveal">Who we are</h2>
+          <div className={styles.whoWeAreCopy}>
+            <p className="reveal">
+              Building early can be lonely. First Commits exists to connect the people who are boldly building the technical foundations of a business from the ground up. We are a professional network, a resource, and a community of peers who understand the unique challenges of being a founding engineer. 
             </p>
-            <div className={styles.heroActions}>
-              <Link href="/apply" className={styles.primaryAction}>Request an invite</Link>
-              <Link href="/partners" className={styles.secondaryAction}>Partner with us</Link>
+            <p className="reveal">
+              Through in-person events and a lively Slack forum, we provide opportunities to connect, brainstorm, test early versions of products, and build relationships that last. These are folks who will cheer you on when you ship, who understand the late nights, and maybe one-day be your co-founder.
+            </p>
+          </div>
+          <div className={`${styles.statsRow} reveal`}>
+            {communityStats.map((stat) => (
+              <div className={styles.statItem} key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className={`${styles.infoRow} reveal`}>
+            <p className={styles.partnerLabel}>Our sponsors</p>
+            <div className={styles.sponsorsRow}>
+              <span className={styles.sponsorWordmark}>SpaceXAI</span>
             </div>
           </div>
-
-          <aside className={styles.heroPanel} aria-label="Commit-style First Commits preview">
-            <div className={styles.heroPhoto}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/event-dinner.jpeg" alt="First Commits private dinner" />
+          <div className={`${styles.infoRow} reveal`}>
+            <p className={styles.partnerLabel}>Our partners</p>
+            <div className={styles.partnerNamesColumns}>
+              {(() => {
+                const sorted = [...partnerNames].sort((a, b) => a.localeCompare(b))
+                const splitIndex = sorted.indexOf('Forerunner')
+                const columns = [sorted.slice(0, splitIndex), sorted.slice(splitIndex)]
+                return columns.map((column, i) => (
+                  <ul className={styles.partnerNamesList} key={i}>
+                    {column.map((name) => (
+                      <li key={name}>{name}</li>
+                    ))}
+                  </ul>
+                ))
+              })()}
             </div>
-            <div className={styles.commitBrowser}>
-              <div className={styles.commitBrowserTop}>
-                <span>first-commits/main</span>
-                <span>3 commits</span>
-              </div>
-              <div className={styles.commitRows}>
-                {heroCommits.map((commit) => (
-                  <div className={styles.commitRow} key={commit.hash}>
-                    <span className={styles.commitHash}>{commit.hash}</span>
-                    <div>
-                      <span className={styles.commitMessage}>{commit.message}</span>
-                      <span className={styles.commitMeta}>{commit.meta}</span>
-                    </div>
-                  </div>
+          </div>
+          <div className={`${styles.infoRow} reveal`}>
+            <p className={styles.partnerLabel}>Represented startups</p>
+            <ul className={styles.startupsList}>
+              {[...representedStartups]
+                .sort((a, b) => a.localeCompare(b))
+                .map((name) => (
+                  <li key={name}>{name}</li>
                 ))}
-              </div>
-              <div className={styles.diffStat} aria-label="Event format summary">
-                <span>+ founding engineers</span>
-                <span>- panels</span>
-                <span>- pitches</span>
-              </div>
-            </div>
-          </aside>
+            </ul>
+          </div>
         </div>
-        <div className={styles.partnerBlock}>
-          <p className={styles.partnerLabel}>Our partners</p>
-          <div className={styles.partnerRail} aria-label="Partner organizations">
-            {partnerLogos.map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.alt} src={logo.src} alt={logo.alt} className={styles.partnerLogo} />
+      </section>
+
+      {/* Events */}
+      <section className={styles.events}>
+        <div className="container-wide">
+          <h2 className="reveal">Events</h2>
+          <div className={styles.eventsCopy}>
+            <p className="reveal">
+              We host bi-monthly in-person events with our partners for founding engineers to share experiences, learn from each other, and build lifelong connections. Instead of the usual tech talks, pitches, and panels, we focus on small intimate gatherings that feel personal, authentic, and fun. 
+            </p>
+            <p className="reveal">
+              Interested in becoming a sponsor? Visit our <Link href="/partners" className={styles.link}>sponsors page</Link> to learn more.
+            </p>
+          </div>
+
+          <div className={`${styles.carouselBlock} reveal`}>
+            <EventCarousel photos={eventPhotos} />
+          </div>
+        </div>
+      </section>
+
+      {/* Membership benefits */}
+      <section className={styles.benefits}>
+        <div className="container-wide">
+          <h2 className="reveal">Membership benefits</h2>
+          <p className={`${styles.benefitsKicker} reveal`}>
+            The goal is not scale. The goal is density: every member should make
+            the room sharper for every other member.
+          </p>
+
+          <div className={styles.benefitsGrid}>
+            {membershipBenefits.map((benefit) => (
+              <div key={benefit.label} className={`${styles.benefitCard} reveal`}>
+                <h3>{benefit.label}</h3>
+                <p>{benefit.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.manifestoSection}>
-        <div className="container-wide">
-          <div className={styles.manifestoGrid}>
-            <div className={styles.manifestoCopy}>
-              <p className={`${styles.sectionLabel} reveal`}>Why we exist</p>
-              <h2 className="reveal">The earliest builders deserve a category of their own.</h2>
-              <p className="reveal">
-                You joined when the product was mostly conviction. You chose the stack,
-                handled the outage, shipped the demo, hired the next engineer, and made
-                the technical bets that everyone else later inherited.
-              </p>
-              <p className="reveal">
-                First Commits exists to recognize that work and connect the people who
-                have done it with others operating at the same level of trust, taste,
-                and urgency.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.principlesSection}>
-        <div className="container-wide">
-          <div className={styles.sectionHeader}>
-            <p className={`${styles.sectionLabel} reveal`}>What we host</p>
-            <h2 className="reveal">Small rooms with enough context to become useful.</h2>
-          </div>
-          <div className={styles.principleGrid}>
-            {gatherings.map((gathering) => (
-              <article key={gathering.title} className={`${styles.principleCard} reveal`}>
-                <div className={styles.principleImage}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={gathering.image} alt="" />
-                </div>
-                <div className={styles.principleBody}>
-                  <span>{gathering.label}</span>
-                  <h3>{gathering.title}</h3>
-                  <p>{gathering.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.membershipSection}>
-        <div className="container-wide">
-          <div className={styles.membershipGrid}>
-            <div>
-              <p className={`${styles.sectionLabel} reveal`}>Membership standard</p>
-              <h2 className="reveal">Invite-only, referral-led, evidence-based.</h2>
-            </div>
-            <div className={styles.membershipCopy}>
-              <p className="reveal">
-                We are looking for people who can point to the work: the first repo,
-                the first launch, the early architecture, the production incidents,
-                the first hires, and the hard technical calls made without much cover.
-              </p>
-              <p className="reveal">
-                The goal is not scale. The goal is density: every member should make
-                the room sharper for every other member.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* Call to action */}
       <section className={styles.finalCta}>
         <div className={styles.finalInner}>
-          <p className={`${styles.sectionLabel} reveal`}>First Commits</p>
           <h2 className="reveal">If you built the first version, this is your room.</h2>
-          <Link href="/apply" className={`${styles.primaryAction} reveal`}>Request an invite</Link>
+          <div className={`${styles.ctaActions} reveal`}>
+            <Link href="/apply" className={styles.ctaPrimary}>Request Membership</Link>
+            <Link href="/partners" className={styles.ctaSecondary}>Sponsor us</Link>
+          </div>
         </div>
       </section>
 
-      <footer className={styles.footer}>
-        <div className={styles.footerInner}>
-          <Link href="/" className={styles.footerLogo}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/fc-logo.svg" alt="" className={styles.footerLogoIcon} />
-            First Commits
-          </Link>
-          <span>For founding engineers, by founding engineers.</span>
-          <a
-            href="https://www.linkedin.com/company/first-commits"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }

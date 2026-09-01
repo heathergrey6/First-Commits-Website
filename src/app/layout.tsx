@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, JetBrains_Mono } from 'next/font/google'
+import { Cormorant_Garamond, JetBrains_Mono, Hanken_Grotesk } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -14,6 +15,25 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
   variable: '--font-mono',
+  display: 'swap',
+})
+
+// Placeholder for the licensed "Bernoru Expanded" display face. Currently
+// Mont Heavy (Fontfabric demo — no Bold weight in the demo set, Heavy is
+// the boldest available); swap the file/config here once Bernoru is licensed.
+const montDisplay = localFont({
+  src: './fonts/Mont-HeavyDEMO.otf',
+  weight: '800',
+  variable: '--font-display',
+  display: 'swap',
+})
+
+// Placeholder for the licensed "Acherus Grotesque" UI face; swap the
+// import/config here when the real font files are available.
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+  variable: '--font-ui',
   display: 'swap',
 })
 
@@ -58,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${jetbrainsMono.variable} ${montDisplay.variable} ${hankenGrotesk.variable}`}>
       <body>{children}</body>
     </html>
   )
