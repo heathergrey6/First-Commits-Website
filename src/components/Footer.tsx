@@ -13,7 +13,7 @@ export default function Footer({
       <div className={styles.footerInner}>
         <Link href="/" className={styles.footerLogo}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/fc-logo.svg" alt="" className={styles.footerLogoIcon} />
+          <img src="/fc-logo.png" alt="" className={styles.footerLogoIcon} />
           First Commits
         </Link>
         <span>{tagline}</span>
