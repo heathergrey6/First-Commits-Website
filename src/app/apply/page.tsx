@@ -1,9 +1,18 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useEffect, useRef, useState, FormEvent } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
 import styles from './apply.module.css'
+
+const roleOptions = [
+  { value: 'founding-engineer-1-5', label: 'Founding Engineer (#1-5)' },
+  { value: 'founding-engineer-6-10', label: 'Early Engineer (#6-10)' },
+  { value: 'first-eng-hire', label: 'First Engineering Hire' },
+  { value: 'eng-lead-early', label: 'Early Engineering Lead / CTO Hire' },
+  { value: 'other-technical', label: 'Other Technical Role (First 10)' },
+]
 
 export default function Apply() {
   const [formData, setFormData] = useState({
@@ -17,9 +26,37 @@ export default function Apply() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isRoleOpen, setIsRoleOpen] = useState(false)
+  const roleRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!isRoleOpen) return
+
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (roleRef.current && !roleRef.current.contains(e.target as Node)) {
+        setIsRoleOpen(false)
+      }
+    }
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsRoleOpen(false)
+    }
+
+    document.addEventListener('mousedown', handleOutsideClick)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [isRoleOpen])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+
+    if (!formData.role) {
+      alert('Please select your role.')
+      return
+    }
+
     setIsSubmitting(true)
 
     try {
@@ -72,7 +109,6 @@ export default function Apply() {
         <section className={styles.confirmation}>
           <div className={styles.confirmationContent}>
             <span className={styles.confirmationLabel}>Application Received</span>
-            <div className={styles.dividerShort}></div>
             <h1 className={styles.confirmationTitle}>Thank you.</h1>
             <p className={styles.confirmationText}>
               Your application has been received and will be reviewed by our
@@ -102,18 +138,11 @@ export default function Apply() {
       <section className={styles.formSection}>
         <div className={styles.formContainer}>
           <header className={styles.formHeader}>
-            <span className={styles.formLabel}>Application</span>
-            <div className={styles.dividerShort}></div>
-            <h1 className={styles.formTitle}>Request Membership</h1>
-            <p className={styles.formIntro}>
-              First Commits is for founding engineers — the first technical hires
-              at startups. The ones who shipped v1, architected the stack, and
-              wrote the code before anyone else believed.
-            </p>
+            <h1 className={styles.formTitle}>Membership Application</h1>
             <p className={styles.formNote}>
-              All applications are reviewed by current members. We're looking for
+              All applications are reviewed by our team. We're looking for
               evidence of early-stage engineering and genuine technical impact
-              during the uncertain phase.
+              from the start.
             </p>
           </header>
 
@@ -146,29 +175,52 @@ export default function Apply() {
                 onChange={handleChange}
                 required
                 className={styles.input}
-                placeholder="you@company.com"
+                placeholder="you@domain.com"
+                aria-describedby="email-hint"
               />
+              <span id="email-hint" className={styles.hint}>
+                Personal email is best here so you can stay in our system even if you switch jobs.
+              </span>
             </div>
 
             <div className={styles.formGroup}>
               <label htmlFor="role" className={styles.label}>
                 Your Role
               </label>
-              <select
-                id="role"
-                name="role"
-                value={formData.role}
-                onChange={handleChange}
-                required
-                className={styles.select}
-              >
-                <option value="">Select your role</option>
-                <option value="founding-engineer-1-5">Founding Engineer (#1-5)</option>
-                <option value="founding-engineer-6-10">Early Engineer (#6-10)</option>
-                <option value="first-eng-hire">First Engineering Hire</option>
-                <option value="eng-lead-early">Early Engineering Lead / CTO Hire</option>
-                <option value="other-technical">Other Technical Role (First 10)</option>
-              </select>
+              <div className={styles.customSelect} ref={roleRef}>
+                <button
+                  type="button"
+                  id="role"
+                  className={styles.selectTrigger}
+                  onClick={() => setIsRoleOpen((open) => !open)}
+                  aria-haspopup="listbox"
+                  aria-expanded={isRoleOpen}
+                >
+                  <span className={formData.role ? '' : styles.selectPlaceholder}>
+                    {roleOptions.find((option) => option.value === formData.role)?.label ?? 'Select your role'}
+                  </span>
+                  <span className={`${styles.selectChevron} ${isRoleOpen ? styles.selectChevronOpen : ''}`} aria-hidden="true" />
+                </button>
+
+                {isRoleOpen && (
+                  <ul className={styles.selectMenu} role="listbox" aria-label="Your role">
+                    {roleOptions.map((option) => (
+                      <li key={option.value} role="option" aria-selected={formData.role === option.value}>
+                        <button
+                          type="button"
+                          className={`${styles.selectOption} ${formData.role === option.value ? styles.selectOptionActive : ''}`}
+                          onClick={() => {
+                            setFormData((prev) => ({ ...prev, role: option.value }))
+                            setIsRoleOpen(false)
+                          }}
+                        >
+                          {option.label}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
 
             <div className={styles.formGroup}>
@@ -222,7 +274,7 @@ export default function Apply() {
                 aria-describedby="why-hint"
               />
               <span id="why-hint" className={styles.hint}>
-                Be specific. We're looking for evidence, not claims.
+                Be specific -- anecdotes and examples are super helpful!
               </span>
             </div>
 
@@ -248,7 +300,7 @@ export default function Apply() {
 
             <div className={styles.formFooter}>
               <p className={styles.reviewNote}>
-                Applications are reviewed by humans. We read every response.
+                Applications are reviewed by humans, we read every response!
               </p>
               <button
                 type="submit"
@@ -262,14 +314,7 @@ export default function Apply() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerInner}>
-          <span className={styles.footerText}>
-            Questions? Reach out to community@firstcommits.com
-          </span>
-        </div>
-      </footer>
+      <Footer tagline="Questions? Reach out to community@firstcommits.com" />
     </main>
   )
 }

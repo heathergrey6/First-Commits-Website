@@ -3,7 +3,25 @@
 import { useState, FormEvent } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
+import LogoCarousel from '@/components/LogoCarousel'
 import styles from './partners.module.css'
+
+const partnerLogos = [
+  { src: '/bessemer_logo.png', alt: 'Bessemer Venture Partners', large: true },
+  { src: '/forerunner-logo.png', alt: 'Forerunner' },
+  { src: '/accel-logo.png', alt: 'Accel' },
+  { src: '/bullpen-logo.jpeg', alt: 'Bullpen' },
+  { src: '/crosslink.svg', alt: 'Crosslink Capital' },
+  { src: '/langchain.png', alt: 'LangChain' },
+  { src: '/alpha.png', alt: 'Alpha' },
+  { src: '/greycroft.png', alt: 'Greycroft' },
+  { src: '/ivp.svg', alt: 'IVP' },
+  { src: '/battery.png', alt: 'Battery Ventures' },
+  { src: '/scale.png', alt: 'Scale Venture Partners' },
+  { src: '/bcv.webp', alt: 'Bain Capital Ventures', large: true },
+  { src: '/precursor.png', alt: 'Precursor Ventures', large: true },
+  { src: '/elevenlabs.png', alt: 'ElevenLabs' },
+]
 
 export default function Partners() {
   const [formData, setFormData] = useState({
@@ -90,109 +108,46 @@ export default function Partners() {
       <Nav />
       <div id="main-content"></div>
 
-      {/* Split Layout */}
-      <div className={styles.splitLayout}>
-        {/* Left Column — Content */}
-        <div className={styles.splitContent}>
-          {/* Partners Banner */}
-          <section className={styles.bannerSection}>
-            <div className={styles.bannerContainer}>
-              <header className={styles.bannerHeader}>
-                <span className={styles.sectionLabel}>Our Partners</span>
-                <div className={styles.dividerShort}></div>
-                <h1 className={styles.bannerTitle}>
-                  Backed by those who<br />
-                  believe in the early.
-                </h1>
-                <p className={styles.bannerIntro}>
-                  First Commits is supported by partners who understand that the
-                  earliest contributions are often the most consequential. They
-                  share our conviction that early hires deserve recognition,
-                  community, and opportunity.
-                </p>
-              </header>
+      {/* Partners Banner */}
+      <section className={styles.bannerSection}>
+        <div className={styles.bannerRow}>
+          <header className={styles.bannerHeader}>
+            <h1 className={styles.bannerTitle}>Sponsors and Partners</h1>
+            <p className={styles.bannerIntro}>
+              First Commits is supported by sponsors and partners who understand
+              the value of early contributors; folks who embody an entrepreneurial
+              spirit, who aren&apos;t afraid to get into the technical weeds, and
+              who know how to scale. Being a sponsor demonstrates your commitment
+              to our active community and gives you exclusive access to a thriving network of
+              founding engineers at world-class startups.
+            </p>
+          </header>
 
-              <div className={styles.partnersGrid}>
-                <div className={styles.partnerCard}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/bessemer_logo.png"
-                    alt="Bessemer Venture Partners"
-                    className={styles.partnerLogoImageBessemer}
-                  />
-                </div>
-                <div className={styles.partnerCard}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/forerunner-logo.png"
-                    alt="Forerunner"
-                    className={styles.partnerLogoImage}
-                  />
-                </div>
-                <div className={styles.partnerCard}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/accel-logo.png"
-                    alt="Accel"
-                    className={styles.partnerLogoImage}
-                  />
-                </div>
-                <div className={styles.partnerCard}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/bullpen-logo.jpeg"
-                    alt="Bullpen"
-                    className={styles.partnerLogoImage}
-                  />
-                </div>
-                <div className={styles.partnerCard}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/crosslink.svg"
-                    alt="Crosslink Capital"
-                    className={styles.partnerLogoImage}
-                  />
-                </div>
-                <div className={styles.partnerCard}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/langchain.png"
-                    alt="LangChain"
-                    className={styles.partnerLogoImage}
-                  />
-                </div>
-                <div className={styles.partnerCard}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/alpha.png"
-                    alt="Alpha"
-                    className={styles.partnerLogoImage}
-                  />
-                </div>
-                <div className={styles.partnerCard}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/greycroft.png"
-                    alt="Greycroft"
-                    className={styles.partnerLogoImage}
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
+          <div className={styles.bannerPhoto}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/scale-partners.jpg"
+              alt="First Commits x Scale Venture Partners dinner"
+              className={styles.bannerPhotoImage}
+            />
+          </div>
+        </div>
 
-          {/* Partnership Inquiry Form */}
-          <section className={styles.formSection}>
-            <div className={styles.formContainer}>
+        <div className={styles.bannerContainer}>
+          <div className={styles.partnersCarousel}>
+            <LogoCarousel logos={partnerLogos} />
+          </div>
+        </div>
+      </section>
+
+      {/* Partnership Inquiry Form */}
+      <section className={styles.formSection}>
+        <div className={styles.formContainer}>
           <header className={styles.formHeader}>
-            <span className={styles.sectionLabel}>Partnership Inquiry</span>
-            <div className={styles.dividerShort}></div>
-            <h2 className={styles.formTitle}>Become a Partner</h2>
+            <h2 className={styles.formTitle}>Become a sponsor</h2>
             <p className={styles.formIntro}>
-              Interested in supporting the next generation of early hires?
-              We partner with venture firms, accelerators, and organizations
-              that share our commitment to the people who build before
-              it&apos;s obvious.
+              Interested in supporting the next generation of founding engineers?
+              We partner with venture firms, accelerators, and organizations who share our belief of investing early to make our events possible. If this sounds like a fit, please fill out the form below and we&apos;ll be in touch. 
             </p>
           </header>
 
@@ -256,7 +211,7 @@ export default function Partners() {
                 onChange={handleChange}
                 required
                 className={styles.textarea}
-                placeholder="Tell us about your interest in partnering with First Commits and how you'd like to support early hires."
+                placeholder="Tell us about your interest in partnering with First Commits and how you'd like to support early technical hires."
                 rows={6}
               />
             </div>
@@ -274,20 +229,8 @@ export default function Partners() {
               </button>
             </div>
           </form>
-            </div>
-          </section>
         </div>
-
-        {/* Right Column — Photo */}
-        <div className={styles.splitPhoto}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/partner-dinner.jpeg"
-            alt="First Commits x Bessemer partner dinner"
-            className={styles.splitPhotoImage}
-          />
-        </div>
-      </div>
+      </section>
 
       {/* Footer */}
       <footer className={styles.footer}>
