@@ -115,8 +115,7 @@ export default function Partners() {
             <h1 className={styles.bannerTitle}>Sponsors and Partners</h1>
             <p className={styles.bannerIntro}>
               First Commits is supported by sponsors and partners who understand
-              the value of early contributors; folks who embody an entrepreneurial
-              spirit, who aren&apos;t afraid to get into the technical weeds, and
+              the value of early contributors; entrepreneurial folks who dive head-first into the technical weeds, and
               who know how to scale. Being a sponsor demonstrates your commitment
               to our active community and gives you exclusive access to a thriving network of
               founding engineers at world-class startups.
@@ -151,7 +150,7 @@ export default function Partners() {
             <h2 className={styles.formTitle}>Become a sponsor</h2>
             <p className={styles.formIntro}>
               Interested in supporting the next generation of founding engineers?
-              We partner with venture firms, accelerators, and organizations who share our belief of investing early to make our events possible. If this sounds like a fit, please fill out the form below and we&apos;ll be in touch. 
+              We partner with venture firms, accelerators, and organizations who share our belief of investing early to make our events possible. If this sounds like a fit, please fill out the form below and we&apos;ll be in touch.
             </p>
           </header>
 

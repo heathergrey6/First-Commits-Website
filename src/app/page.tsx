@@ -200,9 +200,7 @@ export default function Home() {
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>Founding engineers deserve their own room.</h1>
           <p className={styles.heroText}>
-            First Commits is a curated community for the founding engineers
-            who turned an idea into a product, a repo into a company, and
-            uncertainty into working software.
+            First Commits is a curated community to connect founding engineers representing the most innovative startups in Silicon Valley.
           </p>
         </div>
 

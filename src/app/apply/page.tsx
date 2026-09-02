@@ -140,9 +140,10 @@ export default function Apply() {
           <header className={styles.formHeader}>
             <h1 className={styles.formTitle}>Membership Application</h1>
             <p className={styles.formNote}>
-              All applications are reviewed by our team. We're looking for
-              evidence of early-stage engineering and genuine technical impact
-              from the start.
+              First Commits exist to honor and support founding engineers that are building from the ground up. With your membership comes access to our member-only events, our community slack channel, and discounts on your favorite tools. 
+            </p>
+            <p className={styles.formNote}>
+              Applications are reviewed by our membership committee on a rolling basis. If your application is accepted, you will receive an email with next steps for joining the community.
             </p>
           </header>
 

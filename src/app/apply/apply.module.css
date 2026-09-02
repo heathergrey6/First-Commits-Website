@@ -11,14 +11,14 @@
 /* Form Section */
 .formSection {
   flex: 1;
-  padding: 3rem var(--spacing-md) var(--spacing-xl);
+  padding: 3rem var(--spacing-sm) var(--spacing-xl);
   display: flex;
   justify-content: center;
 }
 
 .formContainer {
   width: 100%;
-  max-width: 540px;
+  max-width: 680px;
 }
 
 /* Form Header */

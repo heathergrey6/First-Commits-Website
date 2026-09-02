@@ -1,17 +1,20 @@
 import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
 import styles from './about.module.css'
 
 const founders = [
   {
-    initials: 'SK',
+    photo: '/founder-sujay.jpg',
     name: 'Sujay Khandekar',
     role: 'Co-founder, First Commits',
+    title: 'Founding Engineer at Orb',
     url: 'https://www.linkedin.com/in/sujaykhandekar/',
   },
   {
-    initials: 'WN',
+    photo: '/founder-william.jpg',
     name: 'William Namen',
     role: 'Co-founder, First Commits',
+    title: 'Founding Engineer at Coefficient',
     url: 'https://www.linkedin.com/in/williamnamen/?skipRedirect=true',
   },
 ]
@@ -25,68 +28,43 @@ export default function About() {
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <p className={styles.eyebrow}>About First Commits</p>
-          <h1>Why we started First Commits.</h1>
+          <h1 className={styles.heroTitle}>Our Why</h1>
         </div>
       </section>
 
       <section className={styles.story}>
         <div className="container-wide">
-          <div className={styles.storyGrid}>
-            <p className={styles.sectionLabel}>The story</p>
-            <div className={styles.storyCopy}>
-              <h2>Sujay and William met at a founding engineer event.</h2>
-              <p>
-                The room felt immediately different: less performative, more
-                specific, and full of people who understood what it takes to make
-                a company real before the company knows what it is yet.
-              </p>
-              <p>
-                Afterward, the question was obvious: why were there not more
-                rooms like this for founding engineers?
-              </p>
-              <p>
-                Founder events were founder-first. Engineering events were often
-                too broad. Operator dinners rarely centered the person who chose
-                the first stack, shipped the first workflow, and made the company
-                technically real.
-              </p>
-              <p>
-                First Commits gives that specific role a place to meet peers who
-                understand the zero-to-one engineering job without needing it
-                explained.
-              </p>
-            </div>
-          </div>
-          <div className={styles.statsGrid}>
-            <p className={styles.sectionLabel}>By the numbers</p>
-            <div className={styles.statItem}>
-              <strong>80+</strong>
-              <span>Community members</span>
-              <p>
-                Founding engineers and first technical hires across the First
-                Commits network.
-              </p>
-            </div>
+          <h2>Sujay and William met at a founding engineer event.</h2>
+          <div className={styles.storyCopy}>
+            <p>
+              The room immediately felt different: less performative, less scripted 
+              and full of people who really understood what it takes lay the technical foundations of a startup. Why weren't there more of these events?
+            </p>
+            <p>
+              They ended the night with a shared vision: to create a community for founding engineers to connect, learn from each other, and build lifelong relationships.
+            </p>
+            <p>
+              What started as scrappy dinners in a living room turned into bi-monthly in-person events supported by a vast network of venture partners and sponsors. Today, we are proud to host over 100 members who represent 80+ of the most innovative startups in Silicon Valley.
+            </p>
+            <p>
+              First Commits is a professional network, a social community, and a resource for founding engineers based in the Bay Area. We are committed to creating a genuine and inclusive space for early technical hires to build in community.
+            </p>
           </div>
         </div>
       </section>
 
       <section className={styles.people}>
         <div className="container-wide">
-          <div className={styles.peopleHeader}>
-            <p className={styles.sectionLabel}>Founders</p>
-            <h2>The people behind First Commits.</h2>
-          </div>
+          <h2>The FC Team</h2>
 
           <div className={styles.founderGrid}>
             {founders.map((founder) => (
               <article className={styles.founderCard} key={founder.name}>
-                <div className={styles.initials}>{founder.initials}</div>
-                <div>
-                  <h3>{founder.name}</h3>
-                  <p>{founder.role}</p>
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={founder.photo} alt={founder.name} className={styles.founderPhoto} />
+                <h3>{founder.name}</h3>
+                <p>{founder.role}</p>
+                <p className={styles.founderTitle}>{founder.title}</p>
                 <a href={founder.url} target="_blank" rel="noopener noreferrer">
                   LinkedIn
                 </a>
@@ -95,6 +73,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </main>
   )
 }

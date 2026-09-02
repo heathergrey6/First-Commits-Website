@@ -412,7 +412,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .bannerSection {
-    padding: var(--spacing-lg) 0 var(--spacing-md);
+    padding: 0 0 var(--spacing-md);
   }
 
   .bannerContainer {

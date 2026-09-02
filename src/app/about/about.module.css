@@ -2,90 +2,79 @@
   min-height: 100vh;
   overflow-x: hidden;
   background: var(--color-porcelain);
-  color: var(--color-ink);
+  color: var(--color-forest);
 }
 
+/* ---------- Hero ---------- */
+
 .hero {
-  min-height: 62svh;
-  padding: 3rem var(--spacing-md) var(--spacing-lg);
-  display: flex;
-  align-items: flex-end;
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
 }
 
 .heroInner {
   width: min(100%, var(--max-width-wide));
   margin: 0 auto;
+  padding: 0 var(--spacing-md);
 }
 
-.eyebrow,
-.sectionLabel {
+.eyebrow {
+  display: block;
+  margin-bottom: 1rem;
   font-family: var(--font-ui), system-ui, sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-rust);
+  letter-spacing: 0.12em;
+  color: var(--color-flame);
 }
 
-.hero h1 {
-  max-width: 13ch;
-  margin-top: 1.1rem;
-  font-size: 5rem;
-  line-height: 0.94;
-  letter-spacing: 0;
+.heroTitle {
+  max-width: 16ch;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 120%;
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-forest);
 }
 
-.story,
-.people {
-  padding: var(--spacing-xl) 0;
-}
+/* ---------- Story ---------- */
 
 .story {
-  background: var(--color-ink);
+  padding: var(--spacing-xl) 0;
+  background: var(--color-forest);
   color: var(--color-porcelain);
 }
 
-.storyGrid {
-  display: grid;
-  grid-template-columns: 12rem minmax(0, 1fr);
-  gap: var(--spacing-lg);
-}
-
-.story .sectionLabel {
-  color: var(--color-citrine);
-}
-
-.story h2,
-.peopleHeader h2 {
-  font-size: 3.35rem;
-  line-height: 1.04;
-  letter-spacing: 0;
-}
-
 .story h2 {
-  max-width: 54rem;
+  max-width: 56rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 120%;
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-lime);
+}
+
+.storyCopy {
+  max-width: 46rem;
+  margin-top: 1.75rem;
+  display: grid;
+  gap: 1.25rem;
 }
 
 .storyCopy p {
-  max-width: 48rem;
-  margin-top: 1.35rem;
   color: rgba(245, 240, 230, 0.76);
-  font-size: 1.16rem;
+  font-size: 1.2rem;
   line-height: 1.65;
 }
 
-.statsGrid {
+.statsRow {
   margin-top: var(--spacing-lg);
   padding-top: 2rem;
-  border-top: 1px solid rgba(245, 240, 230, 0.24);
-  display: grid;
-  grid-template-columns: 12rem minmax(0, 1fr);
-  gap: var(--spacing-lg);
-  align-items: start;
-}
-
-.statsGrid .sectionLabel {
-  color: rgba(245, 240, 230, 0.72);
+  border-top: 1px solid rgba(245, 240, 230, 0.2);
 }
 
 .statItem {
@@ -94,21 +83,22 @@
 
 .statItem strong {
   display: block;
-  margin-bottom: 0.2rem;
-  color: var(--color-porcelain);
-  font-size: 5rem;
-  line-height: 0.92;
-  font-weight: 500;
-  letter-spacing: 0;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 120%;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--color-lime);
 }
 
 .statItem span {
   display: block;
   font-family: var(--font-ui), system-ui, sans-serif;
-  color: var(--color-citrine);
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  color: rgba(245, 240, 230, 0.68);
 }
 
 .statItem p {
@@ -119,98 +109,99 @@
   line-height: 1.55;
 }
 
+/* ---------- Founders ---------- */
+
 .people {
+  padding: var(--spacing-lg) 0;
   background: var(--color-porcelain);
+  color: var(--color-forest);
 }
 
-.peopleHeader {
-  max-width: 46rem;
-  margin-bottom: var(--spacing-lg);
+.people h2 {
+  max-width: 26ch;
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 120%;
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 
 .founderGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .founderCard {
-  min-height: 22rem;
-  padding: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid rgba(8, 12, 22, 0.16);
-  background: rgba(255, 255, 255, 0.3);
+  padding: 1rem 1.75rem 1rem 0;
 }
 
-.initials {
-  width: 4.6rem;
-  height: 4.6rem;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(8, 12, 22, 0.18);
-  border-radius: 16px;
-  background: var(--color-porcelain);
-  font-family: var(--font-ui), system-ui, sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.12em;
+.founderPhoto {
+  display: block;
+  width: 11rem;
+  height: 11rem;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .founderCard h3 {
-  margin-bottom: 0.6rem;
-  font-size: 2.4rem;
-  line-height: 1;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid var(--color-flame);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.15;
 }
 
 .founderCard p {
-  color: var(--color-smoke);
+  margin-bottom: 1.1rem;
+  color: rgba(22, 52, 39, 0.68);
+  font-size: 1.3rem;
+}
+
+.founderCard .founderTitle {
+  margin-top: -0.85rem;
+  color: rgba(22, 52, 39, 0.5);
+  font-size: 1.1rem;
 }
 
 .founderCard a {
-  width: fit-content;
   font-family: var(--font-ui), system-ui, sans-serif;
-  font-size: 0.74rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-rust);
+  letter-spacing: 0.15em;
+  color: var(--color-flame);
 }
 
+/* ---------- Responsive ---------- */
+
 @media (max-width: 900px) {
-  .storyGrid,
-  .statsGrid,
   .founderGrid {
     grid-template-columns: 1fr;
   }
 
   .hero {
-    min-height: auto;
-    padding: 2.5rem var(--spacing-sm) var(--spacing-lg);
-  }
-
-  .hero h1 {
-    font-size: 3.3rem;
+    padding: var(--spacing-lg) 0 var(--spacing-md);
   }
 
   .story,
   .people {
     padding: var(--spacing-lg) 0;
   }
+}
 
-  .story h2,
-  .peopleHeader h2 {
-    font-size: 2.35rem;
+@media (max-width: 760px) {
+  .heroInner {
+    padding: 0 1.5rem;
   }
 
-  .storyCopy p {
-    font-size: 1.05rem;
-  }
-
-  .statsGrid {
-    gap: 1.25rem;
-  }
-
-  .statItem strong {
-    font-size: 3.8rem;
+  .founderCard {
+    padding: 1.5rem 0;
   }
 }
