@@ -34,11 +34,11 @@ export default function Nav({ gradient = false }: { gradient?: boolean }) {
             About
           </Link>
           <Link
-            href="/partners"
+            href="/sponsors"
             className={styles.navLink}
             onClick={() => setIsOpen(false)}
           >
-            Partners
+            Become a Sponsor
           </Link>
           <Link
             href="/apply"

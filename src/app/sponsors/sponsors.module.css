@@ -66,7 +66,7 @@
 
 /* Banner Section */
 .bannerSection {
-  padding: 0 0 var(--spacing-lg);
+  padding: 0 0 var(--spacing-md);
 }
 
 .bannerContainer {
@@ -126,7 +126,36 @@
 }
 
 .partnersCarousel {
-  margin-top: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+.carouselEyebrow {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 120%;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+  margin-bottom: 0.35rem;
+}
+
+.featuredLogo {
+  display: block;
+  margin: 0 auto 2.5rem;
+  max-height: 72px;
+  width: auto;
+}
+
+.carouselTitle {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 120%;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+  margin-bottom: 0.75rem;
 }
 
 .dividerShort {
@@ -160,7 +189,7 @@
 
 /* Form Section */
 .formSection {
-  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl) 8rem;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-xl) 8rem;
 }
 
 .formContainer {
@@ -243,7 +272,7 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: rgba(22, 52, 39, 0.4);
+  color: rgba(22, 52, 39, 0.6);
 }
 
 .textarea {
@@ -389,6 +418,10 @@
   .bannerContainer {
     max-width: 100%;
     padding: 0 1.5rem;
+  }
+
+  .partnersCarousel {
+    margin-top: var(--spacing-md);
   }
 
   .formContainer {

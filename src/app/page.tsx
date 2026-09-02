@@ -277,7 +277,7 @@ export default function Home() {
               We host bi-monthly in-person events with our partners for founding engineers to share experiences, learn from each other, and build lifelong connections. Instead of the usual tech talks, pitches, and panels, we focus on small intimate gatherings that are personal, authentic, and fun. 
             </p>
             <p className="reveal">
-              Interested in partnering with us? Visit our <Link href="/partners" className={styles.link}>sponsors page</Link> to learn more.
+              Interested in partnering with us? Visit our <Link href="/sponsors" className={styles.link}>sponsors page</Link> to learn more.
             </p>
           </div>
 
@@ -321,7 +321,7 @@ export default function Home() {
         <div className={styles.finalInner}>
           <div className={`${styles.ctaActions} reveal`}>
             <Link href="/apply" className={styles.ctaPrimary}>Request Membership</Link>
-            <Link href="/partners" className={styles.ctaSecondary}>Become a Sponsor</Link>
+            <Link href="/sponsors" className={styles.ctaSecondary}>Become a Sponsor</Link>
           </div>
         </div>
       </section>

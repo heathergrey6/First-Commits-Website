@@ -114,9 +114,8 @@
   width: 44px;
   height: 44px;
   padding: 10px;
-  background: rgba(253, 255, 251, 0.9);
-  border: 1px solid rgba(22, 52, 39, 0.18);
-  border-radius: 999px;
+  background: transparent;
+  border: none;
   cursor: pointer;
 }
 
@@ -149,15 +148,14 @@
   .navLinks {
     display: none;
     position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 1.5rem;
-    right: 1.5rem;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     align-items: stretch;
-    border-radius: 1rem;
+    border-radius: 0;
     padding: 0.5rem;
-    background: rgba(253, 255, 251, 0.94);
-    backdrop-filter: blur(16px);
+    background: var(--color-flame);
   }
 
   .navLinksOpen {
@@ -167,6 +165,12 @@
   .navLink {
     justify-content: flex-start;
     padding: 0.85rem 1rem;
+    color: rgba(253, 255, 251, 0.88);
+  }
+
+  .navLink:hover {
+    color: var(--color-porcelain);
+    background: rgba(253, 255, 251, 0.14);
   }
 }
 
