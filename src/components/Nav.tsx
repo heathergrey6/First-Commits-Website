@@ -4,11 +4,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import styles from './Nav.module.css'
 
-export default function Nav() {
+export default function Nav({ gradient = false }: { gradient?: boolean }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className={styles.nav} aria-label="Main navigation">
+    <nav className={`${styles.nav} ${gradient ? styles.navGradient : ''}`} aria-label="Main navigation">
       <div className={styles.navInner}>
         <Link href="/" className={styles.logo}>
           <span className={styles.logoCursor} aria-hidden="true" />

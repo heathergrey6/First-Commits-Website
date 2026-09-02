@@ -66,49 +66,37 @@ export default function EventCarousel({ photos }: { photos: Photo[] }) {
       aria-roledescription="carousel"
       aria-label="Past First Commits events"
     >
-      <div className={styles.track} ref={trackRef} tabIndex={0} onKeyDown={handleKeyDown}>
-        {photos.map((photo, index) => (
-          <div
-            className={styles.slide}
-            role="group"
-            aria-roledescription="slide"
-            aria-label={`${index + 1} of ${photos.length}`}
-            key={photo.src}
-          >
-            <div className={styles.slidePhoto}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={photo.src} alt={photo.alt} />
+      <div className={styles.viewport}>
+        <div className={styles.track} ref={trackRef} tabIndex={0} onKeyDown={handleKeyDown}>
+          {photos.map((photo, index) => (
+            <div
+              className={styles.slide}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${index + 1} of ${photos.length}`}
+              key={photo.src}
+            >
+              <div className={styles.slidePhoto}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={photo.src} alt={photo.alt} />
+              </div>
+              <p className={styles.slideCaption}>{photo.caption}</p>
             </div>
-            <p className={styles.slideCaption}>{photo.caption}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className={styles.controls}>
         <button
           type="button"
-          className={styles.arrowBtn}
+          className={`${styles.navArrow} ${styles.navArrowLeft}`}
           onClick={handlePrev}
           aria-label="Previous event photo"
           disabled={activeIndex === 0}
         >
           ‹
         </button>
-        <div className={styles.dots}>
-          {photos.map((photo, index) => (
-            <button
-              type="button"
-              key={photo.src}
-              className={index === activeIndex ? styles.dotActive : styles.dot}
-              onClick={() => scrollToIndex(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              aria-current={index === activeIndex}
-            />
-          ))}
-        </div>
         <button
           type="button"
-          className={styles.arrowBtn}
+          className={`${styles.navArrow} ${styles.navArrowRight}`}
           onClick={handleNext}
           aria-label="Next event photo"
           disabled={activeIndex === photos.length - 1}

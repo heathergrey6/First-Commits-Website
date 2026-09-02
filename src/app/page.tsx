@@ -114,55 +114,50 @@ const eventPhotos = [
   {
     src: '/event-scale-1.jpg',
     alt: 'Founding engineers at a dinner with Scale Venture Partners',
-    caption: 'Dinner with Scale Venture Partners',
+    caption: 'Dinner with Scale Venture Partners, Summer 2026',
+  },
+  {
+    src: '/event-ivp-dinner.jpg',
+    alt: 'Founding engineers at a dinner with IVP',
+    caption: 'Dinner with IVP, Summer 2026',
+  },
+  {
+    src: '/event-battery-dinner.jpg',
+    alt: 'Founding engineers at a dinner with Battery Ventures',
+    caption: 'Dinner with Battery Ventures, Summer 2026',
+  },
+  {
+    src: '/event-poker-bcv.jpeg',
+    alt: 'Founding engineers at a poker night with Bain Capital Ventures',
+    caption: 'Poker night with Bain Capital Ventures, Spring 2026',
   },
   {
     src: '/event-dinner.jpeg',
     alt: 'Founding engineers at a First Commits dinner table',
-    caption: 'A First Commits private dinner',
-  },
-  {
-    src: '/founding-engineers-dinner-room.jpeg',
-    alt: 'A private dinner room set for a First Commits gathering',
-    caption: 'A private dinner in San Francisco',
-  },
-  {
-    src: '/partner-dinner.jpeg',
-    alt: 'Members talking at a partner-hosted dinner',
-    caption: 'A partner-hosted dinner',
-  },
-  {
-    src: '/partner-hosted-room.jpeg',
-    alt: 'A partner-hosted room during a First Commits event',
-    caption: 'A partner-hosted room',
-  },
-  {
-    src: '/event-lounge.jpeg',
-    alt: 'Members mingling in a lounge before a First Commits event',
-    caption: 'Mingling before the main event',
+    caption: 'Dinner with Bessemer Venture Partners, Winter 2026',
   },
 ]
 
 const membershipBenefits = [
   {
     label: 'Active Slack community',
-    description: 'The Slack channel actually gets used — architecture debates, hiring calls, and outage post-mortems happen there daily, not once a quarter.',
+    description: 'A Slack channel that actually gets used! Stay up-to-date on member-only events, celebrate big wins, ask for advice, and share resources with other founding engineers.',
   },
   {
     label: 'Social events',
-    description: "Private dinners and working salons in real rooms, with people who've carried the same kind of pressure you have.",
+    description: "Member-exclusive private dinners and game nights, intended to be authentic, fun, and casual. No pitches, panels, or tech talks, we promise.",
   },
   {
     label: 'Early access to products',
-    description: 'See what other founding engineers are building before it ships, and get first access when it does.',
-  },
-  {
-    label: 'Shameless plugs',
-    description: 'Post what you’re hiring for, what you built, or what you need — the room is built for asks, not just conversation.',
+    description: 'Early access is a two-way street here: you\'ll get to test new products before they launch, and you can get feedback on your own work from other founding engineers.',
   },
   {
     label: 'Resource for questions',
-    description: "A direct line to people who've already made the call you're stuck on — architecture, hiring, or otherwise.",
+    description: "Our members have seen it all. Whether you're looking for recommendations on best OpenClaw setups, weighing database solutions, or seeking advice on exit options, you can ask the exact people who've been in your shoes.",
+  },
+  {
+    label: 'Discounts for your favorite tools',
+    description: 'Our sponsors are dedicated to supporting you from your first commit. Members get exclusive discounts on the tools and services you use every day.',
   },
 ]
 
@@ -197,7 +192,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <a href="#main-content" className="skip-to-content">Skip to content</a>
-      <Nav />
+      <Nav gradient />
       <div id="main-content" />
 
       {/* Hero */}
@@ -279,16 +274,25 @@ export default function Home() {
           <h2 className="reveal">Events</h2>
           <div className={styles.eventsCopy}>
             <p className="reveal">
-              We host bi-monthly in-person events with our partners for founding engineers to share experiences, learn from each other, and build lifelong connections. Instead of the usual tech talks, pitches, and panels, we focus on small intimate gatherings that feel personal, authentic, and fun. 
+              We host bi-monthly in-person events with our partners for founding engineers to share experiences, learn from each other, and build lifelong connections. Instead of the usual tech talks, pitches, and panels, we focus on small intimate gatherings that are personal, authentic, and fun. 
             </p>
             <p className="reveal">
-              Interested in becoming a sponsor? Visit our <Link href="/partners" className={styles.link}>sponsors page</Link> to learn more.
+              Interested in partnering with us? Visit our <Link href="/partners" className={styles.link}>sponsors page</Link> to learn more.
             </p>
           </div>
 
           <div className={`${styles.carouselBlock} reveal`}>
             <EventCarousel photos={eventPhotos} />
           </div>
+
+          <a
+            href="https://www.linkedin.com/company/first-commits"
+            className={`${styles.carouselCta} reveal`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            See all of our past events on Linkedin 
+          </a>
         </div>
       </section>
 
@@ -296,10 +300,10 @@ export default function Home() {
       <section className={styles.benefits}>
         <div className="container-wide">
           <h2 className="reveal">Membership benefits</h2>
-          <p className={`${styles.benefitsKicker} reveal`}>
+          {/* <p className={`${styles.benefitsKicker} reveal`}>
             The goal is not scale. The goal is density: every member should make
             the room sharper for every other member.
-          </p>
+          </p> */}
 
           <div className={styles.benefitsGrid}>
             {membershipBenefits.map((benefit) => (
@@ -315,10 +319,9 @@ export default function Home() {
       {/* Call to action */}
       <section className={styles.finalCta}>
         <div className={styles.finalInner}>
-          <h2 className="reveal">If you built the first version, this is your room.</h2>
           <div className={`${styles.ctaActions} reveal`}>
             <Link href="/apply" className={styles.ctaPrimary}>Request Membership</Link>
-            <Link href="/partners" className={styles.ctaSecondary}>Sponsor us</Link>
+            <Link href="/partners" className={styles.ctaSecondary}>Become a Sponsor</Link>
           </div>
         </div>
       </section>

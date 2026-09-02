@@ -1,7 +1,7 @@
 :root {
   --color-ink: #080c16;
   --color-blueprint: #16213a;
-  --color-porcelain: #fdfbff;
+  --color-porcelain: #fdfffb;
   --color-bone: #ebe1d2;
   --color-citrine: #d4ff4f;
   --color-rust: #ff6b35;
@@ -10,8 +10,8 @@
 
   /* New palette (home page redesign) — additive, does not replace tokens above */
   --color-lime: #e3ef88;
-  --color-forest: #244235;
-  --color-flame: #ff5a36;
+  --color-forest: #163427;
+  --color-flame: #0597df;
 
   --color-black: var(--color-ink);
   --color-white: var(--color-porcelain);
@@ -391,6 +391,6 @@ code,
 
   .container,
   .container-wide {
-    padding: 0 var(--spacing-sm);
+    padding: 0 1.5rem;
   }
 }
