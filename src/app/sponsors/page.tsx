@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
 import LogoCarousel from '@/components/LogoCarousel'
 import styles from './sponsors.module.css'
 
@@ -235,14 +236,7 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerInner}>
-          <span className={styles.footerText}>
-            Questions? Reach out to partnerships@firstcommits.com
-          </span>
-        </div>
-      </footer>
+      <Footer tagline="Questions? Reach out to partnerships@firstcommits.com" />
     </main>
   )
 }

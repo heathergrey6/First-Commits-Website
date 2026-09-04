@@ -311,9 +311,6 @@ export default function Apply() {
             </div>
 
             <div className={styles.formFooter}>
-              <p className={styles.reviewNote}>
-                Applications are reviewed by humans, we read every response!
-              </p>
               <button
                 type="submit"
                 className={styles.submitBtn}
@@ -321,12 +318,15 @@ export default function Apply() {
               >
                 {isSubmitting ? 'Submitting...' : 'Submit Application'}
               </button>
+              <p className={styles.reviewNote}>
+                Applications are reviewed by humans, we read every response! Questions? Reach out to community@firstcommits.com
+              </p>
             </div>
           </form>
         </div>
       </section>
 
-      <Footer tagline="Questions? Reach out to community@firstcommits.com" />
+      <Footer />
     </main>
   )
 }

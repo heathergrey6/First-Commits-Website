@@ -141,23 +141,19 @@ const eventPhotos = [
 const membershipBenefits = [
   {
     label: 'Active Slack community',
-    description: 'A Slack channel that actually gets used! Stay up-to-date on member-only events, celebrate big wins, ask for advice, and share resources with other founding engineers.',
+    description: 'Stay up-to-date on member-only events, celebrate big wins, ask for advice, and share resources with other founding engineers.',
   },
   {
-    label: 'Social events',
-    description: "Member-exclusive private dinners and game nights, intended to be authentic, fun, and casual. No pitches, panels, or tech talks, we promise.",
+    label: 'Social gatherings',
+    description: "Member-exclusive private dinners and game nights, intended to be authentic, fun, and casual. No pitches, no panels, no obligations, and no upfront work required of you.",
   },
   {
-    label: 'Early access to products',
-    description: 'Early access is a two-way street here: you\'ll get to test new products before they launch, and you can get feedback on your own work from other founding engineers.',
+    label: 'Early access and exclusive discounts',
+    description: "Early access is a two-way street here: you'll get to test new products before they launch, and you can get feedback on your own work from other founding engineers. Our sponsors also give members exclusive discounts on the tools and services you use every day.",
   },
   {
     label: 'Resource for questions',
     description: "Our members have seen it all. Whether you're looking for recommendations on best OpenClaw setups, weighing database solutions, or seeking advice on exit options, you can ask the exact people who've been in your shoes.",
-  },
-  {
-    label: 'Discounts for your favorite tools',
-    description: 'Our sponsors are dedicated to supporting you from your first commit. Members get exclusive discounts on the tools and services you use every day.',
   },
 ]
 
@@ -216,7 +212,7 @@ export default function Home() {
           <h2 className="reveal">Who we are</h2>
           <div className={styles.whoWeAreCopy}>
             <p className="reveal">
-              Building early can be lonely. First Commits exists to connect the people who are boldly building the technical foundations of a business from the ground up. We are a professional network, a resource, and a community of peers who understand the unique challenges of being a founding engineer. 
+              Building early can be lonely. There are rooms for founders, but not for the people who commit first to a company, the engineers boldly building its technical foundations from the ground up. First Commits exists to be that room: a professional network, a resource, and a community of peers who understand the unique challenges of being a founding engineer.
             </p>
             <p className="reveal">
               Through in-person events and a lively Slack forum, we provide opportunities to connect, brainstorm, test early versions of products, and build relationships that last. These are folks who will cheer you on when you ship, who understand the late nights, and maybe one-day be your co-founder.

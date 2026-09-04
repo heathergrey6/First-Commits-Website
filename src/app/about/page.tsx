@@ -2,20 +2,37 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import styles from './about.module.css'
 
-const founders = [
+const founders: {
+  name: string
+  role: string
+  photo?: string
+  title?: string
+  url?: string
+}[] = [
   {
     photo: '/founder-sujay.jpg',
     name: 'Sujay Khandekar',
-    role: 'Co-founder, First Commits',
+    role: 'Co-founder',
     title: 'Founding Engineer at Orb',
     url: 'https://www.linkedin.com/in/sujaykhandekar/',
   },
   {
     photo: '/founder-william.jpg',
     name: 'William Namen',
-    role: 'Co-founder, First Commits',
-    title: 'Founding Engineer at Coefficient',
+    role: 'Co-founder',
     url: 'https://www.linkedin.com/in/williamnamen/?skipRedirect=true',
+  },
+  {
+    photo: '/team-heather.jpg',
+    name: 'Heather Chen',
+    role: 'Community Manager',
+    url: 'https://www.linkedin.com/in/heather-chen6/',
+  },
+  {
+    photo: '/team-anshika.jpg',
+    name: 'Anshika Agrawal',
+    role: 'Community Manager',
+    url: 'https://www.linkedin.com/in/anshika-agrawal-733277389/',
   },
 ]
 
@@ -29,6 +46,11 @@ export default function About() {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <h1 className={styles.heroTitle}>Our Why</h1>
+        </div>
+
+        <div className={styles.heroPhoto}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/event-scale-2.jpg" alt="Founding engineers gathered around the table at a First Commits dinner" />
         </div>
       </section>
 
@@ -60,14 +82,18 @@ export default function About() {
           <div className={styles.founderGrid}>
             {founders.map((founder) => (
               <article className={styles.founderCard} key={founder.name}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={founder.photo} alt={founder.name} className={styles.founderPhoto} />
+                {founder.photo && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={founder.photo} alt={founder.name} className={styles.founderPhoto} />
+                )}
                 <h3>{founder.name}</h3>
                 <p>{founder.role}</p>
-                <p className={styles.founderTitle}>{founder.title}</p>
-                <a href={founder.url} target="_blank" rel="noopener noreferrer">
-                  LinkedIn
-                </a>
+                {founder.title && <p className={styles.founderTitle}>{founder.title}</p>}
+                {founder.url && (
+                  <a href={founder.url} target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                  </a>
+                )}
               </article>
             ))}
           </div>

@@ -14,7 +14,7 @@ export default function Footer({
         <Link href="/" className={styles.footerLogo}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/fc-logo.png" alt="" className={styles.footerLogoIcon} />
-          First Commits
+          First Commits © {new Date().getFullYear()}
         </Link>
         <span>{tagline}</span>
         <a
