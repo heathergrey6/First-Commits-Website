@@ -126,7 +126,7 @@ export default function Partners() {
           <div className={styles.bannerPhoto}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/scale-partners.jpg"
+              src="/scale-partners.webp"
               alt="First Commits x Scale Venture Partners dinner"
               className={styles.bannerPhotoImage}
             />

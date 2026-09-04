@@ -67,7 +67,7 @@ export default function Brief() {
           <div className={styles.photoItem}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/event-dinner.jpeg"
+              src="/event-dinner.webp"
               alt="First Commits dinner gathering"
               className={styles.photoImage}
             />
@@ -75,7 +75,7 @@ export default function Brief() {
           <div className={styles.photoItem}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/event-lounge.jpeg"
+              src="/event-lounge.webp"
               alt="First Commits lounge conversation"
               className={styles.photoImage}
             />

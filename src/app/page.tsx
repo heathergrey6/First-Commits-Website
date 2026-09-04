@@ -112,27 +112,27 @@ const representedStartups = [
 
 const eventPhotos = [
   {
-    src: '/event-scale-1.jpg',
+    src: '/event-scale-1.webp',
     alt: 'Founding engineers at a dinner with Scale Venture Partners',
     caption: 'Dinner with Scale Venture Partners, Summer 2026',
   },
   {
-    src: '/event-ivp-dinner.jpg',
+    src: '/event-ivp-dinner.webp',
     alt: 'Founding engineers at a dinner with IVP',
     caption: 'Dinner with IVP, Summer 2026',
   },
   {
-    src: '/event-battery-dinner.jpg',
+    src: '/event-battery-dinner.webp',
     alt: 'Founding engineers at a dinner with Battery Ventures',
     caption: 'Dinner with Battery Ventures, Summer 2026',
   },
   {
-    src: '/event-poker-bcv.jpeg',
+    src: '/event-poker-bcv.webp',
     alt: 'Founding engineers at a poker night with Bain Capital Ventures',
     caption: 'Poker night with Bain Capital Ventures, Spring 2026',
   },
   {
-    src: '/event-dinner.jpeg',
+    src: '/event-dinner.webp',
     alt: 'Founding engineers at a First Commits dinner table',
     caption: 'Dinner with Bessemer Venture Partners, Winter 2026',
   },
@@ -202,7 +202,7 @@ export default function Home() {
 
         <div className={styles.heroPhoto}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/event-scale.jpg" alt="Founding engineers at a First Commits dinner" />
+          <img src="/event-scale.webp" alt="Founding engineers at a First Commits dinner" />
         </div>
       </section>
 

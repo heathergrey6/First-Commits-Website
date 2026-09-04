@@ -51,7 +51,7 @@ export default function About() {
 
         <div className={styles.heroPhoto}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/event-scale-2.jpg" alt="Founding engineers gathered around the table at a First Commits dinner" />
+          <img src="/event-scale-2.webp" alt="Founding engineers gathered around the table at a First Commits dinner" />
         </div>
       </section>
 
