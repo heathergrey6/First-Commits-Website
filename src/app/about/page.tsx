@@ -20,6 +20,7 @@ const founders: {
     photo: '/founder-william.jpg',
     name: 'William Namen',
     role: 'Co-founder',
+    title: 'Founding Engineer at Coefficient',
     url: 'https://www.linkedin.com/in/williamnamen/?skipRedirect=true',
   },
   {

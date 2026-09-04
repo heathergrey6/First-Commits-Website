@@ -292,8 +292,7 @@ export default function Apply() {
 
             <div className={styles.formGroup}>
               <label htmlFor="referral" className={styles.label}>
-                Referral
-                <span className={styles.optional}>(Optional)</span>
+                Referral (Optional)
               </label>
               <input
                 type="text"
