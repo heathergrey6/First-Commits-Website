@@ -8,73 +8,17 @@
   background: var(--color-porcelain);
 }
 
-/* Navigation */
-.nav {
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--color-gray-100);
-}
-
-.navInner {
-  max-width: var(--max-width-wide);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navLinks {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.navLink {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  border-bottom: none;
-  padding: 0.5rem 1rem;
-  border: 1px solid transparent;
-  transition: border-color var(--duration-normal) var(--ease-out-quart);
-}
-
-.navLink:hover {
-  border-color: var(--color-black);
-  opacity: 1;
-}
-
-.logo {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  border-bottom: none;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.logoIcon {
-  width: 24px;
-  height: 24px;
-}
-
-.logo:hover {
-  opacity: 0.6;
-}
-
 /* Form Section */
 .formSection {
   flex: 1;
-  padding: var(--spacing-xl) var(--spacing-md);
+  padding: 3rem var(--spacing-sm) var(--spacing-xl);
   display: flex;
   justify-content: center;
 }
 
 .formContainer {
   width: 100%;
-  max-width: 540px;
+  max-width: 680px;
 }
 
 /* Form Header */
@@ -82,39 +26,21 @@
   margin-bottom: var(--spacing-lg);
 }
 
-.formLabel {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-gray-500);
-  display: block;
-  margin-bottom: var(--spacing-xs);
-}
-
-.dividerShort {
-  width: 40px;
-  height: 2px;
-  background-color: var(--color-rust);
-  margin-bottom: var(--spacing-md);
-}
-
 .formTitle {
-  font-size: 2.65rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 120%;
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-forest);
   margin-bottom: var(--spacing-md);
-}
-
-.formIntro {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  margin-bottom: var(--spacing-sm);
 }
 
 .formNote {
-  font-size: 0.9375rem;
-  color: var(--color-gray-600);
-  line-height: 1.7;
+  font-size: 1.3rem;
+  color: rgba(22, 52, 39, 0.72);
+  line-height: 1.55;
 }
 
 /* Form */
@@ -128,11 +54,12 @@
 
 .label {
   display: block;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-gray-600);
+  letter-spacing: 0.12em;
+  color: var(--color-flame);
   margin-bottom: var(--spacing-xs);
   transition: transform var(--duration-normal) var(--ease-out-quart),
               color var(--duration-normal) var(--ease-out-quart);
@@ -140,30 +67,19 @@
 
 .formGroup:focus-within .label {
   transform: translateY(-2px);
-  color: var(--color-black);
-}
-
-.optional {
-  font-family: var(--font-serif);
-  font-size: 0.75rem;
-  text-transform: none;
-  letter-spacing: 0;
-  color: var(--color-gray-400);
-  margin-left: 0.5rem;
-  font-style: italic;
+  color: var(--color-forest);
 }
 
 .input,
-.select,
 .textarea {
   width: 100%;
   padding: 1rem 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 1.0625rem;
   border: none;
-  border-bottom: 1px solid var(--color-gray-300);
+  border-bottom: 1px solid rgba(22, 52, 39, 0.24);
   background-color: transparent;
-  color: var(--color-black);
+  color: var(--color-forest);
   transition: border-color var(--duration-normal) var(--ease-out-quart),
               border-bottom-width var(--duration-normal) var(--ease-out-quart),
               padding-bottom var(--duration-normal) var(--ease-out-quart);
@@ -172,25 +88,16 @@
   -webkit-appearance: none;
 }
 
-.select {
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23737373' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0 center;
-  padding-right: 1.5rem;
-}
-
 .input:focus,
-.select:focus,
 .textarea:focus {
-  border-bottom-color: var(--color-black);
+  border-bottom-color: var(--color-forest);
   border-bottom-width: 2px;
   padding-bottom: calc(1rem - 1px);
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--color-gray-400);
+  color: rgba(22, 52, 39, 0.4);
 }
 
 .textarea {
@@ -199,42 +106,131 @@
   line-height: 1.7;
 }
 
+/* Custom role dropdown */
+.customSelect {
+  position: relative;
+}
+
+.selectTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid rgba(22, 52, 39, 0.24);
+  background-color: transparent;
+  color: var(--color-forest);
+  cursor: pointer;
+  transition: border-color var(--duration-normal) var(--ease-out-quart),
+              border-bottom-width var(--duration-normal) var(--ease-out-quart),
+              padding-bottom var(--duration-normal) var(--ease-out-quart);
+}
+
+.selectTrigger:focus-visible {
+  border-bottom-color: var(--color-forest);
+  border-bottom-width: 2px;
+  padding-bottom: calc(1rem - 1px);
+}
+
+.selectPlaceholder {
+  color: rgba(22, 52, 39, 0.4);
+}
+
+.selectChevron {
+  flex-shrink: 0;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 2px solid var(--color-forest);
+  border-bottom: 2px solid var(--color-forest);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform var(--duration-normal) var(--ease-out-quart);
+}
+
+.selectChevronOpen {
+  transform: rotate(-135deg) translateY(-1px);
+}
+
+.selectMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem;
+  max-height: 16rem;
+  overflow-y: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(22, 52, 39, 0.16);
+  background: rgba(253, 255, 251, 0.98);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 32px rgba(22, 52, 39, 0.16);
+}
+
+.selectOption {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-size: 1rem;
+  text-align: left;
+  color: var(--color-forest);
+  cursor: pointer;
+  transition: background-color var(--duration-normal) var(--ease-out-quart),
+              color var(--duration-normal) var(--ease-out-quart);
+}
+
+.selectOption:hover,
+.selectOption:focus-visible {
+  background: rgba(227, 239, 136, 0.4);
+}
+
+.selectOptionActive {
+  color: var(--color-flame);
+  font-weight: 600;
+}
+
 .hint {
   display: block;
   font-size: 0.8125rem;
-  color: var(--color-gray-500);
+  color: rgba(22, 52, 39, 0.6);
   margin-top: 0.5rem;
   line-height: 1.5;
 }
 
+
 /* Form Footer */
 .formFooter {
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-md);
-  border-top: 1px solid var(--color-gray-200);
+  margin-top: var(--spacing-sm);
 }
 
 .reviewNote {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-gray-500);
+  font-size: 0.8125rem;
+  color: rgba(22, 52, 39, 0.6);
+  line-height: 1.5;
   text-align: center;
-  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-md);
 }
 
 .submitBtn {
   width: 100%;
   padding: 1.25rem 2rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  background-color: var(--color-ink);
+  background-color: var(--color-forest);
   color: var(--color-porcelain);
-  border: 1px solid var(--color-ink);
-  border-radius: 999px;
+  border: none;
+  border-radius: 0.6rem;
   cursor: pointer;
   transition: background-color var(--duration-normal) var(--ease-out-expo),
               color var(--duration-normal) var(--ease-out-expo),
@@ -246,8 +242,8 @@
 }
 
 .submitBtn:hover:not(:disabled) {
-  background-color: var(--color-citrine);
-  color: var(--color-ink);
+  background-color: var(--color-flame);
+  color: var(--color-porcelain);
 }
 
 .submitBtn:disabled {
@@ -270,76 +266,60 @@
 }
 
 .confirmationLabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--color-gray-500);
+  color: rgba(22, 52, 39, 0.68);
   display: block;
   margin-bottom: var(--spacing-xs);
 }
 
 .confirmationTitle {
-  font-size: 3.35rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-stretch: 120%;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
   line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-forest);
   margin-bottom: var(--spacing-md);
 }
 
 .confirmationText {
   font-size: 1.0625rem;
   line-height: 1.8;
+  color: var(--color-forest);
   margin-bottom: var(--spacing-md);
 }
 
 .confirmationNote {
   font-size: 0.9375rem;
-  color: var(--color-gray-500);
+  color: rgba(22, 52, 39, 0.6);
   line-height: 1.7;
   margin-bottom: var(--spacing-lg);
 }
 
 .backLink {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-gray-600);
-  border-bottom: 1px solid var(--color-gray-400);
+  color: var(--color-forest);
+  border-bottom: 1px solid rgba(22, 52, 39, 0.4);
   padding-bottom: 0.25rem;
 }
 
 .backLink:hover {
-  color: var(--color-black);
-  border-bottom-color: var(--color-black);
+  color: var(--color-flame);
+  border-bottom-color: var(--color-flame);
   opacity: 1;
-}
-
-/* Footer */
-.footer {
-  padding: var(--spacing-md) var(--spacing-md);
-  border-top: 1px solid var(--color-gray-100);
-}
-
-.footerInner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footerText {
-  font-size: 0.875rem;
-  color: var(--color-gray-500);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .formSection {
-    padding: var(--spacing-lg) var(--spacing-sm);
-  }
-
-  .formTitle,
-  .confirmationTitle {
-    font-size: 2.35rem;
+    padding: var(--spacing-lg) 1.5rem;
   }
 
   .formGroup {

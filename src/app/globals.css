@@ -1,12 +1,17 @@
 :root {
   --color-ink: #080c16;
   --color-blueprint: #16213a;
-  --color-porcelain: #f5f0e6;
+  --color-porcelain: #fdfffb;
   --color-bone: #ebe1d2;
   --color-citrine: #d4ff4f;
   --color-rust: #ff6b35;
   --color-smoke: #48505f;
   --color-fog: #c8c0b4;
+
+  /* New palette (home page redesign) — additive, does not replace tokens above */
+  --color-lime: #e3ef88;
+  --color-forest: #163427;
+  --color-flame: #0597df;
 
   --color-black: var(--color-ink);
   --color-white: var(--color-porcelain);
@@ -56,7 +61,7 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: var(--font-serif);
+  font-family: var(--font-ui), system-ui, sans-serif;
   background-color: var(--color-porcelain);
   color: var(--color-ink);
   line-height: 1.65;
@@ -74,7 +79,7 @@ body {
   transform: translateX(-50%);
   z-index: 9999;
   padding: 0.75rem 1rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -100,6 +105,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-serif);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: 0;
@@ -209,7 +215,7 @@ code,
   min-height: 3.25rem;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -252,7 +258,7 @@ code,
 
 .form-label {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-ui), system-ui, sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -385,6 +391,6 @@ code,
 
   .container,
   .container-wide {
-    padding: 0 var(--spacing-sm);
+    padding: 0 1.5rem;
   }
 }

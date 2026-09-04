@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Partners — First Commits',
+  title: 'Sponsors — First Commits',
   description: 'An invite-only community for founding engineers.',
   openGraph: {
-    title: 'Partners — First Commits',
+    title: 'Sponsors — First Commits',
     description: 'An invite-only community for founding engineers.',
     type: 'website',
-    url: 'https://firstcommits.com/partners',
+    url: 'https://firstcommits.com/sponsors',
     images: [
       {
         url: '/og-image.jpg',
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Partners — First Commits',
+    title: 'Sponsors — First Commits',
     description: 'An invite-only community for founding engineers.',
     images: ['/og-image.jpg'],
   },
 }
 
-export default function PartnersLayout({
+export default function SponsorsLayout({
   children,
 }: {
   children: React.ReactNode

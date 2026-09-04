@@ -4,16 +4,15 @@ import { useState } from 'react'
 import Link from 'next/link'
 import styles from './Nav.module.css'
 
-export default function Nav() {
+export default function Nav({ gradient = false }: { gradient?: boolean }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className={styles.nav} aria-label="Main navigation">
+    <nav className={`${styles.nav} ${gradient ? styles.navGradient : ''}`} aria-label="Main navigation">
       <div className={styles.navInner}>
         <Link href="/" className={styles.logo}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/fc-logo.svg" alt="First Commits logo" className={styles.logoIcon} />
-          First Commits
+          <span className={styles.logoCursor} aria-hidden="true" />
+          <span>First Commits</span>
         </Link>
 
         <button
@@ -35,11 +34,11 @@ export default function Nav() {
             About
           </Link>
           <Link
-            href="/partners"
+            href="/sponsors"
             className={styles.navLink}
             onClick={() => setIsOpen(false)}
           >
-            Partners
+            Become a Sponsor
           </Link>
           <Link
             href="/apply"
@@ -48,15 +47,6 @@ export default function Nav() {
           >
             Request Invitation
           </Link>
-          <a
-            href="https://www.linkedin.com/company/first-commits/"
-            className={styles.navLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsOpen(false)}
-          >
-            LinkedIn
-          </a>
         </div>
       </div>
     </nav>
