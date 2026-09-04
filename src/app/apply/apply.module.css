@@ -70,16 +70,6 @@
   color: var(--color-forest);
 }
 
-.optional {
-  font-family: var(--font-ui), system-ui, sans-serif;
-  font-size: 0.75rem;
-  text-transform: none;
-  letter-spacing: 0;
-  color: rgba(22, 52, 39, 0.45);
-  margin-left: 0.5rem;
-  font-style: normal;
-}
-
 .input,
 .textarea {
   width: 100%;
