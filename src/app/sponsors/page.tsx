@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import LogoCarousel from '@/components/LogoCarousel'
+import { submitToMake } from '@/lib/make'
 import styles from './sponsors.module.css'
 
 const partnerLogos = [
@@ -39,22 +40,9 @@ export default function Partners() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/partnerships@firstcommits.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          message: formData.message,
-          _subject: `First Commits Partnership Inquiry: ${formData.company}`,
-        }),
-      })
+      const submitted = await submitToMake('sponsors', formData)
 
-      if (response.ok) {
+      if (submitted) {
         setIsSubmitted(true)
       } else {
         alert('There was an error submitting your inquiry. Please try again.')
