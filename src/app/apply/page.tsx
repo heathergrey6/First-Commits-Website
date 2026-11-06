@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, FormEvent } from 'react'
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
+import { submitToMake } from '@/lib/make'
 import styles from './apply.module.css'
 
 const roleOptions = [
@@ -70,26 +71,9 @@ export default function Apply() {
     }
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/community@firstcommits.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          ...payload,
-          _subject: `First Commits Application: ${formData.name}`,
-        }),
-      })
+      const submitted = await submitToMake('apply', payload)
 
-      // Send to Make.com webhook for downstream automation (e.g. Slack); best-effort so a Make outage doesn't block the application.
-      fetch('https://hook.us2.make.com/79r4dmjd9qouki92vce958v34ck88acr', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      }).catch(() => {})
-
-      if (response.ok) {
+      if (submitted) {
         setIsSubmitted(true)
       } else {
         alert('There was an error submitting your application. Please try again.')
